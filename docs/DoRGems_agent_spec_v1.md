@@ -14,6 +14,7 @@
 > 4. **정정(§1.1 표):** GBM DoR-only LOPO는 seed 42에서 R² 0.503(스펙대로 `dor_scm_blended.csv`·raw % 회귀); 3-seed 평균 0.489. 보고값 0.522는 `multitask_v6.py`의 자체 표·전역 z-스케일 실험이라 동일 조건이 아님.
 > 5. **환경:** 이 PC에는 `py313-xgems` 환경·GEMS3K 파일이 없어 real_xgems 게이트(G1-4, G2-*, G3-2/3)는 실행 불가. mock 파이프라인은 전 구간 통과.
 > 6. **§5.4 결정(G1-3):** blend는 포함률 0.77 < 0.85 → 기본값 `bayes`.
+> 7. **xGEMS 확보 후 추가 재검증(2026-09-02 저녁, TINN_v4 시스템, xgems 2.1.2):** (a) §1.2 "`porosity.yaml`은 cm3, `backfill.py`/`cli.py` 기본은 m3" 의혹은 실측으로 확정 — `porosity.json`의 `initial_volume_cm3`·`solid_final_volume_cm3`는 cm³, `excluded_non_solid_phase_volumes_raw`는 raw xGEMS **m³**(P-IG-4 대상). 상 질량은 kg. (b) §12 G1-4의 GemsPilot 앵커는 `Test-dat.lst`(CNASH 시스템) 기준이라 이 시스템에서는 pH만 재현(12.66156 vs 12.661534); porosity 0.4119/0.3862, CNASH 없음(`CSHQ`). (c) §4.3 표의 "`mass_percent_unspecified` → D"는 DB가 unit_norm을 `g/100 g binder`로 정규화해 두어 unit 기준 매칭으로는 A로 새는 함정이 있다 — basis 우선 매칭이 필수. DB의 basis 어휘는 17종(`per g binder/cement/clinker/paste/sample/MK`, `per_100g_ignited` 등)이며 chem_shrink는 unit_norm이 `%`로 무의미해 unit_reported로 판정해야 한다. (d) G2-3는 최종 규칙에서도 실패(모델 CH가 문헌보다 +12 g) — 스펙대로 중단·보고.
 
 ---
 

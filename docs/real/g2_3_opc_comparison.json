@@ -3,31 +3,31 @@
   "mode": "opc_reference",
   "target": "OPC-only, 28 d, w/b (0.4, 0.5)",
   "use_mock": false,
-  "n_candidates": 202,
+  "n_candidates": 40,
   "gate_G2_3": {
-    "n_papers": 41,
-    "median_r": 15.1892048551621,
+    "n_papers": 11,
+    "median_r": 12.4283199201029,
     "pass": false
   },
   "sigma_model_estimate": {
-    "CH_TGA": 11.083796796468892
+    "CH_TGA": 7.167276814195339
   },
   "aggregate": {
     "by_quantity": {
       "CH_TGA": {
-        "n": 200,
-        "n_all_grades": 200,
-        "n_papers": 41,
+        "n": 39,
+        "n_all_grades": 39,
+        "n_papers": 11,
         "grades": {
-          "A": 200
+          "A": 39
         },
-        "median_r": 15.1892048551621,
-        "iqr_r": 8.43088365454215,
-        "mean_r": 13.290885762356659,
+        "median_r": 12.4283199201029,
+        "iqr_r": 11.919243266614004,
+        "mean_r": 12.907675022727789,
         "frac_abs_z_lt2": 0.0,
         "sigma_model": 2.5,
-        "rmse": 17.28826026574976,
-        "bias_sign_test_p": 5.12121787597151e-43,
+        "rmse": 14.719400653725732,
+        "bias_sign_test_p": 2.841261448338628e-09,
         "verdict": "tension"
       }
     },
@@ -35,6 +35,6 @@
       "CH_TGA": "tension"
     },
     "overall": "tension",
-    "n_usable": 200
+    "n_usable": 39
   }
 }

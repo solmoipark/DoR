@@ -49,13 +49,31 @@ qxrd:
     factor: "1"
     grade: C
     assumption: "QXRD basis unknown; compare phase ratios and trends only unless the paper states an anhydrous basis"
+# chem_shrink: the DB's unit_norm is '%' for most rows and carries no information; the
+# *reported* unit text decides (vocabulary = every unit_reported in the DB, 2026-09-02).
+# Negative values (volume-change sign convention) are demoted to D by the code.
 chem_shrink:
-  - match: ["mL/g binder", "ml/g binder", "mL/g", "ml/g", "cm3/g binder", "per g binder"]
+  - match: ["mL/g binder", "ml/g binder", "mL/g", "ml/g", "cm3/g binder", "cm3/g", "mL/g paste"]
     factor: "1"
     grade: A
-  - match: ["mL/100 g binder", "ml/100 g binder", "cm3/100 g binder"]
+  - match: ["mL/100 g binder", "ml/100 g binder", "cm3/100 g binder", "ml/100 g", "mL/100 g", "cm3/100g", "mL/100 g CM", "ml/100 g CM"]
     factor: "0.01"
     grade: A
+  - match: ["mm3/g of binder", "mm3/g binder", "mm^3/g binder", "mm3/g"]
+    factor: "0.001"
+    grade: A
+  - match: ["ml/g cement", "ml/g-cement", "mL/g cement", "mL/g OPC", "ml/g OPC"]
+    factor: "f_opc"
+    grade: A
+    assumption: "cement basis converted with f_OPC = 1 - scm_total_pct/100"
+  - match: ["mm^3/g OPC", "mm3/g OPC", "mm3/g cement", "mm^3/g cement"]
+    factor: "0.001 * f_opc"
+    grade: A
+    assumption: "mm3 -> mL; cement basis converted with f_OPC"
+  - match: ["mL/g slag", "mL/g SCM", "ml/g slag", "mL/g fly ash", "mL/g MK"]
+    factor: "scm_pct"
+    grade: B
+    assumption: "SCM-mass basis converted with the resolved SCM fraction"
   - match: ["%", "vol%", "other", null]
     factor: null
     grade: D

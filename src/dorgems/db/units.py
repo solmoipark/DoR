@@ -109,7 +109,11 @@ def harmonize(obs: dict[str, Any], mix: dict[str, Any] | None = None, *, scm_pct
         rule = _match(rules["qxrd"], unit, basis) or rules["qxrd"][0]
     elif q == "chem_shrink":
         target = "mL/g binder"
-        rule = _match(rules["chem_shrink"], unit, basis) or rules["chem_shrink"][-1]
+        # the DB's unit_norm is '%' for most rows; the reported unit text is authoritative
+        unit_rep = obs.get("unit_reported")
+        rule = (_match(rules["chem_shrink"], unit_rep, None) if unit_rep else None) or _match(rules["chem_shrink"], unit, None) or rules["chem_shrink"][-1]
+        if rule["grade"] != "D" and float(value) < 0:
+            rule = dict(rules["chem_shrink"][-1], assumption="negative chemical shrinkage (volume-change sign convention) — reference only")
     elif q in ("DoR_SCM", "DoR_clinker"):
         target = "fraction"
         rule = _match(rules["dor"], unit, basis) or rules["dor"][0]
