@@ -40,11 +40,17 @@ def _norm(s: str | None) -> str:
 
 
 def _match(rules: list[dict[str, Any]], unit: str | None, basis: str | None) -> dict[str, Any] | None:
+    """An explicit basis is matched first (across all rules), the unit only as a fallback —
+    the DB's normalised unit is 'g/100 g binder' for almost every row."""
     u, b = _norm(unit), _norm(basis)
-    for rule in rules:
-        keys = [_norm(k) if k is not None else "" for k in rule["match"]]
-        if u in keys or (b and b in keys):
-            return rule
+    if b:
+        for rule in rules:
+            if b in [_norm(k) if k is not None else "" for k in rule["match"]]:
+                return rule
+    if u:
+        for rule in rules:
+            if u in [_norm(k) if k is not None else "" for k in rule["match"]]:
+                return rule
     return None
 
 
@@ -76,7 +82,21 @@ def harmonize(obs: dict[str, Any], mix: dict[str, Any] | None = None, *, scm_pct
         return HarmonizedObs(None, "", "X", None, ["no value"], unit, basis)
     if q in rules["mass_quantities"]:
         target = "g/100 g binder"
-        rule = _match(rules["rules"], unit, basis)
+        # basis_reported takes precedence: the DB normalises unit_norm to 'g/100 g binder'
+        # even when the basis was unspecified (norm_note "assumed to be per 100 g binder"),
+        # so an unspecified/other/NULL basis must land in grade D regardless of unit_norm
+        # (spec §4.3 table; G2-3 finding 2026-09-02).
+        b = _norm(basis)
+        unit_rep = obs.get("unit_reported")
+        if b in ("mass_percent_unspecified", "other", "unspecified", "not stated", "unknown"):
+            rule = _match(rules["rules"], None, "mass_percent_unspecified")
+        elif not b and unit_rep:
+            # NULL basis: trust the *reported* unit text (e.g. '%', 'wt.%' → D; 'g/100 g binder' → A)
+            rule = _match(rules["rules"], unit_rep, None) or _match(rules["rules"], None, "mass_percent_unspecified")
+            if rule["grade"] == "D":
+                assumptions.append(f"basis NULL and reported unit {unit_rep!r} is unspecific")
+        else:
+            rule = _match(rules["rules"], unit, basis)
         if rule is None:
             rule = _match(rules["rules"], None, "mass_percent_unspecified")
             assumptions.append(f"unit {unit!r}/basis {basis!r} not in unit_basis.yaml → grade D")

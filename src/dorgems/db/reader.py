@@ -176,7 +176,7 @@ class LiteratureDB:
         lo, hi = float(age_d) * (1.0 - tol), float(age_d) * (1.0 + tol)
         sql = (
             "SELECT o.obs_uid, o.paper_doi, o.mix_uid, o.age_d, o.quantity, o.phase_name, o.value_norm, "
-            "o.unit_norm, o.basis_reported, o.method, o.method_detail, o.uncertainty, o.source_locator, "
+            "o.unit_norm, o.unit_reported, o.basis_reported, o.norm_note, o.method, o.method_detail, o.uncertainty, o.source_locator, "
             "o.fig_only, o.extraction_confidence, m.binder_composition_json, m.scm_total_pct, m.w_b, "
             "m.curing_temp_C, m.curing_type "
             "FROM observations o JOIN mixes m ON o.mix_uid = m.mix_uid "

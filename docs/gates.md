@@ -40,16 +40,16 @@
 |---|---|---|
 | G2-1 phase_aliases 실측 확정 | **통과** | dch.json의 46개 상 이름으로 표를 작성하고 실제 실행의 `xgems_phase_amounts_raw.csv`로 11개 그룹 전부 확인(`docs/g2_1_phase_confirmation.json`) → `confirmed: true`. 주요 이름: Portlandite, CSHQ, ettringite/SO4_CO3_AFt/CO3_SO4_AFt, C4AcH11(모노카보네이트), C4Ac0.5H12(헤미), C4AsH12·OH_SO4_AFm(모노설페이트), MgAl-OH-LDH, straetlingite/C2ASH55, C3(AF)S0.84H(하이드로가넷). 표에 없는 이름은 예외 |
 | G2-2 부피 단위·화학수축 범위 | **통과(단위 불일치 확정)** | 실측: 상 질량은 **kg**(system_mass 0.122 kg), `porosity.json`의 `initial_volume_cm3`·`solid_final_volume_cm3`는 cm³이지만 `excluded_non_solid_phase_volumes_raw[aq_gen]`은 **m³**(2.3e-5) → P-IG-4 불일치 확정. aq를 m³→cm³로 환산하면 OPC w/b 0.5 28 d 화학수축 **0.0765 mL/g binder**(문헌 0.04–0.07 근처), 환산하지 않으면 0.337(비물리). 결합수 W_in−W_aq(H2O@) = **24.0 g/100 g**(문헌 TGA 20–24). `docs/g2_2_units_TINN_v4.json` |
-| G2-3 OPC 참조 검사 | **미실행(파이프라인 통과)** | 후보: 28 d ± 15 %, w/b 0.4–0.5, SCM 포함 binder JSON 제외 → 241행/229배합/51편, 등급 A 202행(190배합/41편; 스펙 상한 393은 w/b·재령 창 적용 전 값). `dorgems opc-check --max-mixes 8` mock 실행 → comparison.csv/json/summary.md 생성. T 결측 배합은 20 °C 가정+플래그(§8.2). mock 수치는 물리적 의미 없음 |
-| G2-4 b_BW, σ_model | **미확정** | `defaults.yaml`의 초기값(σ_model CH 2.5, BW 3.0, CS 0.01) 유지 |
-| G2-5 twin ≥ 20 배합 | **미실행(파이프라인 통과)** | `dorgems compare`(twin batch, mock): 후보 74배합(DoR ≥ 3 재령 & CH/BW/CS 공통 재령 ≥ 1) 중 63배합 실행(11배합은 w/b 또는 T 결측으로 제외), 전부 측정 DoR pin. 판정 분포(mock, 의미 없음): insufficient_data 49 / tension 14 — 대부분 관측이 등급 C·D(paste 기준·basis 미상)라 통계에서 제외됨 → §14-1의 basis 재판정 백로그가 실제 병목 |
+| G2-3 OPC 참조 검사 | **실패 — 중단·보고** | 실제 xGEMS, 등급 A CH_TGA 200건/41편(28 d ± 15 %, w/b 0.4–0.5, T 결측은 20 °C 가정): 모델 CH 23.7–25.6 g/100 g(중앙 25.3) vs 관측 중앙 9.7 g → **median r = +15.2 g** (기준 ≤ 4), frac|z|<2 = 0. 관측/모델 비율 분포: <0.15 25건, 0.15–0.35 **60건**(TGA 질량손실→CH 환산계수 18/74 = 0.243과 일치), 0.35–0.6 64건, 0.6–0.85 26건, 0.85–1.2 14건(9편), >1.2 7건(기준 배합 대비 % 값). 등급 A 200건 중 `basis_reported = mass_percent_unspecified` 100건·`other` 35건이 unit_basis.yaml의 `%`/`wt%` → A 규칙에 걸려 A로 분류됨(규칙 결함: `wt%`는 D여야 함). **원인 판정: 커널이 아니라 DB 기준 문제(§14-1)** — 질량손실 미환산·페이스트 기준·참조배합 상대값이 등급 A로 섞여 있음. 0.85–1.2 밴드 9편만 보면 모델은 관측과 일치(예: 550 °C 건조시료 기준 21.2 vs 21.6). 모델 자체의 과대추정 가능성(+3–5 g)은 basis 재판정 후 판단 | `docs/real/g2_3_opc_*` |
+| G2-4 b_BW, σ_model | **미확정(G2-3 실패로 보류)** | OPC 참조군의 잔차 표준편차(11.1 g)는 basis 혼입을 반영하므로 σ_model로 쓸 수 없음. `defaults.yaml` 초기값 유지. 결합수 오프셋 b_BW는 twin 결과(아래) 기준 중앙 −1.9 g(4편)로 잠정 기록만 |
+| G2-5 twin ≥ 20 배합 | **실행 완료(63배합, 실기)** | 실제 xGEMS, 측정 DoR pin: 74후보 중 63배합 실행(11배합은 w/b·T 결측). 판정: insufficient_data 45 / tension 13 / consistent 5. 등급 A 관측 291건(55배합/10편): **bound_water** n=132(4편) median r −1.9 g, IQR 8.2, 관측/모델 1.17 → 5 consistent / 3 tension(가장 신뢰할 만한 대조); **CH_TGA** n=135(9편) median r −4.7 g — 측정 DoR을 고정하면 모델 포틀란다이트가 대부분 **0 g으로 소진**되는데 논문은 CH를 계속 측정(중앙 6.0 g). 후보 원인: (i) 측정 DoR(선택용해·SEM)이 열역학적 소비량을 과대평가, (ii) CH 가용성 보정을 의도적으로 껐음(§6.1), (iii) C-S-H Ca/Si 흡수. DoRGems 범위 밖의 커널/모델 물리 문제로 기록 | `docs/real/g2_5_twin_batch.*` |
 
 ## M3 — 시나리오 C
 
 | 게이트 | 결과 | 수치 | 근거 |
 |---|---|---|---|
 | G3-1 합성 복원(mock) | **통과(5 케이스)** | flat prior, CH+BW 3재령×2 관측(σ 0.3): 진짜 α(28 d)가 사후 90 % 구간 안, 중앙값 오차 ≤ 5 %p. (mock의 CH는 α에 대해 *증가*하므로 단조성 플래그가 예상대로 발생; 복원 논리는 F의 부호와 무관) 스펙의 20 케이스 중 5 케이스만 테스트에 넣음 | `tests/test_inverse_mock.py::test_g3_1_synthetic_recovery` |
-| G3-2 real_xgems 합성 복원 | **미실행** | — |
+| G3-2 real_xgems 합성 복원 | **통과(5/5)** | 실제 xGEMS(TINN_v4), flat prior, CH+BW 4재령, 노이즈 = 관측 스팬의 3 %: 진짜 α(28 d) 5/5 포함, 중앙값 오차 평균 **0.27 %p**(최대 0.47), ESS 772–1862, 케이스당 72–80 xGEMS 호출. 실제 커널에서 CH·BW 모두 α에 대해 단조(플래그 0) | `docs/real/g3_2_real_recovery.json`, `scripts/g3_2_real_recovery.py` |
 | G3-3 실측 66배합 | **미실행** | 실행 경로(`dor_infer_from_observations --mix-uid`)는 구현·mock 통과; 판정은 실제 xGEMS 필요 |
 | G3-4 KL 단조 증가 | **통과** | 관측 1→2→3개에서 사전→사후 KL 비감소 | `tests/test_inverse_mock.py::test_kl_increases_with_observations` |
 

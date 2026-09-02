@@ -1,0 +1,75 @@
+mix_uid,paper_doi,ok,error,dor_source,verdict,by_quantity,n_obs
+10.1016/S0008-8846(00)00213-1::wb0.19_FA25.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},3.0
+10.1016/S0008-8846(00)00213-1::wb0.19_FA45.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},3.0
+10.1016/S0008-8846(00)00213-1::wb0.24_FA25.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},3.0
+10.1016/S0008-8846(00)00213-1::wb0.24_FA45.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},3.0
+10.1016/S0008-8846(00)00213-1::wb0.3_FA25.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'bound_water': 'insufficient_data'}",6.0
+10.1016/S0008-8846(00)00213-1::wb0.3_FA55.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'bound_water': 'insufficient_data'}",6.0
+10.1016/S0008-8846(00)00213-1::wb0.5_FA25.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},3.0
+10.1016/S0008-8846(00)00213-1::wb0.5_FA55.0,10.1016/S0008-8846(00)00213-1,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'bound_water': 'insufficient_data'}",6.0
+10.1016/S0008-8846(01)00581-6::10% MK,10.1016/S0008-8846(01)00581-6,False,w_b or curing_temp_C missing,,,{},
+10.1016/S0008-8846(01)00581-6::10% SF,10.1016/S0008-8846(01)00581-6,False,w_b or curing_temp_C missing,,,{},
+10.1016/S0008-8846(01)00581-6::20% FA,10.1016/S0008-8846(01)00581-6,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},4.0
+10.1016/S0008-8846(01)00581-6::20% MK,10.1016/S0008-8846(01)00581-6,False,w_b or curing_temp_C missing,,,{},
+10.1016/S0008-8846(01)00581-6::5% MK,10.1016/S0008-8846(01)00581-6,False,w_b or curing_temp_C missing,,,{},
+10.1016/S0008-8846(01)00581-6::5% SF,10.1016/S0008-8846(01)00581-6,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.cemconcomp.2020.103596::CFN0.5,10.1016/j.cemconcomp.2020.103596,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},3.0
+10.1016/j.cemconres.2016.11.016::FA_0,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaCl_10D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaCl_10FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaCl_5D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaCl_5FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_1D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_1FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_3D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_3FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_5D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::NaOH_5FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
+10.1016/j.cemconres.2019.05.017::B10_0,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
+10.1016/j.cemconres.2019.05.017::B30_1,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
+10.1016/j.cemconres.2019.05.017::B30_3,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
+10.1016/j.cemconres.2019.05.017::B50_5,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'consistent'}",11.0
+10.1016/j.cemconres.2021.106477::mix3,10.1016/j.cemconres.2021.106477,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},5.0
+10.1016/j.cemconres.2021.106477::mix7,10.1016/j.cemconres.2021.106477,True,,pin,consistent,{'CH_TGA': 'consistent'},5.0
+10.1016/j.cemconres.2021.106647::T-w04-20C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w04-40C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w04-5C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w05-20C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w05-40C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w05-5C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w06-20C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w06-40C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2021.106647::T-w06-5C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
+10.1016/j.cemconres.2024.107664::LC3_50,10.1016/j.cemconres.2024.107664,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},5.0
+10.1016/j.cemconres.2024.107664::LC3_70,10.1016/j.cemconres.2024.107664,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},12.0
+10.1016/j.cemconres.2024.107664::PC2_60,10.1016/j.cemconres.2024.107664,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},8.0
+10.1016/j.cemconres.2024.107664::PC2_77,10.1016/j.cemconres.2024.107664,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},12.0
+10.1016/j.cemconres.2025.108036::CC1_PLAIN,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC1_SEEDED,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC2_PLAIN,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC2_SEEDED,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC3_PLAIN,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC3_SEEDED,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC4_PLAIN,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.cemconres.2025.108036::CC4_SEEDED,10.1016/j.cemconres.2025.108036,True,,pin,insufficient_data,"{'CH_TGA': 'insufficient_data', 'CH_XRD': 'insufficient_data'}",6.0
+10.1016/j.conbuildmat.2012.04.041::60_CEM_L_40_CEM_I,10.1016/j.conbuildmat.2012.04.041,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},5.0
+10.1016/j.conbuildmat.2014.04.024::A1,10.1016/j.conbuildmat.2014.04.024,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},3.0
+10.1016/j.conbuildmat.2014.04.024::B1,10.1016/j.conbuildmat.2014.04.024,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},3.0
+10.1016/j.conbuildmat.2018.11.287::A4,10.1016/j.conbuildmat.2018.11.287,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},2.0
+10.1016/j.conbuildmat.2018.11.287::B,10.1016/j.conbuildmat.2018.11.287,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},2.0
+10.1016/j.conbuildmat.2018.11.287::L2,10.1016/j.conbuildmat.2018.11.287,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},2.0
+10.1016/j.conbuildmat.2018.11.287::LA3,10.1016/j.conbuildmat.2018.11.287,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},2.0
+10.1016/j.conbuildmat.2019.117726::A1,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2019.117726::A2,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2019.117726::A3,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2019.117726::A4,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2019.117726::A5,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2019.117726::A6,10.1016/j.conbuildmat.2019.117726,False,w_b or curing_temp_C missing,,,{},
+10.1016/j.conbuildmat.2020.119454::CLS05,10.1016/j.conbuildmat.2020.119454,True,,pin,consistent,"{'CH_TGA': 'insufficient_data', 'bound_water': 'consistent'}",8.0
+10.1016/j.conbuildmat.2020.119454::CLS10,10.1016/j.conbuildmat.2020.119454,True,,pin,consistent,"{'CH_TGA': 'insufficient_data', 'bound_water': 'consistent'}",8.0
+10.1016/j.conbuildmat.2020.119454::CLS15,10.1016/j.conbuildmat.2020.119454,True,,pin,consistent,"{'CH_TGA': 'insufficient_data', 'bound_water': 'consistent'}",8.0
+10.1016/j.conbuildmat.2020.119454::CLS20,10.1016/j.conbuildmat.2020.119454,True,,pin,consistent,"{'CH_TGA': 'insufficient_data', 'bound_water': 'consistent'}",8.0

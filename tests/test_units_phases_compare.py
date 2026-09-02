@@ -33,6 +33,20 @@ def test_mass_basis_rules(unit, basis, mix, expected, grade):
     assert h.usable == (grade in ("A", "B"))
 
 
+def test_basis_precedence_over_normalised_unit():
+    """G2-3 finding: the DB normalises unit_norm to 'g/100 g binder' even when the basis was
+    unspecified; the explicit basis (or, when NULL, the reported unit text) must decide."""
+    mix = {"scm_total_pct": 0, "w_b": 0.5}
+    h = harmonize({"quantity": "CH_TGA", "value_norm": 9.4, "unit_norm": "g/100 g binder", "unit_reported": "wt.%", "basis_reported": "mass_percent_unspecified"}, mix)
+    assert h.grade == "D"
+    h2 = harmonize({"quantity": "CH_TGA", "value_norm": 17.2, "unit_norm": "g/100 g binder", "unit_reported": "%", "basis_reported": None}, mix)
+    assert h2.grade == "D"
+    h3 = harmonize({"quantity": "CH_TGA", "value_norm": 15.3, "unit_norm": "g/100 g binder", "unit_reported": "g/100 g binder", "basis_reported": None}, mix)
+    assert h3.grade == "A"
+    h4 = harmonize({"quantity": "CH_TGA", "value_norm": 15.9, "unit_norm": "g/100 g binder", "unit_reported": "g/g of cement", "basis_reported": "per g cement"}, {"scm_total_pct": 20, "w_b": 0.5})
+    assert h4.grade == "A" and abs(h4.value - 15.9 * 0.8) < 1e-9
+
+
 def test_other_quantities():
     assert harmonize({"quantity": "chem_shrink", "value_norm": 0.05, "unit_norm": "mL/g binder"}, {}).grade == "A"
     assert harmonize({"quantity": "chem_shrink", "value_norm": 5.0, "unit_norm": "%"}, {}).grade == "D"

@@ -1,0 +1,123 @@
+{
+  "n": 5,
+  "coverage90": 1.0,
+  "mae_pp": 0.26552899227977905,
+  "pass": true,
+  "results": [
+    {
+      "case": 0,
+      "role": "slag",
+      "scm_pct": 40,
+      "w_b": 0.45,
+      "a_max": 0.55,
+      "tau": 15.0,
+      "slot": "slag",
+      "alpha28_true": 0.40971750989194494,
+      "q05": 0.38307638787648346,
+      "q50": 0.4074716473182656,
+      "q95": 0.43215821113290315,
+      "covered": true,
+      "abs_err_pp": 0.22458625736793691,
+      "ess": 1662.9979895725387,
+      "method": "sir",
+      "n_obs": 8,
+      "xgems_calls": 80,
+      "monotonicity": {
+        "CH_g": [],
+        "bound_water_g": []
+      }
+    },
+    {
+      "case": 1,
+      "role": "slag",
+      "scm_pct": 60,
+      "w_b": 0.4,
+      "a_max": 0.4,
+      "tau": 25.0,
+      "slot": "slag",
+      "alpha28_true": 0.26118195835175684,
+      "q05": 0.24219186097999187,
+      "q50": 0.2598544296561432,
+      "q95": 0.2774500855750817,
+      "covered": true,
+      "abs_err_pp": 0.13275286956136445,
+      "ess": 1290.3012378748488,
+      "method": "sir",
+      "n_obs": 8,
+      "xgems_calls": 80,
+      "monotonicity": {
+        "CH_g": [],
+        "bound_water_g": []
+      }
+    },
+    {
+      "case": 2,
+      "role": "fly_ash",
+      "scm_pct": 30,
+      "w_b": 0.5,
+      "a_max": 0.3,
+      "tau": 30.0,
+      "slot": "fly_ash",
+      "alpha28_true": 0.18582975728703263,
+      "q05": 0.16980482398556135,
+      "q50": 0.18114034076669333,
+      "q95": 0.19236896522050134,
+      "covered": true,
+      "abs_err_pp": 0.4689416520339301,
+      "ess": 1002.3625405177878,
+      "method": "sir",
+      "n_obs": 8,
+      "xgems_calls": 80,
+      "monotonicity": {
+        "CH_g": [],
+        "bound_water_g": []
+      }
+    },
+    {
+      "case": 3,
+      "role": "fly_ash",
+      "scm_pct": 50,
+      "w_b": 0.45,
+      "a_max": 0.2,
+      "tau": 60.0,
+      "slot": "fly_ash",
+      "alpha28_true": 0.09899325311173782,
+      "q05": 0.08911728858963769,
+      "q50": 0.09600415063566324,
+      "q95": 0.10335280764893713,
+      "covered": true,
+      "abs_err_pp": 0.2989102476074576,
+      "ess": 772.3579043554108,
+      "method": "sir",
+      "n_obs": 8,
+      "xgems_calls": 80,
+      "monotonicity": {
+        "CH_g": [],
+        "bound_water_g": []
+      }
+    },
+    {
+      "case": 4,
+      "role": "metakaolin",
+      "scm_pct": 20,
+      "w_b": 0.5,
+      "a_max": 0.7,
+      "tau": 5.0,
+      "slot": "metakaolin",
+      "alpha28_true": 0.6343295914262125,
+      "q05": 0.602984202531336,
+      "q50": 0.6363541307744945,
+      "q95": 0.6682517680059423,
+      "covered": true,
+      "abs_err_pp": 0.20245393482820617,
+      "ess": 1862.1238120363496,
+      "method": "sir",
+      "n_obs": 8,
+      "xgems_calls": 72,
+      "monotonicity": {
+        "CH_g": [],
+        "bound_water_g": []
+      }
+    }
+  ]
+}

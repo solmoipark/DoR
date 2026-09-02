@@ -333,7 +333,7 @@ def derive_composition_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 _AUX_SQL = """
-SELECT o.obs_uid, o.paper_doi, o.mix_uid, o.age_d, o.value_norm, o.unit_norm, o.quantity,
+SELECT o.obs_uid, o.paper_doi, o.mix_uid, o.age_d, o.value_norm, o.unit_norm, o.unit_reported, o.quantity,
        o.method, o.method_detail, o.phase_name, o.basis_reported, o.uncertainty,
        o.source_locator, o.fig_only, o.extraction_confidence,
        m.binder_composition_json, m.scm_total_pct, m.primary_scm_role, m.primary_scm_pct,
@@ -377,6 +377,7 @@ def build_aux_table(con: sqlite3.Connection, quantities: list[str] | tuple[str, 
             age_d=r["age_d"],
             value=val,
             unit_norm=r["unit_norm"],
+            unit_reported=r["unit_reported"],
             basis_reported=r["basis_reported"],
             method=r["method"],
             method_detail=r["method_detail"],

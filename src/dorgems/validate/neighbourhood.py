@@ -50,7 +50,7 @@ def neighbourhood_compare(lit_db: Path, *, run_dir: str | None, scm: Any, mix: A
             continue
         row = cand.iloc[int(np.argmin(np.abs(np.log(cand["age_d"].values / float(o["age_d"])))))]
         mv = row[col]
-        h = harmonize({"quantity": o["quantity"], "value_norm": o["value"], "unit_norm": o["unit_norm"], "basis_reported": o["basis_reported"]}, {"scm_total_pct": o["scm_total_pct"], "w_b": o["w_b"]}, scm_pct=o["scm_pct"])
+        h = harmonize({"quantity": o["quantity"], "value_norm": o["value"], "unit_norm": o["unit_norm"], "unit_reported": o.get("unit_reported"), "basis_reported": o["basis_reported"]}, {"scm_total_pct": o["scm_total_pct"], "w_b": o["w_b"]}, scm_pct=o["scm_pct"])
         pairs.append({"obs_uid": o["obs_uid"], "paper_doi": o["paper_doi"], "mix_uid": o["mix_uid"], "quantity": o["quantity"], "phase_name": o.get("phase_name"), "age_d": float(o["age_d"]), "method": o.get("method"), "grade": GRADE_DOWN.get(h.grade, "D"), "assumptions": "; ".join(h.assumptions + ["neighbourhood mode: grade lowered one step"]), "obs_value": h.value, "model_value": None if mv is None or pd.isna(mv) else float(mv), "uncertainty": o.get("uncertainty"), "source_locator": o.get("source_locator"), "fig_only": o.get("fig_only"), "extraction_confidence": o.get("extraction_confidence")})
     df = compare_rows(pairs)
     agg = aggregate(df)
