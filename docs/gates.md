@@ -68,8 +68,10 @@
 
 | ID | 브랜치 | 상태 |
 |---|---|---|
-| P-IG-1 | `InverseGems: dorgems/p-ig-1-materials-config` | (아래 갱신) |
-| P-GP-1 | `GemsPilot: dorgems/p-gp-1-reaction-model-kwargs` | (아래 갱신) |
-| P-GP-2 | `GemsPilot: dorgems/p-gp-2-toolset-entrypoints` | (아래 갱신) |
-| P-GP-3 | `GemsPilot: dorgems/p-gp-3-write-policy` | (아래 갱신) |
-| P-IG-2/3/4/5 | — | 미착수(xGEMS 실측 필요 또는 후순위) |
+| P-IG-1 | `InverseGems: dorgems/p-ig-1-materials-config` (`82df677`) | 완료(무푸시). `materials_config`를 forward/task/design 경로에 스레딩, `load_materials()` 6곳 교체, `recipe.json` metadata에 경로 기록, 테스트 1개 추가. 업스트림 테스트 222 passed / 1 failed(기존 `test_feature_table` 실패, 패치 무관). **DoRGems 확인:** 이 브랜치를 체크아웃하면 `run_forward`가 `materials_injection: native`로 전환되고 자기검증(alpha_ok·materials_ok) 통과 |
+| P-GP-1 | `GemsPilot: dorgems/p-gp-1-reaction-model-kwargs` (`f0da5e8`) | 완료(무푸시). `run_forward/run_task/run_confirmed_query/run_design_with_recovery`와 MCP 래퍼에 `reaction_model_config`·`reaction_model_id`·`materials_config` 추가(커널 시그니처를 검사해 조건부 전달; 커널이 못 받는 non-None 옵션은 명시적 오류). `design_recovery`의 `None` 하드코딩 인자화. 52 passed / 1 failed(기존 하드코딩 경로 실패) |
+| P-GP-2 | `GemsPilot: dorgems/p-gp-2-toolset-entrypoints` (`ee3afbb`) | 완료(무푸시). `default_toolset(extra, discover=True)` + `gemspilot.toolsets` 엔트리포인트 탐색(고장난 엔트리포인트는 경고로 수집), `mcp_server.register_extra_toolsets`. 이 환경에서는 DoRGems 엔트리포인트가 실제로 잡혀 도구 15→28개(MCP 31개). 53 passed / 1 failed(기존) |
+| P-GP-3 | `GemsPilot: dorgems/p-gp-3-write-policy` (`9f54ad1`) | 완료(무푸시). `write` 정책: `dry_run` falsy + `allow_real` 없음 → 거부. 49 passed / 1 failed(기존). DoRGems `dor_stage_inferred`는 머지 후 `use_mock`→`dry_run`으로 개명 예정 |
+| P-IG-2/3/4/5 | — | 미착수(xGEMS 실측 필요 또는 후순위). P-IG-2 전까지는 `capture_species` 폴백(`run_forward_cached` + CapturingRunner)이 결합수 계산을 담당 |
+
+두 클론의 작업 트리는 원래 커밋(`e84d7a9`, `753cf6d`)으로 복귀, 브랜치 간 상호 독립. 커밋 작성자는 `Solmoi Park <park.solmoi@gmail.com>`(추정)로 기록됨.
