@@ -100,3 +100,26 @@ OPC 60 / 슬래그 40 (w/b 0.45, 28 d): pH 13.39, CH 9.6 g, AFm 9.0 g, MgAl-OH-L
 앵커 갱신: DoRGems `docs/real_anchors_TINN_v4.json`(패치 후) / `_pre_pig6.json`(패치 전); GemsPilot
 `dorgems/p-gp-4-anchor-refresh`(`a05467b`)에서 mock 앵커 재생성 + `agent_qa_generated_TINN_v4.yaml`
 (실기 15개) 추가. GemsPilot의 `Test-dat.lst` 실기 앵커 18개는 그 시스템이 있는 PC에서 재생성 필요.
+
+## 머지 후 상태 (2026-09-03)
+
+- InverseGems 로컬 `master`: `c4600b2`(P-IG-6 머지) → `50beefb`(기본 OPC를 CEM I 42.5 대표 조성
+  CaO 63.3 / SiO2 20.2 / Al2O3 5.0 / Fe2O3 3.0 / MgO 1.8 / SO3 3.0 / Na2O 0.2 / K2O 0.8, Bogue C3S 57.7 %) →
+  `5969d38`(테스트). **원격 미푸시.** 스위트 226 passed / 1 failed(기존).
+- GemsPilot 로컬 `main`: `2924b96`(P-GP-4 머지) — mock 앵커 18개 + TINN_v4 실기 앵커 15개(`agent_qa_generated_TINN_v4.yaml`)
+  를 머지 커널로 재생성. **원격 미푸시.** 48 passed / 1 failed(기존 하드코딩 경로).
+- DoRGems 실기 앵커 `docs/real_anchors_TINN_v4.json` 재갱신: OPC100 w/b 0.5 28 d → pH 13.534, porosity 0.343,
+  CH 23.5 g, 결합수 28.4 g, 화학수축 0.064 mL/g; OPC60/slag40 → pH 13.322, porosity 0.348, CH 6.7 g.
+
+G2-3(등급 A 39건/11편) 커널별 비교:
+
+| 커널 | 모델 CH 중앙 | median r | 판정 |
+|---|---|---|---|
+| base `e84d7a9` | 24.8 | +12.4 | tension |
+| P-IG-6만 | 25.7 | +13.3 | tension |
+| **머지(P-IG-6 + CEM I)** | **23.2** | **+11.5** | tension |
+
+조성 교체로 CH가 2.5 g 내려왔지만 문헌 중앙(11.8)과의 차이는 여전히 크다. 논문별로는 3편이 ±2.4 g 안에
+들고 8편은 +8~+20 g. 남은 후보: CSHQ Ca/Si 상한(≈ 3 g), PK 28 d C3S α 0.82의 과대 가능성, 그리고 무엇보다
+등급 A로 남은 39건 자체의 basis 신뢰성(11편 중 3편만 모델과 정합). 사용자 결정에 따라 DB basis 재판정은
+보류하고, 시나리오 B의 1차 검증량을 결합수·화학수축·QXRD 상 비율로 옮기는 방향을 검토한다.

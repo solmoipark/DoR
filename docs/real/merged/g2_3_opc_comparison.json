@@ -1,0 +1,40 @@
+{
+  "schema": "dorgems-comparison/1.0",
+  "mode": "opc_reference",
+  "target": "OPC-only, 28 d, w/b (0.4, 0.5)",
+  "use_mock": false,
+  "n_candidates": 40,
+  "gate_G2_3": {
+    "n_papers": 11,
+    "median_r": 11.5333598520535,
+    "pass": false
+  },
+  "sigma_model_estimate": {
+    "CH_TGA": 6.949561847598653
+  },
+  "aggregate": {
+    "by_quantity": {
+      "CH_TGA": {
+        "n": 39,
+        "n_all_grades": 39,
+        "n_papers": 11,
+        "grades": {
+          "A": 39
+        },
+        "median_r": 11.5333598520535,
+        "iqr_r": 11.033993230374397,
+        "mean_r": 11.456886745045756,
+        "frac_abs_z_lt2": 0.0,
+        "sigma_model": 2.5,
+        "rmse": 13.353587318711984,
+        "bias_sign_test_p": 2.841261448338628e-09,
+        "verdict": "tension"
+      }
+    },
+    "verdict": {
+      "CH_TGA": "tension"
+    },
+    "overall": "tension",
+    "n_usable": 39
+  }
+}
