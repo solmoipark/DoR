@@ -22,16 +22,30 @@ def _is_mock(row: dict[str, Any]) -> bool:
     return any(c.startswith("phase_mass__Mock") for c in row)
 
 
+def mass_factor(row: dict[str, Any]) -> float:
+    """Factor to g/100 g binder. Real xGEMS reports kg (spec §8.3) → ×1000; the mock
+    runner reports grams. Detect from ``scalar__system_mass`` (≈ 100 g binder + water:
+    > 10 means grams) and fall back to the mock/real distinction. To be re-checked on
+    the first real run (P-IG-4 unit audit)."""
+    sm = row.get("scalar__system_mass")
+    try:
+        if sm is not None and float(sm) > 0:
+            return 1.0 if float(sm) > 10.0 else KG_TO_G_PER_100G
+    except (TypeError, ValueError):
+        pass
+    return 1.0 if _is_mock(row) else KG_TO_G_PER_100G
+
+
 def portlandite_g(row: dict[str, Any]) -> float | None:
     v = P.phase_mass_of_group(row, "portlandite", mock=_is_mock(row), strict=False)
-    return None if v is None else v * KG_TO_G_PER_100G
+    return None if v is None else v * mass_factor(row)
 
 
 def hydrate_group_g(row: dict[str, Any], group: str) -> float | None:
     if P.compare_mode(group) == "forbidden":
         return None
     v = P.phase_mass_of_group(row, group, mock=_is_mock(row), strict=False)
-    return None if v is None else v * KG_TO_G_PER_100G
+    return None if v is None else v * mass_factor(row)
 
 
 def bound_water_g(capture: dict[str, Any] | None, row: dict[str, Any], *, water_in_g: float | None) -> dict[str, Any]:
@@ -61,7 +75,7 @@ def bound_water_g(capture: dict[str, Any] | None, row: dict[str, Any], *, water_
         aq_mass = None
         for c, v in row.items():
             if c.startswith("phase_mass__") and c[len("phase_mass__"):] in ("aq_gen", "aq", "Aqueous"):
-                aq_mass = float(v) * KG_TO_G_PER_100G
+                aq_mass = float(v) * mass_factor(row)
         if aq_mass is not None:
             w_aq = aq_mass
             method = "aqueous_phase_mass_approx"

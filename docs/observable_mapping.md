@@ -1,6 +1,6 @@
 # Observable mapping: literature DB ↔ xGEMS output
 
-Basis: 100 g anhydrous binder. Kernel phase masses are kg → ×1000 = g/100 g binder.
+Basis: 100 g anhydrous binder. Real xGEMS phase masses are kg → ×1000 = g/100 g binder; the mock runner reports grams. `observables.mass_factor()` detects the unit from `scalar__system_mass` (> 10 ⇒ grams) and must be re-checked on the first real run (P-IG-4).
 Implemented in `dorgems.gems.observables`, aliases in `configs/phase_aliases.yaml`
 (**provisional** — `confirmed: false` until a real `xgems_phase_amounts_raw.csv` is read, G2-1),
 units in `configs/unit_basis.yaml` (`dorgems.db.units`).

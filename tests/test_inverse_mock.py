@@ -49,12 +49,17 @@ def test_g3_1_synthetic_recovery(fmap, a_true, tau_true, bundles_dir):
     rng = np.random.default_rng(int(a_true * 1000))
     ages = [7.0, 28.0, 90.0]
     obs = []
+    sig_by_q: dict[str, float] = {}
     for i, t in enumerate(ages):
         a = float(stretched_exp(np.array([t]), a_true, tau_true, 0.5)[0])
-        for q, sig in (("CH_TGA", 0.3), ("bound_water", 0.3)):
+        for q in ("CH_TGA", "bound_water"):
+            # noise = 2 % of the observable's span over the alpha grid at this age (mock scale-free)
+            span = float(np.nanmax(fmap.table[{"CH_TGA": "CH_g", "bound_water": "bound_water_g"}[q]][i]) - np.nanmin(fmap.table[{"CH_TGA": "CH_g", "bound_water": "bound_water_g"}[q]][i]))
+            sig = max(0.02 * span, 1e-6)
+            sig_by_q[q] = sig
             y = float(fmap.value(q, i, a)) + rng.normal(0, sig)
             obs.append({"obs_uid": f"{q}@{t}", "age_d": t, "quantity": q, "value": y, "grade": "A", "uncertainty": sig})
-    pts, skipped = build_points(obs, ages, sigma_obs_default={}, sigma_model={"CH_TGA": 0.2, "bound_water": 0.2})
+    pts, skipped = build_points(obs, ages, sigma_obs_default={}, sigma_model={q: 0.5 * s for q, s in sig_by_q.items()})
     assert len(pts) == 6 and not skipped
     lik = Likelihood(fmap, pts, beta=0.5)
     post = infer(lik, prior_a_max=None, prior_tau=None, prior="flat", grid_n=40, rng_seed=1)
@@ -78,10 +83,11 @@ def test_kl_increases_with_observations(fmap, bundles_dir):
     obs = []
     for i, t in enumerate(ages):
         a = float(stretched_exp(np.array([t]), a_true, tau_true, 0.5)[0])
-        obs.append({"obs_uid": f"CH@{t}", "age_d": t, "quantity": "CH_TGA", "value": float(fmap.value("CH_TGA", i, a)), "grade": "A", "uncertainty": 0.3})
+        span = float(np.nanmax(fmap.table["CH_g"][i]) - np.nanmin(fmap.table["CH_g"][i]))
+        obs.append({"obs_uid": f"CH@{t}", "age_d": t, "quantity": "CH_TGA", "value": float(fmap.value("CH_TGA", i, a)), "grade": "A", "uncertainty": 0.02 * span})
     kls = []
     for n in (1, 2, 3):
-        pts, _ = build_points(obs[:n], ages, sigma_obs_default={}, sigma_model={"CH_TGA": 0.2})
+        pts, _ = build_points(obs[:n], ages, sigma_obs_default={}, sigma_model={"CH_TGA": 0.01 * span})
         post = infer(Likelihood(fmap, pts), prior_a_max=d.a_max / 100.0, prior_tau=d.tau, prior="model", ess_min=1.0, rng_seed=0)
         kls.append(post["prior_vs_posterior_kl"])
     assert kls[0] <= kls[1] + 1e-9 <= kls[2] + 2e-9, kls

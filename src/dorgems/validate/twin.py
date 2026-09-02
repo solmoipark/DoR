@@ -44,17 +44,28 @@ def _role_to_slot(role: str | None, oxides: dict[str, float] | None) -> tuple[st
         return None, [str(exc)]
 
 
-def db_mix_to_recipe(mix: dict[str, Any], materials: list[dict[str, Any]], *, ages: list[float], out_dir: Path) -> dict[str, Any]:
-    """→ {forward_query, materials_config, slot, scm_material, warnings, excluded_reason}."""
+def db_mix_to_recipe(mix: dict[str, Any], materials: list[dict[str, Any]], *, ages: list[float], out_dir: Path, default_temp_C: float | None = None) -> dict[str, Any]:
+    """→ {forward_query, materials_config, slot, scm_material, warnings, excluded_reason}.
+    ``default_temp_C`` (e.g. 20 for the OPC reference set, spec §8.2/§8.6) is used with a
+    warning when the mix has no curing temperature; twin mode leaves it None (excluded)."""
     warnings: list[str] = []
+    mix = dict(mix)
+    if mix.get("curing_temp_C") is None and default_temp_C is not None:
+        mix["curing_temp_C"] = float(default_temp_C)
+        warnings.append(f"curing_temp_C missing; {default_temp_C:g} °C assumed")
     bc = parse_binder_composition(mix.get("binder_composition_json"), mix.get("notes"))
     by_id = {m["material_id"]: m for m in materials}
     binders: dict[str, float] = {}
     unmapped = 0.0
     scm_slot, scm_mat = None, None
+    opc_only = mix.get("scm_total_pct") in (None, 0, 0.0)
     for mid, pct in bc.items():
         m = by_id.get(mid)
         if m is None:
+            key = str(mid).strip().lower()
+            if key in ("cement", "opc", "pc", "clinker", "c", "portland cement", "portland_cement"):
+                binders["OPC"] = binders.get("OPC", 0.0) + float(pct or 0)
+                continue
             unmapped += float(pct or 0)
             warnings.append(f"binder component {mid!r} not in materials table")
             continue
@@ -68,6 +79,11 @@ def db_mix_to_recipe(mix: dict[str, Any], materials: list[dict[str, Any]], *, ag
         if slot in SLOTS and (scm_mat is None or float(pct or 0) > float(scm_mat[1] or 0)):
             scm_slot, scm_mat = slot, (m, pct)
     total = sum(binders.values())
+    if total <= 0 and opc_only and unmapped <= 0:
+        # OPC-only mix whose binder JSON is empty or names only the cement: OPC 100
+        binders = {"OPC": 100.0}
+        total = 100.0
+        warnings.append("binder JSON empty for an OPC-only mix; OPC 100 assumed")
     if total <= 0:
         return {"excluded_reason": "no mappable binder components", "warnings": warnings}
     if unmapped > 5.0:
@@ -247,7 +263,7 @@ def opc_reference_check(db: LiteratureDB, *, out: Path, ig_db: str | Path, age_d
     for _, r in cands.iterrows():
         mix = db.mix(r["mix_uid"])
         mats = db.materials_for_paper(r["paper_doi"])
-        rec = db_mix_to_recipe(mix, mats, ages=[float(r["age_d"])], out_dir=out / "materials")
+        rec = db_mix_to_recipe(mix, mats, ages=[float(r["age_d"])], out_dir=out / "materials", default_temp_C=20.0)
         if rec.get("excluded_reason"):
             warnings.append(f"{r['mix_uid']}: {rec['excluded_reason']}")
             continue

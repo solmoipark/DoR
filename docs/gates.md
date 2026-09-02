@@ -40,9 +40,9 @@
 |---|---|---|
 | G2-1 phase_aliases 실측 확정 | **미실행** | `configs/phase_aliases.yaml`은 `confirmed: false`; `phases.confirm_from_raw_names()`로 실제 `xgems_phase_amounts_raw.csv`를 읽어 확정하는 절차만 준비 |
 | G2-2 부피 단위·화학수축 범위 | **미실행** | `observables.chem_shrink_ml_per_g(volume_unit=…)` 인자로 cm³/m³ 전환 가능; 실측 후 확정 |
-| G2-3 OPC 참조 검사 | **미실행(파이프라인 통과)** | 후보 선별(§8.6: SCM 포함 binder JSON 제외, 20 ± 3 °C, w/b 0.4–0.5, 등급 A) + mock 실행 + 잔차 집계까지 동작(`dorgems opc-check`). mock 수치는 물리적 의미 없음 |
+| G2-3 OPC 참조 검사 | **미실행(파이프라인 통과)** | 후보: 28 d ± 15 %, w/b 0.4–0.5, SCM 포함 binder JSON 제외 → 241행/229배합/51편, 등급 A 202행(190배합/41편; 스펙 상한 393은 w/b·재령 창 적용 전 값). `dorgems opc-check --max-mixes 8` mock 실행 → comparison.csv/json/summary.md 생성. T 결측 배합은 20 °C 가정+플래그(§8.2). mock 수치는 물리적 의미 없음 |
 | G2-4 b_BW, σ_model | **미확정** | `defaults.yaml`의 초기값(σ_model CH 2.5, BW 3.0, CS 0.01) 유지 |
-| G2-5 twin ≥ 20 배합 | **미실행(파이프라인 통과)** | `twin_batch.candidate_mixes` = DoR ≥ 3 재령 & CH/BW 공통 재령 ≥ 3인 배합 집합(스펙 66배합 재현 검사는 `tests/test_twin_mock.py::test_candidates_and_opc_reference`), fixture DB의 twin 1건 mock 실행 통과 |
+| G2-5 twin ≥ 20 배합 | **미실행(파이프라인 통과)** | `dorgems compare`(twin batch, mock): 후보 74배합(DoR ≥ 3 재령 & CH/BW/CS 공통 재령 ≥ 1) 중 63배합 실행(11배합은 w/b 또는 T 결측으로 제외), 전부 측정 DoR pin. 판정 분포(mock, 의미 없음): insufficient_data 49 / tension 14 — 대부분 관측이 등급 C·D(paste 기준·basis 미상)라 통계에서 제외됨 → §14-1의 basis 재판정 백로그가 실제 병목 |
 
 ## M3 — 시나리오 C
 
@@ -62,7 +62,7 @@
 | 문헌 DB 쓰기 | 도구층에 쓰기 경로 없음; `dor_db_lookup`은 이름 붙인 쿼리만 |
 | staging | `dor_stage_inferred`는 기본 dry-run; `dorgems review list/approve/reject` |
 | 문서 | `docs/model_card.md`, `docs/observable_mapping.md`, 이 파일. 스펙 재검증 로그는 스펙 상단에 추가 |
-| GemsPilot 벤치 `dor_*` | `configs/agent_bench_dor.yaml` 초안(§ M4) — 실행은 LLM 키 필요 |
+| 벤치 `dor_*` | `configs/agent_bench_dor.yaml` 6 시나리오(정상 경로 envelope, 예산 없음/초과 거부, 문헌 DB 쓰기 거부, 인자 내 주입문 무효, staging dry-run) — `python -m dorgems.pilot.bench` / `tests/test_bench.py`, 6/6 통과(mock, LLM 불필요). GemsPilot 벤치 kind로의 통합은 P-GP-2 이후 |
 
 ## 업스트림 패치 상태
 

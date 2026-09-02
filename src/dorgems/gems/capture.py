@@ -93,6 +93,12 @@ def run_forward_capturing(
     captures: list[dict[str, Any]] = []
     warnings: list[str] = []
     injection = None
+    # recipe ids must be unique within the kernel DB (recipe_runs.recipe_id is UNIQUE):
+    # hash the run location + configs and add a uuid tail like the kernel does.
+    import hashlib
+    import uuid
+
+    run_tag = hashlib.sha256(f"{out.resolve()}|{reaction_model_config}|{materials_config}".encode("utf-8")).hexdigest()[:10] + "_" + uuid.uuid4().hex[:6]
     try:
         with materials_config_override(materials_config) as how:
             injection = how
@@ -106,7 +112,7 @@ def run_forward_capturing(
                     temperature_celsius=T,
                     xgems_call_budget=budget,
                     runner_factory=make_runner_factory(use_mock),
-                    recipe_id=f"dorgems_capture_{out.name}_age_{i:04d}",
+                    recipe_id=f"dorgems_capture_{run_tag}_age_{i:04d}",
                     recipe_metadata={"dorgems_capture": True, "template_name": forward_query.get("name", "dorgems")},
                     reaction_model_id=reaction_model_id,
                     reaction_model_config=str(reaction_model_config) if reaction_model_config else None,

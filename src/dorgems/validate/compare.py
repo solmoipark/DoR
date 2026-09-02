@@ -20,6 +20,7 @@ from scipy.stats import binomtest
 from ..predict import load_defaults
 
 OBS_TO_MODEL = {"CH_TGA": "CH_g", "CH_XRD": "CH_g", "bound_water": "bound_water_g", "chem_shrink": "chem_shrink_ml_g"}
+COMPARISON_COLUMNS = ["obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence", "obs", "model", "offset_b", "r", "sigma_obs", "sigma_model", "z", "usable"]
 
 
 def sigma_tables() -> tuple[dict[str, float], dict[str, float]]:
@@ -47,7 +48,7 @@ def compare_rows(pairs: list[dict[str, Any]], *, sigma_model: dict[str, float] |
             denom = np.sqrt(so**2 + sm**2)
             z = float(r / denom) if np.isfinite(denom) and denom > 0 else None
         rows.append({**{k: p.get(k) for k in ("obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence")}, "obs": obs, "model": mod, "offset_b": b, "r": r, "sigma_obs": so, "sigma_model": sm, "z": z, "usable": p.get("grade") in ("A", "B") and r is not None})
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=COMPARISON_COLUMNS)
 
 
 def aggregate(df: pd.DataFrame, *, min_n: int | None = None, frac_thr: float | None = None) -> dict[str, Any]:
