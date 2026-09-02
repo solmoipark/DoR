@@ -2,8 +2,8 @@
 # STATUS: phase names taken from the user's GEMS3K system definition
 # `MySystem-dch.json` (TINN_v4, 2026-09-02; 46 phases, Cemdata18-type: CSHQ C-S-H, no CNASH).
 # `confirmed` is flipped to true only after a real xgems_phase_amounts_raw.csv has been read (G2-1).
-confirmed: false
-confirmation_source: null
+confirmed: true
+confirmation_source: "docs/g2_1_phase_confirmation.json (real run, TINN_v4, 2026-09-02; all 11 groups found in xgems_phase_amounts_raw.csv)"
 system_definition_source: "gems_systems/TINN_v4/MySystem-dch.json"
 system_phases: [aq_gen, gas_gen, C3(AF)S0.84H, CSHQ, straetlingite, ettringite, SO4_OH_AFm, OH_SO4_AFm, SO4_CO3_AFt, CO3_SO4_AFt, MgAl-OH-LDH, MSH, Al(OH)3am, C2AH75, C3AH6, C4AH11, C4AH13, C4AH19, CAH10, C4AsH105, C4AsH12, C4AsH14, C4AsH16, C4AsH9, C2ASH55, C4AcH9, C4Ac0.5H105, C4Ac0.5H12, C4Ac0.5H9, C4AcH11, Friedels, Kuzels, C6AsH13, C6AsH9, Aragonite, Calcite, Portlandite, Anhydrite, Gypsum, hemihydrate, arcanite, Brucite, thenardite, Na-oxide, Sulphur, Silica-amorph]
 groups:

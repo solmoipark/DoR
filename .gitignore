@@ -15,3 +15,7 @@ Test-dch/
 **/ipm/
 **/dbr*.json
 **/dch*.json
+
+# xGEMS writes a log into the cwd
+xGEMS.log
+ipmlog*.txt

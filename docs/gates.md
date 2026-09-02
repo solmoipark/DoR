@@ -11,7 +11,7 @@
 | InverseGems | `e84d7a9` (clone `../InverseGems`, editable) |
 | GemsPilot | `753cf6d` (clone `../GemsPilot`, editable `--no-deps`) |
 | 문헌 DB | `modeling/scm_dor_enriched.db` (읽기 전용, 파일 미변경) |
-| xGEMS | **없음** — `py313-xgems` 환경과 GEMS3K 시스템 파일이 이 PC에 없음. `real_xgems` 마커 테스트는 전부 skip. **M2의 물리 게이트(G2-1..G2-5), G1-4, G3-2는 실행 불가** |
+| xGEMS | 세션 초반에는 없었음. 이후 사용자가 GEMS3K 시스템 파일(`20260902 TINN_v4`: dch/ipm/fun/dbr, 46상·140종·13원소, Cemdata형 `CSHQ` C-S-H, CNASH 없음)을 제공 → `gems_systems/TINN_v4/`로 복사, conda-forge `xgems 2.1.2`(win-64, py312)를 `dorgems` 환경에 설치. `inverse_gems.env_check` 통과, 실기 게이트 실행 가능해짐 |
 | PyMC | 5.28.0 + arviz 0.23.4 (arviz 1.x는 pymc 5.28과 비호환 → 다운그레이드). g++ 없음 → `PYTENSOR_FLAGS=mode=NUMBA,cxx=`. conda-forge MKL BLAS가 delay-load 오류(0xc06d007f)로 numpy.linalg·scipy까지 크래시 → `libblas=*=*openblas`로 교체. threadpoolctl 프로브 오류는 `scripts/env_win/sitecustomize.py`로 우회(모델·스크립트 미수정) |
 | bayes 재실행 | `scripts/run_bayes_v4.py`(runpy 래퍼, 스크립트 무수정) → `modeling/work/bayes_idata.nc` 등 생성, 2.6 분 |
 
@@ -29,17 +29,17 @@
 | 게이트 | 결과 | 수치 | 근거 |
 |---|---|---|---|
 | G1-1 logistic_fit 12 곡선 max dev < 2 %p | **통과** | 12/12 (a_max 0.15–0.90, τ 3–150 d) | `tests/test_kinetics.py::test_g1_1_logistic_fit_deviation` |
-| G1-2 mock forward 자기검증 | **통과** | `reaction_degrees.json["scm"][slot]` == 내보낸 α (4 재령, ±1e-3); 오버라이드 산화물은 `source_contribution_ledger.csv`에서 복원해 ±0.05 %p 일치. 주입 방식 `monkeypatch`(P-IG-1 머지 전) | `tests/test_forward_mock.py::test_g1_2_mock_forward_self_check` |
+| G1-2 mock forward 자기검증 (+실기) | **통과** | 실제 xGEMS에서도 7·28 d 자기검증(alpha_ok·materials_ok) 통과(`test_g1_2_real_self_check`). mock: | `reaction_degrees.json["scm"][slot]` == 내보낸 α (4 재령, ±1e-3); 오버라이드 산화물은 `source_contribution_ledger.csv`에서 복원해 ±0.05 %p 일치. 주입 방식 `monkeypatch`(P-IG-1 머지 전) | `tests/test_forward_mock.py::test_g1_2_mock_forward_self_check` |
 | G1-3 앙상블 기본값 | **결정: `bayes`** | 5-fold leave-papers-out(1,592 obs, 80편; 재현 스크립트 `scripts/g1_3_blend_lopo.py`): bayes MAE 11.43 / R² 0.441 / 90 % 포함률 **0.911** / 폭 46.7; blend MAE 11.37 / R² 0.440 / 포함률 **0.770** / 폭 32.8; GBM 점 MAE 11.44. blend는 MAE를 0.06 %p 낮추지만 포함률이 0.85 미만 → 기본값 `bayes` (`configs/defaults.yaml`) | `docs/g1_3/g1_3_blend_lopo.json` |
-| G1-4 real_xgems OPC60/slag40 | **미실행** | xGEMS 없음. GemsPilot 회귀 앵커(porosity 0.398451, CNASH 0.045535) 미확인 | — |
+| G1-4 real_xgems OPC60/slag40 | **통과(앵커 교체)** | 기본 kinetics, 실제 xGEMS(TINN_v4): OPC100 w/b 0.5 28 d → pH **12.66156**(GemsPilot 앵커 12.661534와 일치), porosity 0.4119(앵커 0.407184; 시스템이 다름), CH 25.3 g/100 g; OPC60/slag40 w/b 0.45 28 d → porosity 0.3862(앵커 0.398451), pH 12.6616, CH 8.47 g/100 g, CSHQ 51.8 g. CNASH 앵커는 이 시스템에 CNASH가 없어 재현 불가 → `docs/real_anchors_TINN_v4.json`을 이 시스템의 앵커로 기록 | `tests/test_real_xgems.py::test_g1_4_default_kinetics_anchors` |
 | G1-5 MCP 한 에피소드 | **부분** | `dorgems-mcp` 서버 구현 + `dor_run_envelope`가 predict→export→override→forward×3를 한 호출로 완료(mock, CLI로 실증). LLM 호스트가 실제로 연결된 에피소드는 미실행(API 키 없음) | `tests/test_forward_mock.py`, CLI `dorgems envelope` |
 
 ## M2 — 시나리오 B (파이프라인만; 물리 검증은 xGEMS 필요)
 
 | 게이트 | 결과 | 비고 |
 |---|---|---|
-| G2-1 phase_aliases 실측 확정 | **미실행** | `configs/phase_aliases.yaml`은 `confirmed: false`; `phases.confirm_from_raw_names()`로 실제 `xgems_phase_amounts_raw.csv`를 읽어 확정하는 절차만 준비 |
-| G2-2 부피 단위·화학수축 범위 | **미실행** | `observables.chem_shrink_ml_per_g(volume_unit=…)` 인자로 cm³/m³ 전환 가능; 실측 후 확정 |
+| G2-1 phase_aliases 실측 확정 | **통과** | dch.json의 46개 상 이름으로 표를 작성하고 실제 실행의 `xgems_phase_amounts_raw.csv`로 11개 그룹 전부 확인(`docs/g2_1_phase_confirmation.json`) → `confirmed: true`. 주요 이름: Portlandite, CSHQ, ettringite/SO4_CO3_AFt/CO3_SO4_AFt, C4AcH11(모노카보네이트), C4Ac0.5H12(헤미), C4AsH12·OH_SO4_AFm(모노설페이트), MgAl-OH-LDH, straetlingite/C2ASH55, C3(AF)S0.84H(하이드로가넷). 표에 없는 이름은 예외 |
+| G2-2 부피 단위·화학수축 범위 | **통과(단위 불일치 확정)** | 실측: 상 질량은 **kg**(system_mass 0.122 kg), `porosity.json`의 `initial_volume_cm3`·`solid_final_volume_cm3`는 cm³이지만 `excluded_non_solid_phase_volumes_raw[aq_gen]`은 **m³**(2.3e-5) → P-IG-4 불일치 확정. aq를 m³→cm³로 환산하면 OPC w/b 0.5 28 d 화학수축 **0.0765 mL/g binder**(문헌 0.04–0.07 근처), 환산하지 않으면 0.337(비물리). 결합수 W_in−W_aq(H2O@) = **24.0 g/100 g**(문헌 TGA 20–24). `docs/g2_2_units_TINN_v4.json` |
 | G2-3 OPC 참조 검사 | **미실행(파이프라인 통과)** | 후보: 28 d ± 15 %, w/b 0.4–0.5, SCM 포함 binder JSON 제외 → 241행/229배합/51편, 등급 A 202행(190배합/41편; 스펙 상한 393은 w/b·재령 창 적용 전 값). `dorgems opc-check --max-mixes 8` mock 실행 → comparison.csv/json/summary.md 생성. T 결측 배합은 20 °C 가정+플래그(§8.2). mock 수치는 물리적 의미 없음 |
 | G2-4 b_BW, σ_model | **미확정** | `defaults.yaml`의 초기값(σ_model CH 2.5, BW 3.0, CS 0.01) 유지 |
 | G2-5 twin ≥ 20 배합 | **미실행(파이프라인 통과)** | `dorgems compare`(twin batch, mock): 후보 74배합(DoR ≥ 3 재령 & CH/BW/CS 공통 재령 ≥ 1) 중 63배합 실행(11배합은 w/b 또는 T 결측으로 제외), 전부 측정 DoR pin. 판정 분포(mock, 의미 없음): insufficient_data 49 / tension 14 — 대부분 관측이 등급 C·D(paste 기준·basis 미상)라 통계에서 제외됨 → §14-1의 basis 재판정 백로그가 실제 병목 |
