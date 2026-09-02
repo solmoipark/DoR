@@ -15,6 +15,7 @@
 > 5. **환경:** 이 PC에는 `py313-xgems` 환경·GEMS3K 파일이 없어 real_xgems 게이트(G1-4, G2-*, G3-2/3)는 실행 불가. mock 파이프라인은 전 구간 통과.
 > 6. **§5.4 결정(G1-3):** blend는 포함률 0.77 < 0.85 → 기본값 `bayes`.
 > 7. **xGEMS 확보 후 추가 재검증(2026-09-02 저녁, TINN_v4 시스템, xgems 2.1.2):** (a) §1.2 "`porosity.yaml`은 cm3, `backfill.py`/`cli.py` 기본은 m3" 의혹은 실측으로 확정 — `porosity.json`의 `initial_volume_cm3`·`solid_final_volume_cm3`는 cm³, `excluded_non_solid_phase_volumes_raw`는 raw xGEMS **m³**(P-IG-4 대상). 상 질량은 kg. (b) §12 G1-4의 GemsPilot 앵커는 `Test-dat.lst`(CNASH 시스템) 기준이라 이 시스템에서는 pH만 재현(12.66156 vs 12.661534); porosity 0.4119/0.3862, CNASH 없음(`CSHQ`). (c) §4.3 표의 "`mass_percent_unspecified` → D"는 DB가 unit_norm을 `g/100 g binder`로 정규화해 두어 unit 기준 매칭으로는 A로 새는 함정이 있다 — basis 우선 매칭이 필수. DB의 basis 어휘는 17종(`per g binder/cement/clinker/paste/sample/MK`, `per_100g_ignited` 등)이며 chem_shrink는 unit_norm이 `%`로 무의미해 unit_reported로 판정해야 한다. (d) G2-3는 최종 규칙에서도 실패(모델 CH가 문헌보다 +12 g) — 스펙대로 중단·보고.
+> 8. **커널 결함 확인(2026-09-03, `docs/kernel_ch_investigation.md`):** `xgems_input_builder.py:159-176`은 OPC를 Bogue 4상으로만 투입하고 SO3·MgO·Na2O·K2O를 버린다 → 시스템에 S·알칼리가 없어 AFt/AFm 부재, pH 12.662 고정, CH 과대. §1.2·§8.3의 "클링커 수화도는 PK로만 결정"에 더해 "OPC 소량 산화물 미투입"을 §14 리스크에 추가해야 함. 패치 제안 P-IG-6.
 
 ---
 
