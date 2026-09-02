@@ -29,12 +29,12 @@ mix_uid,paper_doi,ok,error,dor_source,verdict,by_quantity,n_obs
 10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
 10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5D,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
 10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5FB,10.1016/j.cemconres.2016.11.016,True,,pin,insufficient_data,{'bound_water': 'insufficient_data'},4.0
-10.1016/j.cemconres.2019.05.017::B10_0,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
-10.1016/j.cemconres.2019.05.017::B30_1,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
-10.1016/j.cemconres.2019.05.017::B30_3,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'tension'}",11.0
-10.1016/j.cemconres.2019.05.017::B50_5,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'consistent'}",11.0
+10.1016/j.cemconres.2019.05.017::B10_0,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'insufficient_data'}",11.0
+10.1016/j.cemconres.2019.05.017::B30_1,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'insufficient_data'}",11.0
+10.1016/j.cemconres.2019.05.017::B30_3,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'insufficient_data'}",11.0
+10.1016/j.cemconres.2019.05.017::B50_5,10.1016/j.cemconres.2019.05.017,True,,pin,tension,"{'CH_TGA': 'tension', 'bound_water': 'insufficient_data'}",11.0
 10.1016/j.cemconres.2021.106477::mix3,10.1016/j.cemconres.2021.106477,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},5.0
-10.1016/j.cemconres.2021.106477::mix7,10.1016/j.cemconres.2021.106477,True,,pin,consistent,{'CH_TGA': 'consistent'},5.0
+10.1016/j.cemconres.2021.106477::mix7,10.1016/j.cemconres.2021.106477,True,,pin,insufficient_data,{'CH_TGA': 'insufficient_data'},5.0
 10.1016/j.cemconres.2021.106647::T-w04-20C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
 10.1016/j.cemconres.2021.106647::T-w04-40C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0
 10.1016/j.cemconres.2021.106647::T-w04-5C,10.1016/j.cemconres.2021.106647,True,,pin,tension,{'CH_TGA': 'tension'},6.0

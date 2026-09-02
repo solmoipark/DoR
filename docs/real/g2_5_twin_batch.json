@@ -2,10 +2,10 @@
   "n_candidates": 74,
   "n_ok": 63,
   "verdict_distribution": {
-    "insufficient_data": 45,
+    "insufficient_data": 46,
     "tension": 13,
     "nan": 11,
-    "consistent": 5
+    "consistent": 4
   },
   "use_mock": false,
   "results": [
@@ -371,7 +371,7 @@
       "verdict": "tension",
       "by_quantity": {
         "CH_TGA": "tension",
-        "bound_water": "tension"
+        "bound_water": "insufficient_data"
       },
       "n_obs": 11
     },
@@ -384,7 +384,7 @@
       "verdict": "tension",
       "by_quantity": {
         "CH_TGA": "tension",
-        "bound_water": "tension"
+        "bound_water": "insufficient_data"
       },
       "n_obs": 11
     },
@@ -397,7 +397,7 @@
       "verdict": "tension",
       "by_quantity": {
         "CH_TGA": "tension",
-        "bound_water": "tension"
+        "bound_water": "insufficient_data"
       },
       "n_obs": 11
     },
@@ -410,7 +410,7 @@
       "verdict": "tension",
       "by_quantity": {
         "CH_TGA": "tension",
-        "bound_water": "consistent"
+        "bound_water": "insufficient_data"
       },
       "n_obs": 11
     },
@@ -432,9 +432,9 @@
       "ok": true,
       "error": null,
       "dor_source": "pin",
-      "verdict": "consistent",
+      "verdict": "insufficient_data",
       "by_quantity": {
-        "CH_TGA": "consistent"
+        "CH_TGA": "insufficient_data"
       },
       "n_obs": 5
     },
