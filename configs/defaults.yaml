@@ -36,6 +36,8 @@ compare:
   consistent_frac_z_lt2: 0.7
   min_n: 5
 inverse:
+  status: consistency_check   # G3-3 (2026-09-03): hidden-DoR MAE 22.7 %p, coverage 0 -> not a validated DoR estimator
+  status_note: "Scenario C is a consistency / uncertainty-reduction check, not a validated DoR estimator (docs/gates.md G3-3). Prefer bound water and chemical shrinkage over portlandite in the likelihood."
   ess_min: 50
   sir_rounds: 1
   flat_prior_grid: 40

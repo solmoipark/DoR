@@ -86,7 +86,11 @@ def dor_infer_from_observations(mix: Any, observations: Any, out: str, db: str, 
         _audit("dor_infer_from_observations", {"out": out}, False)
         return _log_session(session, tool_result("dor_infer_from_observations", ok=False, error=f"{type(exc).__name__}: {exc}"))
     _audit("dor_infer_from_observations", {"out": out, "use_mock": use_mock}, True, xgems_calls=res["summary"].get("xgems_calls"), run_dir=out)
-    return _log_session(session, tool_result("dor_infer_from_observations", ok=True, summary={"inference_id": res["inference_id"], "slot": res["slot"], **res["summary"], "validation": res.get("validation")}, artifacts=res["files"], warnings=res["warnings"]))
+    from ..predict import load_defaults
+
+    inv = load_defaults().get("inverse", {})
+    status_warn = [f"scenario_c_status={inv.get('status')}: {inv.get('status_note')}"] if inv.get("status") and inv.get("status") != "validated" else []
+    return _log_session(session, tool_result("dor_infer_from_observations", ok=True, summary={"inference_id": res["inference_id"], "slot": res["slot"], "status": inv.get("status", "validated"), **res["summary"], "validation": res.get("validation")}, artifacts=res["files"], warnings=status_warn + res["warnings"]))
 
 
 def dor_stage_inferred(inference: Any, staging_db: str | None = None, *, use_mock: bool = True, note: str | None = None) -> dict[str, Any]:
