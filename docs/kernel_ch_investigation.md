@@ -70,3 +70,33 @@ CH 수지 검산(28 d): C3S 54.27 g = 0.238 mol × (3 − 1.63) = 0.326 mol + C2
 
 CSHQ Ca/Si 상한은 열역학 DB의 성질이라 커널 패치 대상이 아니다. 비교 시 σ_model에 +2–3 g의 계통
 편향으로 반영하거나, CH 대신 결합수·화학수축을 1차 검증량으로 쓰는 것이 현실적이다.
+
+## 패치 P-IG-6 적용 결과 (InverseGems `dorgems/p-ig-6-opc-minor-oxides`, 커밋 `535f90e`)
+
+구현: `reaction_parameters.py`에 `opc_minor_oxides` 정책(기본 enabled; SO3 1.0 → CaSO4로, 동반 CaO
+재투입; Na2O·K2O 1.0; MgO = 클링커 평균 α), `xgems_input_builder._add_opc_minor_oxides`, source ledger
+행 추가, 시그니처 payload 포함, 테스트 5개(`tests/test_opc_minor_oxides.py`). InverseGems 스위트
+226 passed / 1 failed(기존 `test_feature_table`).
+
+실제 xGEMS(TINN_v4), OPC 100 w/b 0.5:
+
+| 재령 d | pH (전 → 후) | CH g (전 → 후) | 황산염 상(후) | 기타(후) |
+|---|---|---|---|---|
+| 1 | 12.66 → **13.10** | 3.8 → 4.7 | 에트린자이트 6.3 g, 석고 0.9 g | 브루사이트 0.3 |
+| 7 | 12.66 → **13.67** | 14.5 → 15.1 | AFt 10.5, AFm 2.5 g | 브루사이트 1.2 |
+| 28 | 12.66 → **13.60** | 25.3 → 26.1 | AFm 9.4, AFt 2.3 g | 브루사이트 2.3, 하이드로가넷 6.8 |
+| 90 | 12.66 → **13.58** | 28.1 → 28.9 | AFm 10.6, AFt 0.8 g | 브루사이트 2.5 |
+
+OPC 60 / 슬래그 40 (w/b 0.45, 28 d): pH 13.39, CH 9.6 g, AFm 9.0 g, MgAl-OH-LDH 5.2 g(전에는 없던
+하이드로탈사이트가 생김). 질량 수지 100.2 g(전 92.6 g). porosity 0.412 → 0.327(OPC), 0.386 → 0.326(슬래그).
+결합수 24.0 → 29.1 g(AFt/AFm의 결정수), 화학수축 0.076 → 0.058 mL/g.
+
+**CH는 패치로 줄지 않는다(+0.8 g).** CaSO4의 Ca가 추가되고 알칼리 흡수로 C-S-H Ca/Si가 1.63 → 1.58로
+낮아지기 때문. G2-3(등급 A 39건/11편) median r: 12.4 → 13.3 g. 따라서 CH 과대의 남은 원인은
+(2) 기본 OPC 조성의 C3S 66 %와 (3) CSHQ Ca/Si 상한이며, 이 둘은 각각 `materials.yaml` 기본값 교체
+(또는 `opc_phase_mass_percent` 노출)와 열역학 DB 선택의 문제다. 패치의 실효는 pH·황산염 상·Mg 상·
+질량 수지의 정상화이고, 이는 QXRD 상 비율 비교(§8.3)와 공극률에 직접 영향을 준다.
+
+앵커 갱신: DoRGems `docs/real_anchors_TINN_v4.json`(패치 후) / `_pre_pig6.json`(패치 전); GemsPilot
+`dorgems/p-gp-4-anchor-refresh`(`a05467b`)에서 mock 앵커 재생성 + `agent_qa_generated_TINN_v4.yaml`
+(실기 15개) 추가. GemsPilot의 `Test-dat.lst` 실기 앵커 18개는 그 시스템이 있는 PC에서 재생성 필요.
