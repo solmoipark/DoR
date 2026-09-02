@@ -2,20 +2,20 @@
   "dat_lst": "C:\\Users\\User\\DoR MCP\\gems_systems\\TINN_v4\\MySystem-dat.lst",
   "anchors": {
     "opc100_wb0.5_28d": {
-      "porosity": 0.3265705856697702,
-      "phase_mass__CSHQ": 0.0516378105340911,
-      "phase_mass__Portlandite": 0.0260736561499533,
-      "scalar__pH": 13.595738763193625,
-      "scalar__system_mass": 0.1290267548868278,
-      "scalar__system_volume": 6.921074106966036e-05
+      "porosity": 0.3430459215493968,
+      "phase_mass__CSHQ": 0.0493103652721814,
+      "phase_mass__Portlandite": 0.0235139235825555,
+      "scalar__pH": 13.533571509881371,
+      "scalar__system_mass": 0.1250359085224985,
+      "scalar__system_volume": 6.817441944922716e-05
     },
     "opc60_slag40_wb0.45_28d": {
-      "porosity": 0.3258000944666375,
-      "phase_mass__CSHQ": 0.0518217455676799,
-      "phase_mass__Portlandite": 0.0096053050311235,
-      "scalar__pH": 13.39193819588785,
-      "scalar__system_mass": 0.1091136111003557,
-      "scalar__system_volume": 6.0604841346351865e-05
+      "porosity": 0.3476993653381078,
+      "phase_mass__CSHQ": 0.0504284302752612,
+      "phase_mass__Portlandite": 0.0066974530911896,
+      "scalar__pH": 13.322016417984342,
+      "scalar__system_mass": 0.1067616801721032,
+      "scalar__system_volume": 5.994707045760977e-05
     }
   }
 }
