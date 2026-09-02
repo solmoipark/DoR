@@ -1,0 +1,20 @@
+{
+  "CH_g_per_100g": 25.31681999260974,
+  "mass_factor": 1000.0,
+  "chem_shrink_if_cm3": 0.3366823289746141,
+  "chem_shrink_if_m3": 0.07647466085243522,
+  "bound_water_g": 24.043899852081612,
+  "porosity_keys": [
+    "excluded_non_solid_phase_volumes_raw",
+    "included_phase_volume_sources",
+    "included_phase_volumes_cm3",
+    "initial_volume_cm3",
+    "porosity_best_effort",
+    "porosity_inputs_raw",
+    "skipped_phase_volumes_raw",
+    "solid_final_volume_cm3",
+    "unreacted_binder_volumes_cm3",
+    "warnings",
+    "xgems_solid_phase_volume_cm3"
+  ]
+}

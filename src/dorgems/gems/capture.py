@@ -39,6 +39,18 @@ class CapturingRunner:
         for k in ("phase_species_moles", "species_in_phase", "species_molar_masses", "phase_masses", "phase_volumes", "aqueous_species", "scalars"):
             if k in raw:
                 keep[k] = raw[k]
+        # element-level amounts per phase (real xgems exposes these as properties; the
+        # kernel's capture does not record them) — used for the bound-water cross-check
+        gems = getattr(self._inner, "gems", None)
+        for attr in ("phase_elements_amounts", "aq_elements_amounts", "element_molar_masses"):
+            try:
+                v = getattr(gems, attr, None) if gems is not None else None
+                if callable(v):
+                    v = v()
+                if isinstance(v, dict):
+                    keep[attr] = {str(a): ({str(b): float(c) for b, c in x.items()} if isinstance(x, dict) else float(x)) for a, x in v.items()}
+            except Exception:  # noqa: BLE001
+                pass
         # generic fallbacks for real xGEMS objects exposing these names differently
         for k in list(raw.keys()):
             if "species" in k.lower() and "mol" in k.lower() and k not in keep:
@@ -52,7 +64,11 @@ def make_runner_factory(use_mock: bool):
     from inverse_gems.xgems_runner import MockXGEMSRunner, XGEMSRunner
 
     def factory(dat_lst_path: Any = None, temperature_celsius: float = 20.0, **kw: Any) -> CapturingRunner:
-        inner = MockXGEMSRunner(dat_lst_path=dat_lst_path, temperature_celsius=temperature_celsius) if use_mock else XGEMSRunner(dat_lst_path=dat_lst_path, temperature_celsius=temperature_celsius, **kw)
+        if use_mock:
+            inner = MockXGEMSRunner(dat_lst_path=dat_lst_path, temperature_celsius=temperature_celsius)
+        else:
+            # mirror cached_forward.py:400-405 (the kernel's own construction)
+            inner = XGEMSRunner(dat_lst_path, temperature_celsius=temperature_celsius, gems_class_path=kw.get("gems_class_path", "xgems:ChemicalEngineDicts"), input_mode=kw.get("input_mode", "formula"))
         return CapturingRunner(inner)
 
     return factory
@@ -111,6 +127,9 @@ def run_forward_capturing(
                     use_mock=use_mock,
                     temperature_celsius=T,
                     xgems_call_budget=budget,
+                    # a cache hit would skip the runner (no species capture): force the solve,
+                    # it costs ~5 ms per equilibrate on the real kernel
+                    force_rerun_xgems=True,
                     runner_factory=make_runner_factory(use_mock),
                     recipe_id=f"dorgems_capture_{run_tag}_age_{i:04d}",
                     recipe_metadata={"dorgems_capture": True, "template_name": forward_query.get("name", "dorgems")},
@@ -150,7 +169,7 @@ def run_forward_capturing(
 def _row(age: float, res: dict[str, Any], chem_dir: Path) -> dict[str, Any]:
     from inverse_gems.database import read_name_value_csv  # type: ignore
 
-    row: dict[str, Any] = {"age_days": age, "recipe_id": res.get("recipe_id"), "chem_hash": res.get("chem_hash"), "chemistry_status": res.get("chemistry_status"), "solver_status": res.get("solver_status"), "reused_cache": res.get("reused_cache"), "scalar__porosity": res.get("porosity")}
+    row: dict[str, Any] = {"age_days": age, "recipe_id": res.get("recipe_id"), "chem_hash": res.get("chem_hash"), "chemistry_status": res.get("chemistry_status"), "solver_status": res.get("solver_status"), "reused_cache": res.get("reused_cache"), "porosity": res.get("porosity"), "scalar__porosity": res.get("porosity"), "xgems_water_g": res.get("xgems_water_g"), "xgems_w_b": res.get("xgems_w_b"), "xgems_water_mode": res.get("xgems_water_mode")}
     raw_dirs = sorted(chem_dir.rglob("xgems_phase_amounts_raw.csv"))
     if raw_dirs:
         raw = raw_dirs[-1].parent

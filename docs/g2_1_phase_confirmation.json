@@ -1,0 +1,157 @@
+{
+  "source": "C:\\Users\\User\\AppData\\Local\\Temp\\pytest-of-User\\pytest-36\\real0\\igdb\\chemistry_runs\\b05d0c1dc00447bdb11e924563e8908592c263653c0a2e8eb16712bf93823aa5\\xgems_raw\\xgems_phase_amounts_raw.csv",
+  "groups": {
+    "portlandite": {
+      "expected": [
+        "Portlandite"
+      ],
+      "found": [
+        "Portlandite"
+      ],
+      "ok": true
+    },
+    "ettringite": {
+      "expected": [
+        "ettringite",
+        "SO4_CO3_AFt",
+        "CO3_SO4_AFt",
+        "C6AsH13",
+        "C6AsH9"
+      ],
+      "found": [
+        "ettringite",
+        "SO4_CO3_AFt",
+        "CO3_SO4_AFt",
+        "C6AsH13",
+        "C6AsH9"
+      ],
+      "ok": true
+    },
+    "monocarbonate": {
+      "expected": [
+        "C4AcH11",
+        "C4AcH9"
+      ],
+      "found": [
+        "C4AcH11",
+        "C4AcH9"
+      ],
+      "ok": true
+    },
+    "hemicarbonate": {
+      "expected": [
+        "C4Ac0.5H12",
+        "C4Ac0.5H105",
+        "C4Ac0.5H9"
+      ],
+      "found": [
+        "C4Ac0.5H12",
+        "C4Ac0.5H105",
+        "C4Ac0.5H9"
+      ],
+      "ok": true
+    },
+    "monosulfate": {
+      "expected": [
+        "C4AsH12",
+        "C4AsH105",
+        "C4AsH14",
+        "C4AsH16",
+        "C4AsH9",
+        "SO4_OH_AFm",
+        "OH_SO4_AFm"
+      ],
+      "found": [
+        "C4AsH12",
+        "C4AsH105",
+        "C4AsH14",
+        "C4AsH16",
+        "C4AsH9",
+        "SO4_OH_AFm",
+        "OH_SO4_AFm"
+      ],
+      "ok": true
+    },
+    "calcite": {
+      "expected": [
+        "Calcite",
+        "Aragonite"
+      ],
+      "found": [
+        "Calcite",
+        "Aragonite"
+      ],
+      "ok": true
+    },
+    "hydrotalcite": {
+      "expected": [
+        "MgAl-OH-LDH"
+      ],
+      "found": [
+        "MgAl-OH-LDH"
+      ],
+      "ok": true
+    },
+    "straetlingite": {
+      "expected": [
+        "straetlingite",
+        "C2ASH55"
+      ],
+      "found": [
+        "straetlingite",
+        "C2ASH55"
+      ],
+      "ok": true
+    },
+    "hydrogarnet": {
+      "expected": [
+        "C3(AF)S0.84H",
+        "C3AH6"
+      ],
+      "found": [
+        "C3(AF)S0.84H",
+        "C3AH6"
+      ],
+      "ok": true
+    },
+    "csh": {
+      "expected": [
+        "CSHQ"
+      ],
+      "found": [
+        "CSHQ"
+      ],
+      "ok": true
+    },
+    "brucite": {
+      "expected": [
+        "Brucite"
+      ],
+      "found": [
+        "Brucite"
+      ],
+      "ok": true
+    }
+  },
+  "unmatched_raw": [
+    "Al(OH)3am",
+    "Anhydrite",
+    "C2AH75",
+    "C4AH11",
+    "C4AH13",
+    "C4AH19",
+    "CAH10",
+    "Friedels",
+    "Gypsum",
+    "Kuzels",
+    "MSH",
+    "Na-oxide",
+    "Silica-amorph",
+    "Sulphur",
+    "aq_gen",
+    "arcanite",
+    "gas_gen",
+    "hemihydrate",
+    "thenardite"
+  ]
+}

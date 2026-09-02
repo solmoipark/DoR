@@ -1,9 +1,11 @@
-# DB phase_name (lower-cased) -> Cemdata18 raw phase names in InverseGems output (spec §4.4).
-# STATUS: provisional. `confirmed: false` entries were NOT yet checked against a real
-# xgems_phase_amounts_raw.csv (no xGEMS on this PC). Names not in this table raise
-# UnknownPhaseError — never guess. Mock runs use the `mock` block.
+# DB phase_name (lower-cased) -> GEMS phase names in InverseGems output (spec §4.4).
+# STATUS: phase names taken from the user's GEMS3K system definition
+# `MySystem-dch.json` (TINN_v4, 2026-09-02; 46 phases, Cemdata18-type: CSHQ C-S-H, no CNASH).
+# `confirmed` is flipped to true only after a real xgems_phase_amounts_raw.csv has been read (G2-1).
 confirmed: false
-confirmation_source: null      # path of the xgems_phase_amounts_raw.csv used to confirm (G2-1)
+confirmation_source: null
+system_definition_source: "gems_systems/TINN_v4/MySystem-dch.json"
+system_phases: [aq_gen, gas_gen, C3(AF)S0.84H, CSHQ, straetlingite, ettringite, SO4_OH_AFm, OH_SO4_AFm, SO4_CO3_AFt, CO3_SO4_AFt, MgAl-OH-LDH, MSH, Al(OH)3am, C2AH75, C3AH6, C4AH11, C4AH13, C4AH19, CAH10, C4AsH105, C4AsH12, C4AsH14, C4AsH16, C4AsH9, C2ASH55, C4AcH9, C4Ac0.5H105, C4Ac0.5H12, C4Ac0.5H9, C4AcH11, Friedels, Kuzels, C6AsH13, C6AsH9, Aragonite, Calcite, Portlandite, Anhydrite, Gypsum, hemihydrate, arcanite, Brucite, thenardite, Na-oxide, Sulphur, Silica-amorph]
 groups:
   portlandite:
     db: [portlandite, ch, "ca(oh)2", calcium hydroxide]
@@ -11,36 +13,44 @@ groups:
     compare: absolute            # CH_TGA / CH_XRD are the same physical quantity
   ettringite:
     db: [ettringite, aft]
-    raw: [ettringite, SO4_CO3_AFt]
+    raw: [ettringite, SO4_CO3_AFt, CO3_SO4_AFt, C6AsH13, C6AsH9]
     compare: ratio
   monocarbonate:
     db: [monocarbonate, monocarboaluminate, mc]
-    raw: [C4AcH11]
+    raw: [C4AcH11, C4AcH9]
     compare: ratio
   hemicarbonate:
     db: [hemicarbonate, hemicarboaluminate, hc]
-    raw: [C4Ac0.5H12]
+    raw: [C4Ac0.5H12, C4Ac0.5H105, C4Ac0.5H9]
     compare: ratio
   monosulfate:
     db: [monosulfate, monosulfoaluminate, afm, ms]
-    raw: [C4AsH12, OH_SO4_AFm]
+    raw: [C4AsH12, C4AsH105, C4AsH14, C4AsH16, C4AsH9, SO4_OH_AFm, OH_SO4_AFm]
     compare: ratio
   calcite:
     db: [calcite, caco3, limestone]
-    raw: [Calcite, Cal]
+    raw: [Calcite, Aragonite]
     compare: ratio
   hydrotalcite:
-    db: [hydrotalcite, ht]
-    raw: [OH-hydrotalcite]
+    db: [hydrotalcite, ht, ldh]
+    raw: [MgAl-OH-LDH]
     compare: ratio
   straetlingite:
     db: [strätlingite, stratlingite, straetlingite]
-    raw: [straetlingite]
+    raw: [straetlingite, C2ASH55]
+    compare: ratio
+  hydrogarnet:
+    db: [hydrogarnet, katoite, siliceous hydrogarnet, c3ah6]
+    raw: [C3(AF)S0.84H, C3AH6]
     compare: ratio
   csh:
     db: [c-s-h, csh, c-a-s-h, cash, amorphous, amorph]
-    raw: [CNASH, CSHQ]
+    raw: [CSHQ]
     compare: forbidden           # QXRD amorphous also holds unreacted glassy SCM
+  brucite:
+    db: [brucite, "mg(oh)2"]
+    raw: [Brucite]
+    compare: ratio
 clinker:
   alite:     {db: [alite, c3s], bogue: C3S}
   belite:    {db: [belite, c2s], bogue: C2S}

@@ -92,3 +92,30 @@ def inverse_gems_root(required: bool = False) -> Path | None:
 
 def real_xgems_enabled() -> bool:
     return os.environ.get("DORGEMS_REAL_XGEMS", "") == "1"
+
+
+GEMS_SYSTEMS_DIRNAME = "gems_systems"
+
+
+def dat_lst_path(required: bool = False) -> Path | None:
+    """GEMS3K ``*-dat.lst`` for real runs: ``DORGEMS_DAT_LST`` or the first ``*-dat.lst``
+    under ``<parent of repo>/gems_systems/*/`` (system files are never committed)."""
+    env = os.environ.get("DORGEMS_DAT_LST")
+    if env:
+        return Path(env)
+    base = repo_root().parent / GEMS_SYSTEMS_DIRNAME
+    if base.is_dir():
+        for cand in sorted(base.glob("*/*-dat.lst")):
+            return cand
+    if required:
+        raise FileNotFoundError("no GEMS3K dat.lst found; set DORGEMS_DAT_LST")
+    return None
+
+
+def xgems_available() -> bool:
+    try:
+        import xgems  # type: ignore  # noqa: F401
+
+        return True
+    except Exception:  # noqa: BLE001
+        return False
