@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+out/
+work/
+*.sqlite-journal
+dorgems_staging.sqlite
+# GEMS3K system files are never committed
+*-dat.lst
+*-dbr.lst
+Test-dch/
+**/ipm/
+**/dbr*.json
+**/dch*.json

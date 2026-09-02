@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dorgems"
+version = "0.1.0"
+description = "SCM degree-of-reaction (DoR) agent kernel: literature-DB priors, Bayesian/GBM prediction, InverseGems reaction-model export, validation and inverse analysis."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-3-Clause"}
+dependencies = [
+  "numpy",
+  "pandas",
+  "scipy",
+  "pyyaml",
+  "lightgbm",
+]
+
+[project.optional-dependencies]
+kernel = ["inverse-gems"]
+pilot = ["gemspilot", "mcp>=1.2", "pydantic>=2"]
+export = ["arviz", "pymc", "scikit-learn"]
+test = ["pytest", "pydantic>=2", "scikit-learn"]
+
+[project.scripts]
+dorgems = "dorgems.cli:main"
+dorgems-mcp = "dorgems.pilot.mcp:main"
+
+[project.entry-points."gemspilot.toolsets"]
+dorgems = "dorgems.pilot.tools:TOOLSET"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dorgems = ["py.typed"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+  "real_xgems: needs a real xGEMS/GEMS3K tree (DORGEMS_REAL_XGEMS=1 and dat_lst)",
+  "slow: GBM retraining / LOPO (minutes)",
+  "golden_full: needs the full literature DB (DORGEMS_DB) and modeling CSVs",
+]

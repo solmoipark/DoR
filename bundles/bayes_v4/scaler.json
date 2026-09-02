@@ -1,0 +1,45 @@
+{
+  "feats": [
+    "scm_pct",
+    "w_b",
+    "curing_temp_C",
+    "CaO_SiO2"
+  ],
+  "median": {
+    "scm_pct": 40.0,
+    "w_b": 0.4,
+    "curing_temp_C": 20.0,
+    "CaO_SiO2": 0.1753123015032818
+  },
+  "mean": {
+    "scm_pct": 42.266677018633544,
+    "w_b": 0.4148198757763976,
+    "curing_temp_C": 24.759627329192547,
+    "CaO_SiO2": 2.6379997837466678
+  },
+  "std": {
+    "scm_pct": 18.726393791619696,
+    "w_b": 0.126132650300016,
+    "curing_temp_C": 12.66555931064962,
+    "CaO_SiO2": 16.031487395446888
+  },
+  "roles": [
+    "fly_ash",
+    "other",
+    "slag"
+  ],
+  "methods": [
+    "NMR",
+    "SEM_BSE",
+    "XRD_PONKCS",
+    "XRD_other",
+    "calorimetry",
+    "mass_balance",
+    "other_unknown",
+    "selective_dissolution",
+    "unknown"
+  ],
+  "beta_shape": 0.5,
+  "n_rows": 1610,
+  "n_papers": 80
+}

@@ -1,0 +1,59 @@
+# Unit / basis harmonisation rules (spec §4.3). Target units:
+#   mass quantities  -> g / 100 g anhydrous binder
+#   chem_shrink      -> mL / g binder
+#   DoR              -> fraction
+# grade: A exact, B approximate (documented assumption), C strong assumption, D reference only, X excluded
+# factor expressions use: f_opc = 1 - scm_total_pct/100, w_b, scm_pct (fraction of the resolved SCM), gypsum_frac (default 0.05)
+mass_quantities: [CH_TGA, CH_XRD, bound_water]
+rules:
+  - match: ["g/100 g binder", "g/100 g anhydrous binder", "g_per_100g_binder", "g/100g binder", "g/100 g dry binder", "g/100 g solid binder", "wt% of binder", "% of binder", "% binder"]
+    factor: "1"
+    grade: A
+  - match: ["g/100 g cement", "g/100 g PC", "g/100 g OPC", "g/100 g Portland cement", "g/100g cement", "% of cement", "wt% of cement", "g/100 g cement (unhydrated)"]
+    factor: "f_opc"
+    grade: A
+    assumption: "cement basis converted with f_OPC = 1 - scm_total_pct/100"
+  - match: ["g/100 g clinker", "g/100g clinker", "% of clinker"]
+    factor: "f_opc * (1 - gypsum_frac)"
+    grade: B
+    assumption: "clinker basis ≈ f_OPC × (1 - gypsum fraction 0.05)"
+  - match: ["g/100 g paste", "g/100 g dry paste", "g/100 g sample", "g/100 g hydrated paste", "g/100g paste", "wt% of paste", "% of paste", "% of sample", "g/100 g dried paste"]
+    factor: "1 + w_b"
+    grade: C
+    assumption: "paste basis assumed = anhydrous binder + mixing water (×(1 + w/b)); if the basis was 105 °C-dried mass the factor is ×(1 + w_bound/100) instead"
+  - match: ["per_100g_ignited", "g/100 g ignited", "g/100 g ignited binder", "% ignited", "g/100 g ignited paste"]
+    factor: null
+    grade: X
+    assumption: "ignited basis needs the bound-water value of the same sample (circular) — excluded in v1"
+  - match: ["g/100 g MK", "g/100 g SCM", "g/100 g slag", "g/100 g fly ash", "g/100 g SF", "% of SCM"]
+    factor: "scm_pct"
+    grade: B
+    assumption: "SCM-mass basis converted with the resolved SCM fraction"
+  - match: ["mass_percent_unspecified", "%", "wt%", "other", "", null]
+    factor: "1"
+    grade: D
+    assumption: "basis unspecified; treated as g/100 g binder for reference only (excluded from residual statistics)"
+qxrd:
+  - match: ["wt% (as reported)", "wt%", "%"]
+    factor: "1"
+    grade: C
+    assumption: "QXRD basis unknown; compare phase ratios and trends only unless the paper states an anhydrous basis"
+chem_shrink:
+  - match: ["mL/g binder", "ml/g binder", "mL/g", "ml/g", "cm3/g binder"]
+    factor: "1"
+    grade: A
+  - match: ["mL/100 g binder", "ml/100 g binder", "cm3/100 g binder"]
+    factor: "0.01"
+    grade: A
+  - match: ["%", "vol%", "other", null]
+    factor: null
+    grade: D
+    assumption: "chemical shrinkage in % has an unknown reference (paste volume? binder mass?)"
+dor:
+  - match: ["%", "percent"]
+    factor: "0.01"
+    grade: A
+  - match: ["fraction"]
+    factor: "1"
+    grade: A
+gypsum_frac_default: 0.05

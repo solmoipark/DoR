@@ -1,0 +1,54 @@
+# DB phase_name (lower-cased) -> Cemdata18 raw phase names in InverseGems output (spec §4.4).
+# STATUS: provisional. `confirmed: false` entries were NOT yet checked against a real
+# xgems_phase_amounts_raw.csv (no xGEMS on this PC). Names not in this table raise
+# UnknownPhaseError — never guess. Mock runs use the `mock` block.
+confirmed: false
+confirmation_source: null      # path of the xgems_phase_amounts_raw.csv used to confirm (G2-1)
+groups:
+  portlandite:
+    db: [portlandite, ch, "ca(oh)2", calcium hydroxide]
+    raw: [Portlandite]
+    compare: absolute            # CH_TGA / CH_XRD are the same physical quantity
+  ettringite:
+    db: [ettringite, aft]
+    raw: [ettringite, SO4_CO3_AFt]
+    compare: ratio
+  monocarbonate:
+    db: [monocarbonate, monocarboaluminate, mc]
+    raw: [C4AcH11]
+    compare: ratio
+  hemicarbonate:
+    db: [hemicarbonate, hemicarboaluminate, hc]
+    raw: [C4Ac0.5H12]
+    compare: ratio
+  monosulfate:
+    db: [monosulfate, monosulfoaluminate, afm, ms]
+    raw: [C4AsH12, OH_SO4_AFm]
+    compare: ratio
+  calcite:
+    db: [calcite, caco3, limestone]
+    raw: [Calcite, Cal]
+    compare: ratio
+  hydrotalcite:
+    db: [hydrotalcite, ht]
+    raw: [OH-hydrotalcite]
+    compare: ratio
+  straetlingite:
+    db: [strätlingite, stratlingite, straetlingite]
+    raw: [straetlingite]
+    compare: ratio
+  csh:
+    db: [c-s-h, csh, c-a-s-h, cash, amorphous, amorph]
+    raw: [CNASH, CSHQ]
+    compare: forbidden           # QXRD amorphous also holds unreacted glassy SCM
+clinker:
+  alite:     {db: [alite, c3s], bogue: C3S}
+  belite:    {db: [belite, c2s], bogue: C2S}
+  aluminate: {db: [aluminate, c3a, c3a-cubic, c3a cubic, c3a-ortho, c3a orthorhombic], bogue: C3A}
+  ferrite:   {db: [ferrite, c4af, brownmillerite], bogue: C4AF}
+sulfates_initial: [gypsum, bassanite, anhydrite]
+ignore: [periclase, quartz, hematite, perovskite, arcanite, aphthitalite, magnetite, rutile, mullite, corundum]
+mock:
+  portlandite: ["Mock Portlandite"]
+  csh: ["Mock C-S-H raw phase"]
+  ettringite: ["Mock Ettringite/AFt"]

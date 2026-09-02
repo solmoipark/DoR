@@ -1,0 +1,15 @@
+# SCMSpec.role -> InverseGems binder slot (spec §6.2). SCM_NAMES in the kernel is fixed
+# to {slag, fly_ash, metakaolin, silica_fume}; other names only survive as aliases.
+slots:
+  slag:            {slot: slag}
+  steel_slag:      {slot: slag,        warn: "steel_slag mapped to slag slot (OOD)"}
+  fly_ash:         {slot: fly_ash}
+  natural_pozzolan: {slot: fly_ash,   warn: "natural_pozzolan mapped to fly_ash slot (low-CaO pozzolan)"}
+  glass_powder:    {slot: fly_ash,     warn: "glass_powder mapped to fly_ash slot; high Na2O not represented by slot kinetics"}
+  metakaolin:      {slot: metakaolin}
+  calcined_clay:   {slot: metakaolin,  warn: "calcined_clay mapped to metakaolin slot; MK content unknown"}
+  silica_fume:     {slot: silica_fume}
+  limestone:       {slot: limestone,   warn: "limestone is a filler in InverseGems; no reaction model applies", reactive: false}
+  other:           {slot: nearest,     warn: "role 'other' mapped by chemical distance to the nearest slot"}
+# Bayesian pooling: roles outside {slag, fly_ash} are 'other' (bayes_hier_v4.py:65)
+bayes_roles: [slag, fly_ash]

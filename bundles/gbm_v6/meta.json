@@ -1,0 +1,73 @@
+{
+  "features": [
+    "log_age",
+    "scm_pct",
+    "w_b",
+    "curing_temp_C",
+    "CaO_SiO2",
+    "basicity",
+    "pozz_sum",
+    "Al_Si",
+    "amorph",
+    "fineness",
+    "scm_role",
+    "method_group"
+  ],
+  "categorical": [
+    "scm_role",
+    "method_group"
+  ],
+  "categories": {
+    "scm_role": [
+      "calcined_clay",
+      "fly_ash",
+      "limestone",
+      "metakaolin",
+      "natural_pozzolan",
+      "other",
+      "other_scm",
+      "silica_fume",
+      "slag",
+      "steel_slag",
+      "missing"
+    ],
+    "method_group": [
+      "NMR",
+      "SEM_BSE",
+      "XRD_PONKCS",
+      "XRD_other",
+      "calorimetry",
+      "mass_balance",
+      "other_unknown",
+      "selective_dissolution",
+      "unknown",
+      "missing"
+    ]
+  },
+  "target": "dor_pct",
+  "target_scaling": {
+    "mode": "raw"
+  },
+  "hyperparameters": {
+    "objective": "regression",
+    "num_leaves": 7,
+    "max_depth": 4,
+    "learning_rate": 0.03,
+    "n_estimators": 500,
+    "min_child_samples": 40,
+    "subsample": 0.7,
+    "subsample_freq": 1,
+    "colsample_bytree": 0.6,
+    "reg_lambda": 20.0,
+    "reg_alpha": 2.0,
+    "verbose": -1,
+    "random_state": 42
+  },
+  "n_rows": 1592,
+  "n_papers": 80,
+  "sigma_point_pct": 12.0,
+  "lopo_r2": 0.5034611970169705,
+  "lopo_mae_pct": 10.744877941778295,
+  "lopo_folds": 10,
+  "lopo_seed": 42
+}
