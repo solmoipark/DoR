@@ -51,8 +51,9 @@ likelihood:
   systematic_scales: {bound_water: 0.60, chem_shrink: 1.0, CH_TGA: 1.0, CH_XRD: 1.0}
   systematic_offsets: {CH_TGA: -3.0, CH_XRD: -3.0, bound_water: 0.0, chem_shrink: 0.0}
 inverse:
-  status: consistency_check   # G3-3 (2026-09-03): hidden-DoR MAE 22.7 %p, coverage 0 -> not a validated DoR estimator
-  status_note: "Scenario C is a consistency / uncertainty-reduction check, not a validated DoR estimator (docs/gates.md G3-3). Prefer bound water and chemical shrinkage over portlandite in the likelihood."
+  status: consistency_check   # G3-3 final (2026-09-03): hidden-DoR MAE 13.4 %p, coverage 0.62 overall; slag alone 8.7 %p / 0.70
+  status_by_slot: {slag: provisional, fly_ash: unvalidated, metakaolin: consistency_check, silica_fume: unvalidated}
+  status_note: "Scenario C is a consistency / uncertainty-reduction check, not a validated DoR estimator (docs/gates.md G3-3): overall MAE 13.4 %p, 90 % coverage 0.62 on 13 literature mixes; slag meets the MAE criterion (8.7 %p) but with an early-age low bias. Bound water (x0.60) and chemical shrinkage carry the likelihood; portlandite is down-weighted."
   ess_min: 50
   sir_rounds: 1
   flat_prior_grid: 40
