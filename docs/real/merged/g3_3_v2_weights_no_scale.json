@@ -1,0 +1,1385 @@
+{
+ "n_candidates": 66,
+ "n_tried": 66,
+ "n_ok": 13,
+ "n_points": 82,
+ "mae_pp": 16.110587364540955,
+ "coverage90": 0.5487804878048781,
+ "bias_pp": -15.720796322537872,
+ "gbm_lopo_mae_reference_pp": 10.3,
+ "prior": "model",
+ "alpha_grid": 11,
+ "refine": false,
+ "xgems_calls_total": 540,
+ "by_slot": {
+  "metakaolin": {
+   "n": 28,
+   "mae_pp": 22.25814332700668,
+   "bias_pp": -21.116612418283374,
+   "coverage90": 0.4642857142857143
+  },
+  "slag": {
+   "n": 54,
+   "mae_pp": 12.922965754373543,
+   "bias_pp": -12.922965754373543,
+   "coverage90": 0.5925925925925926
+  }
+ },
+ "decision": "demote_to_consistency_check",
+ "results": [
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.19_FA25.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.19_FA45.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.24_FA25.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.24_FA45.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.3_FA25.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.3_FA55.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.5_FA25.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.5_FA55.0",
+   "paper_doi": "10.1016/S0008-8846(00)00213-1",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::10% MK",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::10% SF",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::20% FA",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::20% MK",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::5% MK",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/S0008-8846(01)00581-6::5% SF",
+   "paper_doi": "10.1016/S0008-8846(01)00581-6",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconcomp.2020.103596::CFN0.5",
+   "paper_doi": "10.1016/j.cemconcomp.2020.103596",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::FA_0",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_10D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_10FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_5D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_5FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_1D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_1FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_3D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_3FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_5D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_5FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5D",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5FB",
+   "paper_doi": "10.1016/j.cemconres.2016.11.016",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106477::mix3",
+   "paper_doi": "10.1016/j.cemconres.2021.106477",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106477::mix7",
+   "paper_doi": "10.1016/j.cemconres.2021.106477",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2024.107664::LC3_50",
+   "paper_doi": "10.1016/j.cemconres.2024.107664",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2024.107664::LC3_70",
+   "paper_doi": "10.1016/j.cemconres.2024.107664",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2024.107664::PC2_60",
+   "paper_doi": "10.1016/j.cemconres.2024.107664",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2024.107664::PC2_77",
+   "paper_doi": "10.1016/j.cemconres.2024.107664",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC2_SEEDED",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC3_PLAIN",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC3_SEEDED",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED",
+   "paper_doi": "10.1016/j.cemconres.2025.108036",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2012.04.041::60_CEM_L_40_CEM_I",
+   "paper_doi": "10.1016/j.conbuildmat.2012.04.041",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2014.04.024::A1",
+   "paper_doi": "10.1016/j.conbuildmat.2014.04.024",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2014.04.024::B1",
+   "paper_doi": "10.1016/j.conbuildmat.2014.04.024",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A1",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A2",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A3",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A4",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A5",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2019.117726::A6",
+   "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+   "ok": false,
+   "error": "no usable (grade A/B) observations for the likelihood (pre-filter)"
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-20C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1629.0791631962386,
+   "method": "importance",
+   "kl": 0.11323052456205224,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 20.5,
+     "post_q50_pct": 8.790010177984911,
+     "post_q05_pct": 3.6764928533288277,
+     "post_q95_pct": 15.292841611078266,
+     "covered": false,
+     "err_pp": -11.709989822015089
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 22.7,
+     "post_q50_pct": 12.15061296003623,
+     "post_q05_pct": 5.069663566811176,
+     "post_q95_pct": 21.124803612680203,
+     "covered": false,
+     "err_pp": -10.549387039963769
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 37.1,
+     "post_q50_pct": 19.666209695329172,
+     "post_q05_pct": 8.140570075015871,
+     "post_q95_pct": 34.17024188814351,
+     "covered": false,
+     "err_pp": -17.43379030467083
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 40.6,
+     "post_q50_pct": 30.623552576786985,
+     "post_q05_pct": 12.716990309833665,
+     "post_q95_pct": 53.35959817589894,
+     "covered": true,
+     "err_pp": -9.976447423213017
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 46.3,
+     "post_q50_pct": 39.11556109528395,
+     "post_q05_pct": 16.06047241784292,
+     "post_q95_pct": 68.1739897032837,
+     "covered": true,
+     "err_pp": -7.184438904716046
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 50.2,
+     "post_q50_pct": 42.3136617772685,
+     "post_q05_pct": 17.367639753272787,
+     "post_q95_pct": 74.0794296199535,
+     "covered": true,
+     "err_pp": -7.886338222731503
+    }
+   ],
+   "mae_pp": 10.790065286218374,
+   "coverage": 0.5,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-40C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1583.6375037289286,
+   "method": "importance",
+   "kl": 0.12991823100719707,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 32.8,
+     "post_q50_pct": 17.705551449310803,
+     "post_q05_pct": 7.285560432034701,
+     "post_q95_pct": 32.146176493587696,
+     "covered": false,
+     "err_pp": -15.094448550689194
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 42.8,
+     "post_q50_pct": 22.864813845380496,
+     "post_q05_pct": 9.413450938320373,
+     "post_q95_pct": 41.325965518036455,
+     "covered": false,
+     "err_pp": -19.9351861546195
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 46.3,
+     "post_q50_pct": 32.47245936546156,
+     "post_q05_pct": 13.554202798036272,
+     "post_q95_pct": 58.55233547071641,
+     "covered": true,
+     "err_pp": -13.827540634538437
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 48.9,
+     "post_q50_pct": 40.44273559435761,
+     "post_q05_pct": 16.959301911187772,
+     "post_q95_pct": 72.95343110185676,
+     "covered": true,
+     "err_pp": -8.457264405642391
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 53.3,
+     "post_q50_pct": 42.996730931008045,
+     "post_q05_pct": 17.991800509634583,
+     "post_q95_pct": 77.13335769211199,
+     "covered": true,
+     "err_pp": -10.303269068991952
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 53.3,
+     "post_q50_pct": 43.32089051616295,
+     "post_q05_pct": 18.179131362036042,
+     "post_q95_pct": 77.57068128352616,
+     "covered": true,
+     "err_pp": -9.97910948383705
+    }
+   ],
+   "mae_pp": 12.932803049719753,
+   "coverage": 0.6666666666666666,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-5C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1777.2617566796916,
+   "method": "importance",
+   "kl": 0.06276617951108325,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 12.7,
+     "post_q50_pct": 5.151880439552979,
+     "post_q05_pct": 2.1226242150749486,
+     "post_q95_pct": 8.568197585433996,
+     "covered": false,
+     "err_pp": -7.54811956044702
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 15.3,
+     "post_q50_pct": 7.317618940814033,
+     "post_q05_pct": 3.0154810739911353,
+     "post_q95_pct": 12.156394493543537,
+     "covered": false,
+     "err_pp": -7.982381059185967
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 19.7,
+     "post_q50_pct": 12.491642775227971,
+     "post_q05_pct": 5.128959077838283,
+     "post_q95_pct": 20.687837342517458,
+     "covered": true,
+     "err_pp": -7.208357224772028
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 29.3,
+     "post_q50_pct": 21.73051432713354,
+     "post_q05_pct": 8.907061955268933,
+     "post_q95_pct": 35.99840701364106,
+     "covered": true,
+     "err_pp": -7.56948567286646
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 40.2,
+     "post_q50_pct": 31.74085801960534,
+     "post_q05_pct": 12.80041973788901,
+     "post_q95_pct": 52.664956204304524,
+     "covered": true,
+     "err_pp": -8.459141980394662
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 46.7,
+     "post_q50_pct": 37.63136700685558,
+     "post_q05_pct": 15.195894256789014,
+     "post_q95_pct": 62.449044181260845,
+     "covered": true,
+     "err_pp": -9.068632993144426
+    }
+   ],
+   "mae_pp": 7.972686415135095,
+   "coverage": 0.6666666666666666,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-20C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1554.3935773047847,
+   "method": "importance",
+   "kl": 0.13726675476121553,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 20.5,
+     "post_q50_pct": 10.112251053644208,
+     "post_q05_pct": 4.251310440273193,
+     "post_q95_pct": 16.626528079036902,
+     "covered": false,
+     "err_pp": -10.387748946355792
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 24.5,
+     "post_q50_pct": 13.933662530868956,
+     "post_q05_pct": 5.874018158356717,
+     "post_q95_pct": 22.84067237009092,
+     "covered": false,
+     "err_pp": -10.566337469131044
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 41.5,
+     "post_q50_pct": 22.399022984861517,
+     "post_q05_pct": 9.505470811598347,
+     "post_q95_pct": 36.71869982336666,
+     "covered": false,
+     "err_pp": -19.100977015138483
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 51.5,
+     "post_q50_pct": 34.482637380789214,
+     "post_q05_pct": 14.79695392947872,
+     "post_q95_pct": 56.883989040126394,
+     "covered": true,
+     "err_pp": -17.017362619210786
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 58.5,
+     "post_q50_pct": 43.73849052502065,
+     "post_q05_pct": 18.528824872610354,
+     "post_q95_pct": 72.28171101223249,
+     "covered": true,
+     "err_pp": -14.761509474979349
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 61.6,
+     "post_q50_pct": 47.209422778076245,
+     "post_q05_pct": 19.808861241423774,
+     "post_q95_pct": 77.97497073716477,
+     "covered": true,
+     "err_pp": -14.390577221923756
+    }
+   ],
+   "mae_pp": 14.370752124456535,
+   "coverage": 0.5,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-40C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1449.1676072204807,
+   "method": "importance",
+   "kl": 0.17779897197536973,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 35.4,
+     "post_q50_pct": 19.820052145519742,
+     "post_q05_pct": 8.033812913379387,
+     "post_q95_pct": 34.43142508413258,
+     "covered": false,
+     "err_pp": -15.579947854480256
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 47.6,
+     "post_q50_pct": 25.54520218576514,
+     "post_q05_pct": 10.416613789170079,
+     "post_q95_pct": 44.08245989129225,
+     "covered": false,
+     "err_pp": -22.05479781423486
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 52.4,
+     "post_q50_pct": 35.96882636280517,
+     "post_q05_pct": 14.632295833021056,
+     "post_q95_pct": 61.82444678434314,
+     "covered": true,
+     "err_pp": -16.43117363719483
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 55.0,
+     "post_q50_pct": 44.593620756506155,
+     "post_q05_pct": 18.493403084410247,
+     "post_q95_pct": 76.20990297388913,
+     "covered": true,
+     "err_pp": -10.406379243493845
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 61.6,
+     "post_q50_pct": 46.688719375807594,
+     "post_q05_pct": 19.27641792578603,
+     "post_q95_pct": 80.20047531127045,
+     "covered": true,
+     "err_pp": -14.911280624192408
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 65.5,
+     "post_q50_pct": 46.995628373929655,
+     "post_q05_pct": 19.341636791135684,
+     "post_q95_pct": 80.54751001494441,
+     "covered": true,
+     "err_pp": -18.504371626070345
+    }
+   ],
+   "mae_pp": 16.31465846661109,
+   "coverage": 0.6666666666666666,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-5C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1698.6706956390472,
+   "method": "importance",
+   "kl": 0.08574187441598903,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 11.4,
+     "post_q50_pct": 5.852230911484729,
+     "post_q05_pct": 2.529069772456788,
+     "post_q95_pct": 9.341085348267484,
+     "covered": false,
+     "err_pp": -5.547769088515271
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 17.9,
+     "post_q50_pct": 8.28014693296701,
+     "post_q05_pct": 3.582803325631955,
+     "post_q95_pct": 13.220043598592046,
+     "covered": false,
+     "err_pp": -9.619853067032988
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 21.4,
+     "post_q50_pct": 14.06700358651049,
+     "post_q05_pct": 6.082524736358117,
+     "post_q95_pct": 22.382448673630588,
+     "covered": true,
+     "err_pp": -7.332996413489509
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 34.5,
+     "post_q50_pct": 24.335621618509304,
+     "post_q05_pct": 10.501517668236437,
+     "post_q95_pct": 38.515762451494254,
+     "covered": true,
+     "err_pp": -10.164378381490696
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 49.3,
+     "post_q50_pct": 35.23084840191799,
+     "post_q05_pct": 15.155558618249096,
+     "post_q95_pct": 55.67505675645923,
+     "covered": true,
+     "err_pp": -14.069151598082009
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 58.1,
+     "post_q50_pct": 41.706186681232076,
+     "post_q05_pct": 17.716932480979388,
+     "post_q95_pct": 65.87611691383132,
+     "covered": true,
+     "err_pp": -16.393813318767926
+    }
+   ],
+   "mae_pp": 10.521326977896399,
+   "coverage": 0.6666666666666666,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-20C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1456.1801931464945,
+   "method": "importance",
+   "kl": 0.16614209766122331,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 23.1,
+     "post_q50_pct": 11.380750412619856,
+     "post_q05_pct": 4.557111626391324,
+     "post_q95_pct": 18.107415764693872,
+     "covered": false,
+     "err_pp": -11.719249587380146
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 27.1,
+     "post_q50_pct": 15.607928268709486,
+     "post_q05_pct": 6.301999675902073,
+     "post_q95_pct": 24.912605328724002,
+     "covered": false,
+     "err_pp": -11.492071731290515
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 43.2,
+     "post_q50_pct": 24.914336500744614,
+     "post_q05_pct": 10.190022796239411,
+     "post_q95_pct": 39.859995564039984,
+     "covered": false,
+     "err_pp": -18.28566349925539
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 54.6,
+     "post_q50_pct": 38.39086499415868,
+     "post_q05_pct": 15.690226530731188,
+     "post_q95_pct": 61.108518856896275,
+     "covered": true,
+     "err_pp": -16.20913500584132
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 62.9,
+     "post_q50_pct": 47.87810566881919,
+     "post_q05_pct": 20.34221362132699,
+     "post_q95_pct": 76.2737213407927,
+     "covered": true,
+     "err_pp": -15.02189433118081
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 63.8,
+     "post_q50_pct": 51.12735964978573,
+     "post_q05_pct": 21.807417817329846,
+     "post_q95_pct": 81.84590859162633,
+     "covered": true,
+     "err_pp": -12.672640350214266
+    }
+   ],
+   "mae_pp": 14.233442417527073,
+   "coverage": 0.5,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-40C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1312.7819654074847,
+   "method": "importance",
+   "kl": 0.22290958814500206,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 41.0,
+     "post_q50_pct": 22.039784893184976,
+     "post_q05_pct": 8.400092945407513,
+     "post_q95_pct": 37.426843607710985,
+     "covered": false,
+     "err_pp": -18.960215106815024
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 50.7,
+     "post_q50_pct": 28.1961029099363,
+     "post_q05_pct": 10.862420010728538,
+     "post_q95_pct": 47.66262389415436,
+     "covered": false,
+     "err_pp": -22.503897090063703
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 54.6,
+     "post_q50_pct": 39.59317690932874,
+     "post_q05_pct": 15.652201598944346,
+     "post_q95_pct": 65.8566572473441,
+     "covered": true,
+     "err_pp": -15.006823090671261
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 59.4,
+     "post_q50_pct": 48.09199906975552,
+     "post_q05_pct": 19.29001472666096,
+     "post_q95_pct": 80.2537764256074,
+     "covered": true,
+     "err_pp": -11.308000930244475
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 64.2,
+     "post_q50_pct": 50.39526552328824,
+     "post_q05_pct": 20.442297167419348,
+     "post_q95_pct": 84.04110245174519,
+     "covered": true,
+     "err_pp": -13.804734476711765
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 69.9,
+     "post_q50_pct": 50.59691613811753,
+     "post_q05_pct": 20.585584847736392,
+     "post_q95_pct": 84.49712843301982,
+     "covered": true,
+     "err_pp": -19.303083861882477
+    }
+   ],
+   "mae_pp": 16.81445909273145,
+   "coverage": 0.6666666666666666,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-5C",
+   "paper_doi": "10.1016/j.cemconres.2021.106647",
+   "ok": true,
+   "slot": "slag",
+   "n_obs_used": 6,
+   "ess": 1596.244874239093,
+   "method": "importance",
+   "kl": 0.11516861329163415,
+   "xgems_calls": 60,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 14.8,
+     "post_q50_pct": 6.553810688945851,
+     "post_q05_pct": 2.7931873785016315,
+     "post_q95_pct": 10.084873068224748,
+     "covered": false,
+     "err_pp": -8.246189311054149
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 18.8,
+     "post_q50_pct": 9.277772799866362,
+     "post_q05_pct": 3.9520777788040395,
+     "post_q95_pct": 14.24688695105957,
+     "covered": false,
+     "err_pp": -9.522227200133639
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 27.5,
+     "post_q50_pct": 15.720185517097468,
+     "post_q05_pct": 6.701507399989078,
+     "post_q95_pct": 24.067552731685375,
+     "covered": false,
+     "err_pp": -11.779814482902532
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 39.3,
+     "post_q50_pct": 27.016943866290017,
+     "post_q05_pct": 11.3985029621891,
+     "post_q95_pct": 41.39882311836088,
+     "covered": true,
+     "err_pp": -12.28305613370998
+    },
+    {
+     "age_d": 90.0,
+     "dor_measured_pct": 53.7,
+     "post_q50_pct": 38.79410662434185,
+     "post_q05_pct": 16.46816345234569,
+     "post_q95_pct": 59.0337158012348,
+     "covered": true,
+     "err_pp": -14.905893375658152
+    },
+    {
+     "age_d": 180.0,
+     "dor_measured_pct": 62.9,
+     "post_q50_pct": 45.49819274906194,
+     "post_q05_pct": 19.599767754717654,
+     "post_q95_pct": 69.18505761290699,
+     "covered": true,
+     "err_pp": -17.401807250938056
+    }
+   ],
+   "mae_pp": 12.356497959066084,
+   "coverage": 0.5,
+   "warnings": [
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "oxide sum 95.2 (LOI excluded) renormalised to 100",
+    "OPC: oxide sum 96.8 (LOI excluded) renormalised to 100",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS05",
+   "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+   "ok": true,
+   "slot": "metakaolin",
+   "n_obs_used": 7,
+   "ess": 1999.9999999999995,
+   "method": "importance",
+   "kl": 0.0,
+   "xgems_calls": 0,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 26.5,
+     "post_q50_pct": 8.75851291512701,
+     "post_q05_pct": 2.877583617373906,
+     "post_q95_pct": 17.153383070353563,
+     "covered": false,
+     "err_pp": -17.74148708487299
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 35.5,
+     "post_q50_pct": 11.960896807807089,
+     "post_q05_pct": 3.9269986474268546,
+     "post_q95_pct": 23.31706319395571,
+     "covered": false,
+     "err_pp": -23.53910319219291
+    },
+    {
+     "age_d": 3.0,
+     "dor_measured_pct": 49.0,
+     "post_q50_pct": 13.834171297938378,
+     "post_q05_pct": 4.540867087700995,
+     "post_q95_pct": 26.92258493270331,
+     "covered": false,
+     "err_pp": -35.165828702061624
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 64.0,
+     "post_q50_pct": 18.91787744116293,
+     "post_q05_pct": 6.151436546536796,
+     "post_q95_pct": 36.68267236716898,
+     "covered": false,
+     "err_pp": -45.08212255883707
+    },
+    {
+     "age_d": 14.0,
+     "dor_measured_pct": 77.0,
+     "post_q50_pct": 23.54684021376717,
+     "post_q05_pct": 7.5722658658978865,
+     "post_q95_pct": 45.47327898838462,
+     "covered": false,
+     "err_pp": -53.45315978623283
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 89.0,
+     "post_q50_pct": 28.1758029863714,
+     "post_q05_pct": 8.99309518525898,
+     "post_q95_pct": 54.26388560960027,
+     "covered": false,
+     "err_pp": -60.8241970136286
+    },
+    {
+     "age_d": 56.0,
+     "dor_measured_pct": 89.0,
+     "post_q50_pct": 31.74790392386846,
+     "post_q05_pct": 10.055890051814867,
+     "post_q95_pct": 61.26329102909275,
+     "covered": false,
+     "err_pp": -57.25209607613154
+    }
+   ],
+   "mae_pp": 41.8654277734225,
+   "coverage": 0.0,
+   "warnings": [
+    "prior:role_pooled_as_other:metakaolin",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.100: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.200: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.300: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.400: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.500: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.600: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS10",
+   "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+   "ok": true,
+   "slot": "metakaolin",
+   "n_obs_used": 7,
+   "ess": 1999.9999999999995,
+   "method": "importance",
+   "kl": 0.0,
+   "xgems_calls": 0,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 10.5,
+     "post_q50_pct": 8.617439441406423,
+     "post_q05_pct": 2.783203307578987,
+     "post_q95_pct": 17.09846487671855,
+     "covered": true,
+     "err_pp": -1.8825605585935765
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 25.5,
+     "post_q50_pct": 11.770210828657095,
+     "post_q05_pct": 3.7835398713008797,
+     "post_q95_pct": 23.289440394266915,
+     "covered": false,
+     "err_pp": -13.729789171342905
+    },
+    {
+     "age_d": 3.0,
+     "dor_measured_pct": 45.0,
+     "post_q50_pct": 13.614463863545357,
+     "post_q05_pct": 4.368699249178447,
+     "post_q95_pct": 26.91092891491546,
+     "covered": false,
+     "err_pp": -31.385536136454643
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 52.5,
+     "post_q50_pct": 18.478625047219808,
+     "post_q05_pct": 5.9341556450827655,
+     "post_q95_pct": 36.4881784152645,
+     "covered": false,
+     "err_pp": -34.02137495278019
+    },
+    {
+     "age_d": 14.0,
+     "dor_measured_pct": 54.5,
+     "post_q50_pct": 22.940776216478355,
+     "post_q05_pct": 7.27719129372394,
+     "post_q95_pct": 45.11503969673561,
+     "covered": false,
+     "err_pp": -31.559223783521645
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 62.5,
+     "post_q50_pct": 27.40292738573691,
+     "post_q05_pct": 8.620226942365113,
+     "post_q95_pct": 53.74190097820672,
+     "covered": false,
+     "err_pp": -35.09707261426309
+    },
+    {
+     "age_d": 56.0,
+     "dor_measured_pct": 63.5,
+     "post_q50_pct": 30.68604631080547,
+     "post_q05_pct": 9.628920763119424,
+     "post_q95_pct": 60.49060274130736,
+     "covered": false,
+     "err_pp": -32.813953689194534
+    }
+   ],
+   "mae_pp": 25.784215843735797,
+   "coverage": 0.14285714285714285,
+   "warnings": [
+    "prior:role_pooled_as_other:metakaolin",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.100: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.200: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.300: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.400: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.500: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.600: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS15",
+   "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+   "ok": true,
+   "slot": "metakaolin",
+   "n_obs_used": 7,
+   "ess": 1999.9999999999995,
+   "method": "importance",
+   "kl": 0.0,
+   "xgems_calls": 0,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 7.0,
+     "post_q50_pct": 8.46950885167656,
+     "post_q05_pct": 2.6926349361616104,
+     "post_q95_pct": 17.085565145719954,
+     "covered": true,
+     "err_pp": 1.4695088516765598
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 19.0,
+     "post_q50_pct": 11.563959808114499,
+     "post_q05_pct": 3.6696295775069347,
+     "post_q95_pct": 23.253650887740037,
+     "covered": true,
+     "err_pp": -7.4360401918855015
+    },
+    {
+     "age_d": 3.0,
+     "dor_measured_pct": 23.0,
+     "post_q50_pct": 13.37409757795141,
+     "post_q05_pct": 4.241134806099464,
+     "post_q95_pct": 26.86174974805461,
+     "covered": true,
+     "err_pp": -9.62590242204859
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 42.0,
+     "post_q50_pct": 18.081078028274135,
+     "post_q05_pct": 5.70945380714486,
+     "post_q95_pct": 36.37442616297909,
+     "covered": false,
+     "err_pp": -23.918921971725865
+    },
+    {
+     "age_d": 14.0,
+     "dor_measured_pct": 44.0,
+     "post_q50_pct": 22.303268668103843,
+     "post_q05_pct": 7.017450044430277,
+     "post_q95_pct": 44.80329325760868,
+     "covered": true,
+     "err_pp": -21.696731331896157
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 44.5,
+     "post_q50_pct": 26.525459307933552,
+     "post_q05_pct": 8.325446281715694,
+     "post_q95_pct": 53.23216035223827,
+     "covered": true,
+     "err_pp": -17.974540692066448
+    },
+    {
+     "age_d": 56.0,
+     "dor_measured_pct": 50.0,
+     "post_q50_pct": 29.658121804949904,
+     "post_q05_pct": 9.258932368346084,
+     "post_q95_pct": 59.81573419354543,
+     "covered": true,
+     "err_pp": -20.341878195050096
+    }
+   ],
+   "mae_pp": 14.637646236621318,
+   "coverage": 0.8571428571428571,
+   "warnings": [
+    "prior:role_pooled_as_other:metakaolin",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.100: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.200: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.300: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.400: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.500: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.600: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']"
+   ]
+  },
+  {
+   "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS20",
+   "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+   "ok": true,
+   "slot": "metakaolin",
+   "n_obs_used": 7,
+   "ess": 1999.9999999999995,
+   "method": "importance",
+   "kl": 0.0,
+   "xgems_calls": 0,
+   "per_age": [
+    {
+     "age_d": 1.0,
+     "dor_measured_pct": 1.2,
+     "post_q50_pct": 8.333336155703797,
+     "post_q05_pct": 2.6008116290752805,
+     "post_q95_pct": 17.10828123235483,
+     "covered": false,
+     "err_pp": 7.133336155703797
+    },
+    {
+     "age_d": 2.0,
+     "dor_measured_pct": 6.0,
+     "post_q50_pct": 11.316712278640528,
+     "post_q05_pct": 3.5435909055017265,
+     "post_q95_pct": 23.17521384014744,
+     "covered": true,
+     "err_pp": 5.316712278640528
+    },
+    {
+     "age_d": 3.0,
+     "dor_measured_pct": 11.0,
+     "post_q50_pct": 13.061875436105385,
+     "post_q05_pct": 4.095081428668222,
+     "post_q95_pct": 26.72414191010853,
+     "covered": true,
+     "err_pp": 2.0618754361053853
+    },
+    {
+     "age_d": 7.0,
+     "dor_measured_pct": 25.0,
+     "post_q50_pct": 17.612412662967998,
+     "post_q05_pct": 5.5248425048210335,
+     "post_q95_pct": 36.02453986976518,
+     "covered": true,
+     "err_pp": -7.387587337032002
+    },
+    {
+     "age_d": 14.0,
+     "dor_measured_pct": 27.0,
+     "post_q50_pct": 21.705558947350802,
+     "post_q05_pct": 6.7312059817329235,
+     "post_q95_pct": 44.47630209385031,
+     "covered": true,
+     "err_pp": -5.294441052649198
+    },
+    {
+     "age_d": 28.0,
+     "dor_measured_pct": 35.0,
+     "post_q50_pct": 25.79870523173361,
+     "post_q05_pct": 7.937569458644814,
+     "post_q95_pct": 52.928064317935444,
+     "covered": true,
+     "err_pp": -9.20129476826639
+    },
+    {
+     "age_d": 56.0,
+     "dor_measured_pct": 39.5,
+     "post_q50_pct": 28.678262848667615,
+     "post_q05_pct": 8.830111448463567,
+     "post_q95_pct": 59.18977451908483,
+     "covered": true,
+     "err_pp": -10.821737151332385
+    }
+   ],
+   "mae_pp": 6.745283454247098,
+   "coverage": 0.8571428571428571,
+   "warnings": [
+    "prior:role_pooled_as_other:metakaolin",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.100: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.200: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.300: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.400: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.500: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']",
+    "alpha=0.600: ['self-check failed: input_materials_used.json does not carry the override oxides', 'materials_config injected by monkeypatching inverse_gems.materials.config_path']"
+   ]
+  }
+ ]
+}
