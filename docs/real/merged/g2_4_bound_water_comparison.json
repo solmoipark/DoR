@@ -1,0 +1,52 @@
+{
+  "schema": "dorgems-comparison/1.0",
+  "mode": "opc_reference",
+  "target": "OPC-only, bound_water, 28 d, w/b (0.4, 0.5)",
+  "use_mock": false,
+  "n_candidates": 37,
+  "gate_G2_3": {
+    "quantity": "bound_water",
+    "n_papers": 10,
+    "median_r": 11.402758754642624,
+    "pass": false
+  },
+  "sigma_model_estimate": {
+    "bound_water": 9.949043887919212
+  },
+  "systematic_offset_estimate": {
+    "bound_water": {
+      "median_r": 11.402758754642624,
+      "mad": 3.1500000000000004,
+      "n": 28,
+      "n_papers": 10
+    }
+  },
+  "aggregate": {
+    "by_quantity": {
+      "bound_water": {
+        "n": 28,
+        "n_all_grades": 28,
+        "n_papers": 10,
+        "grades": {
+          "A": 28
+        },
+        "median_r": 11.402758754642624,
+        "iqr_r": 13.422596990906012,
+        "mean_r": 6.11531559233197,
+        "frac_abs_z_lt2": 0.14285714285714285,
+        "sigma_model": 3.0,
+        "rmse": 11.525859403792795,
+        "bias_sign_test_p": 0.012540951371192932,
+        "verdict": "tension",
+        "role": "primary"
+      }
+    },
+    "verdict": {
+      "bound_water": "tension"
+    },
+    "overall": "tension",
+    "overall_basis": "primary",
+    "secondary_verdicts": {},
+    "n_usable": 28
+  }
+}

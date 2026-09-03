@@ -1,0 +1,52 @@
+{
+  "schema": "dorgems-comparison/1.0",
+  "mode": "opc_reference",
+  "target": "OPC-only, chem_shrink, 28 d, w/b (0.4, 0.5)",
+  "use_mock": false,
+  "n_candidates": 4,
+  "gate_G2_3": {
+    "quantity": "chem_shrink",
+    "n_papers": 2,
+    "median_r": -0.013687266287567751,
+    "pass": false
+  },
+  "sigma_model_estimate": {
+    "chem_shrink": 0.00393673338940621
+  },
+  "systematic_offset_estimate": {
+    "chem_shrink": {
+      "median_r": -0.013687266287567751,
+      "mad": 0.0029999999999999957,
+      "n": 4,
+      "n_papers": 2
+    }
+  },
+  "aggregate": {
+    "by_quantity": {
+      "chem_shrink": {
+        "n": 4,
+        "n_all_grades": 4,
+        "n_papers": 2,
+        "grades": {
+          "A": 4
+        },
+        "median_r": -0.013687266287567751,
+        "iqr_r": 0.004540930707337755,
+        "mean_r": -0.013646335580229993,
+        "frac_abs_z_lt2": 0.25,
+        "sigma_model": 0.01,
+        "rmse": 0.014065769694641682,
+        "bias_sign_test_p": 0.125,
+        "verdict": "insufficient_data",
+        "role": "primary"
+      }
+    },
+    "verdict": {
+      "chem_shrink": "insufficient_data"
+    },
+    "overall": "insufficient_data",
+    "overall_basis": "primary",
+    "secondary_verdicts": {},
+    "n_usable": 4
+  }
+}
