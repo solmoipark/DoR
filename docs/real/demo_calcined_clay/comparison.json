@@ -1,0 +1,75 @@
+{
+  "schema": "dorgems-comparison/1.0",
+  "mode": "user_twin",
+  "target": "CC-Gwangju-2026",
+  "dor_source": "model_q50(bayes)",
+  "use_mock": false,
+  "slot": "metakaolin",
+  "materials_injection": "native",
+  "aggregate": {
+    "by_quantity": {
+      "CH_TGA": {
+        "n": 3,
+        "n_all_grades": 3,
+        "n_papers": 1,
+        "grades": {
+          "A": 3
+        },
+        "median_r": -6.0,
+        "iqr_r": 2.5,
+        "mean_r": -6.666666666666667,
+        "frac_abs_z_lt2": 1.0,
+        "sigma_model": 5.0,
+        "rmse": 6.988085097745543,
+        "bias_sign_test_p": 0.25,
+        "verdict": "insufficient_data",
+        "role": "secondary"
+      },
+      "bound_water": {
+        "n": 3,
+        "n_all_grades": 3,
+        "n_papers": 1,
+        "grades": {
+          "A": 3
+        },
+        "median_r": -1.0195748950267287,
+        "iqr_r": 1.0439053415110244,
+        "mean_r": -1.5050621172658865,
+        "frac_abs_z_lt2": 1.0,
+        "sigma_model": 3.0,
+        "rmse": 1.7633925086787832,
+        "bias_sign_test_p": 0.25,
+        "verdict": "insufficient_data",
+        "role": "primary"
+      },
+      "chem_shrink": {
+        "n": 1,
+        "n_all_grades": 1,
+        "n_papers": 1,
+        "grades": {
+          "A": 1
+        },
+        "median_r": 0.003956887687594814,
+        "iqr_r": 0.0,
+        "mean_r": 0.003956887687594814,
+        "frac_abs_z_lt2": 1.0,
+        "sigma_model": 0.01,
+        "rmse": 0.003956887687594814,
+        "bias_sign_test_p": 1.0,
+        "verdict": "insufficient_data",
+        "role": "primary"
+      }
+    },
+    "verdict": {
+      "CH_TGA": "insufficient_data",
+      "bound_water": "insufficient_data",
+      "chem_shrink": "insufficient_data"
+    },
+    "overall": "insufficient_data",
+    "overall_basis": "primary",
+    "secondary_verdicts": {
+      "CH_TGA": "insufficient_data"
+    },
+    "n_usable": 7
+  }
+}

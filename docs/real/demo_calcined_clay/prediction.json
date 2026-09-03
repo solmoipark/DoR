@@ -1,0 +1,477 @@
+{
+  "schema": "dorgems-prediction/1.0",
+  "id": "17522544e685ad05",
+  "input": {
+    "scm": {
+      "name": "CC-Gwangju-2026",
+      "role": "calcined_clay",
+      "oxides": {
+        "SiO2": 52.0,
+        "Al2O3": 38.0,
+        "Fe2O3": 4.5,
+        "CaO": 0.8,
+        "MgO": 0.6,
+        "K2O": 1.5,
+        "Na2O": 0.2,
+        "SO3": 0.1,
+        "TiO2": 1.6
+      },
+      "blaine_m2_kg": 900.0,
+      "d50_um": 6.0,
+      "bet_m2_g": null,
+      "amorphous_pct": 55.0,
+      "density_kg_m3": null
+    },
+    "mix": {
+      "scm_pct": 30.0,
+      "w_b": 0.5,
+      "curing_temp_C": 20.0,
+      "opc_oxides": {
+        "CaO": 63.3,
+        "SiO2": 20.2,
+        "Al2O3": 5.0,
+        "Fe2O3": 3.0,
+        "MgO": 1.8,
+        "SO3": 3.0,
+        "Na2O": 0.2,
+        "K2O": 0.8
+      },
+      "other_components": {}
+    },
+    "ages_d": [
+      1.0,
+      3.0,
+      7.0,
+      28.0,
+      90.0,
+      180.0,
+      365.0
+    ],
+    "ensemble": "bayes",
+    "method_group": null,
+    "seed": 0
+  },
+  "features": {
+    "scm_pct": 30.0,
+    "w_b": 0.5,
+    "curing_temp_C": 20.0,
+    "scm_CaO": 0.8,
+    "scm_SiO2": 52.0,
+    "scm_Al2O3": 38.0,
+    "scm_Fe2O3": 4.5,
+    "scm_MgO": 0.6,
+    "scm_SO3": 0.1,
+    "scm_Na2O": 0.2,
+    "scm_K2O": 1.5,
+    "scm_TiO2": 1.6,
+    "scm_LOI": null,
+    "scm_blaine_m2_kg": 900.0,
+    "scm_d50_um": 6.0,
+    "scm_bet_m2_g": null,
+    "scm_amorphous_pct": 55.0,
+    "CaO_SiO2": 0.015384615384615385,
+    "basicity": 0.7576923076923077,
+    "pozz_sum": 94.5,
+    "Al_Si": 0.7307692307692307,
+    "amorph": 55.0,
+    "fineness": 900.0,
+    "imputed": []
+  },
+  "role_bayes": "other",
+  "role_gbm": "calcined_clay",
+  "beta_shape": 0.5,
+  "bayes": {
+    "a_max": {
+      "q05": 16.585615636129504,
+      "q50": 46.16275735960207,
+      "q95": 78.98598532609465,
+      "mean": 46.76989507806343
+    },
+    "tau_d": {
+      "q05": 6.267320204603419,
+      "q50": 8.24385719675864,
+      "q95": 10.996573655830217,
+      "mean": 8.391014729375232
+    },
+    "alpha_pct": {
+      "latent": {
+        "q05": [
+          4.948695081429138,
+          7.5804096945380115,
+          10.079884145890514,
+          14.098322272177311,
+          16.144263421879472,
+          16.487050077587785,
+          16.57415242058325
+        ],
+        "q50": [
+          13.501250721427374,
+          20.83752607380748,
+          27.6733446812042,
+          38.87809695678044,
+          44.47521153419987,
+          45.67757897422452,
+          46.09261340239949
+        ],
+        "q95": [
+          23.178172846273203,
+          35.65564099204481,
+          47.19592654852366,
+          66.04057312030066,
+          75.77329389864211,
+          78.25620202692858,
+          78.8854877536557
+        ],
+        "mean": [
+          13.732148194447989,
+          21.139979257911726,
+          28.0884025907297,
+          39.261857342475814,
+          44.97865803193119,
+          46.29558105690659,
+          46.69902744939811
+        ]
+      }
+    },
+    "role_used": "other",
+    "flags": [
+      "role_pooled_as_other:calcined_clay"
+    ],
+    "imputed": [],
+    "n_draws": 2000
+  },
+  "gbm": {
+    "alpha_pct": [
+      28.02054139482189,
+      32.3241451908813,
+      43.25953746415756,
+      59.66797806582667,
+      67.53342576391022,
+      69.3765370595796,
+      72.01747880185101
+    ],
+    "anchors_d": [
+      3.0,
+      7.0,
+      28.0,
+      90.0,
+      180.0
+    ],
+    "anchors_pct": [
+      32.3241451908813,
+      43.25953746415756,
+      59.66797806582667,
+      67.53342576391022,
+      69.3765370595796
+    ],
+    "method_group_used": "missing",
+    "role_used": "calcined_clay",
+    "sigma_point_pct": 12.0,
+    "flags": []
+  },
+  "ensemble": {
+    "mode": "bayes",
+    "a_max": {
+      "q05": 16.585615636129504,
+      "q50": 46.16275735960207,
+      "q95": 78.98598532609465,
+      "mean": 46.76989507806343
+    },
+    "tau_d": {
+      "q05": 6.267320204603419,
+      "q50": 8.24385719675864,
+      "q95": 10.996573655830217,
+      "mean": 8.391014729375232
+    },
+    "alpha_pct": {
+      "latent": {
+        "q05": [
+          4.948695081429138,
+          7.5804096945380115,
+          10.079884145890514,
+          14.098322272177311,
+          16.144263421879472,
+          16.487050077587785,
+          16.57415242058325
+        ],
+        "q50": [
+          13.501250721427374,
+          20.83752607380748,
+          27.6733446812042,
+          38.87809695678044,
+          44.47521153419987,
+          45.67757897422452,
+          46.09261340239949
+        ],
+        "q95": [
+          23.178172846273203,
+          35.65564099204481,
+          47.19592654852366,
+          66.04057312030066,
+          75.77329389864211,
+          78.25620202692858,
+          78.8854877536557
+        ],
+        "mean": [
+          13.732148194447989,
+          21.139979257911726,
+          28.0884025907297,
+          39.261857342475814,
+          44.97865803193119,
+          46.29558105690659,
+          46.69902744939811
+        ]
+      }
+    }
+  },
+  "recommended": {
+    "source": "bayes",
+    "alpha_pct_q50": [
+      13.501250721427374,
+      20.83752607380748,
+      27.6733446812042,
+      38.87809695678044,
+      44.47521153419987,
+      45.67757897422452,
+      46.09261340239949
+    ],
+    "alpha_pct_q05": [
+      4.948695081429138,
+      7.5804096945380115,
+      10.079884145890514,
+      14.098322272177311,
+      16.144263421879472,
+      16.487050077587785,
+      16.57415242058325
+    ],
+    "alpha_pct_q95": [
+      23.178172846273203,
+      35.65564099204481,
+      47.19592654852366,
+      66.04057312030066,
+      75.77329389864211,
+      78.25620202692858,
+      78.8854877536557
+    ],
+    "a_max_pct_q50": 46.16275735960207,
+    "tau_d_q50": 8.24385719675864
+  },
+  "ood": {
+    "flags": [
+      "sparse_role:calcined_clay:4_papers",
+      "mahalanobis_beyond_p99:1134.62"
+    ],
+    "score_pct": 100.0,
+    "sparse_role": true,
+    "n_papers_role": 4,
+    "role_in_training": true,
+    "mahalanobis_d2": 1134.6169473512646
+  },
+  "evidence": {
+    "analogues": [
+      {
+        "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED",
+        "paper_doi": "10.1016/j.cemconres.2025.108036",
+        "scm_role": "calcined_clay",
+        "scm_pct": 30.0,
+        "w_b": 0.4,
+        "curing_temp_C": 20.0,
+        "chem_distance": 0.0,
+        "distance": 1.9999999999999996,
+        "weight": 0.1353352832366128,
+        "dor": [
+          {
+            "age_d": 1.0,
+            "value_pct": 29.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED::DoR_SCM::hunte3612940",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 7.0,
+            "value_pct": 43.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED::DoR_SCM::hunt51fcad65",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 28.0,
+            "value_pct": 53.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED::DoR_SCM::huntb81f2a00",
+            "fig_only": 0,
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "mix_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN",
+        "paper_doi": "10.1016/j.cemconres.2025.108036",
+        "scm_role": "calcined_clay",
+        "scm_pct": 30.0,
+        "w_b": 0.4,
+        "curing_temp_C": 20.0,
+        "chem_distance": 0.0,
+        "distance": 1.9999999999999996,
+        "weight": 0.1353352832366128,
+        "dor": [
+          {
+            "age_d": 1.0,
+            "value_pct": 31.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN::DoR_SCM::hunt790e2a96",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 7.0,
+            "value_pct": 47.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN::DoR_SCM::hunt56ba0ff3",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 28.0,
+            "value_pct": 46.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN::DoR_SCM::hunt091b6d12",
+            "fig_only": 0,
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN",
+        "paper_doi": "10.1016/j.cemconres.2025.108036",
+        "scm_role": "calcined_clay",
+        "scm_pct": 30.0,
+        "w_b": 0.4,
+        "curing_temp_C": 20.0,
+        "chem_distance": 0.0,
+        "distance": 1.9999999999999996,
+        "weight": 0.1353352832366128,
+        "dor": [
+          {
+            "age_d": 1.0,
+            "value_pct": 41.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN::DoR_SCM::hunt5b31df2f",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 7.0,
+            "value_pct": 42.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN::DoR_SCM::hunt8a62b6dd",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 28.0,
+            "value_pct": 51.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN::DoR_SCM::hunt8ff92cf4",
+            "fig_only": 0,
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED",
+        "paper_doi": "10.1016/j.cemconres.2025.108036",
+        "scm_role": "calcined_clay",
+        "scm_pct": 30.0,
+        "w_b": 0.4,
+        "curing_temp_C": 20.0,
+        "chem_distance": 0.0,
+        "distance": 1.9999999999999996,
+        "weight": 0.1353352832366128,
+        "dor": [
+          {
+            "age_d": 1.0,
+            "value_pct": 38.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED::DoR_SCM::huntf9f6a047",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 7.0,
+            "value_pct": 56.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED::DoR_SCM::hunt6e3058d8",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 28.0,
+            "value_pct": 58.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED::DoR_SCM::hunt0f3705b6",
+            "fig_only": 0,
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN",
+        "paper_doi": "10.1016/j.cemconres.2025.108036",
+        "scm_role": "calcined_clay",
+        "scm_pct": 30.0,
+        "w_b": 0.4,
+        "curing_temp_C": 20.0,
+        "chem_distance": 0.0,
+        "distance": 1.9999999999999996,
+        "weight": 0.1353352832366128,
+        "dor": [
+          {
+            "age_d": 1.0,
+            "value_pct": 35.5,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN::DoR_SCM::hunt38355b2b",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 7.0,
+            "value_pct": 50.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN::DoR_SCM::hunt9e38a8ca",
+            "fig_only": 0,
+            "confidence": "high"
+          },
+          {
+            "age_d": 28.0,
+            "value_pct": 58.0,
+            "method_group": "mass_balance",
+            "obs_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN::DoR_SCM::hunt9a6fe5ea",
+            "fig_only": 0,
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "n_mixes": 5,
+    "n_papers": 1,
+    "flags": [
+      "single_paper"
+    ],
+    "db": "C:\\Users\\User\\DoR of SCMs in blended cements\\modeling\\scm_dor_enriched.db"
+  },
+  "warnings": [
+    "amorphous_pct given: must be a measured value, not 100 − Σ crystalline (spec §14)",
+    "bayes:role_pooled_as_other:calcined_clay"
+  ],
+  "provenance": {
+    "dorgems": "0.1.0",
+    "bundle_bayes": "sha256:c0b913ecde2fcf754945b5c2a4b93a72b35facbf853cfc432199bbff0fdcb706",
+    "bundle_gbm": "sha256:6ed7c926796974504abcce38a19a8aada0f2739b42c435a328aa2a0d9bb748c1",
+    "training_db_sha256": "de071b0ce3b3c605a34e4f3c9954877baa0a8baf1f6fb03e5653058d93261b93",
+    "seed": 0,
+    "input_hash": "17522544e685ad05"
+  }
+}

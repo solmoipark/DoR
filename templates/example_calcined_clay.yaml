@@ -1,0 +1,25 @@
+# Hypothetical calcined clay (values invented for a demonstration run through real xGEMS).
+scm:
+  name: CC-Gwangju-2026
+  role: calcined_clay
+  oxides: {SiO2: 52.0, Al2O3: 38.0, Fe2O3: 4.5, CaO: 0.8, MgO: 0.6, K2O: 1.5, Na2O: 0.2, SO3: 0.1, TiO2: 1.6}
+  blaine_m2_kg: 900
+  d50_um: 6.0
+  amorphous_pct: 55.0           # e.g. metakaolin content from XRD/PONKCS
+mix:
+  scm_pct: 30
+  w_b: 0.50
+  curing_temp_C: 20
+  opc_oxides: {CaO: 63.3, SiO2: 20.2, Al2O3: 5.0, Fe2O3: 3.0, MgO: 1.8, SO3: 3.0, Na2O: 0.2, K2O: 0.8}
+  other_components: {}
+ages_d: [1, 3, 7, 28, 90, 180, 365]
+observations:
+  - {age_d: 7,  quantity: bound_water, value: 13.0, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 28, quantity: bound_water, value: 16.5, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 90, quantity: bound_water, value: 18.0, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 7,  quantity: CH_TGA,      value: 9.5,  unit: "g/100 g binder", method: "TGA"}
+  - {age_d: 28, quantity: CH_TGA,      value: 6.0,  unit: "g/100 g binder", method: "TGA"}
+  - {age_d: 90, quantity: CH_TGA,      value: 4.5,  unit: "g/100 g binder", method: "TGA"}
+  - {age_d: 28, quantity: chem_shrink, value: 0.058, unit: "mL/g binder"}
+notes: "demonstration; invented values"
+source: "templates/example_calcined_clay.yaml"

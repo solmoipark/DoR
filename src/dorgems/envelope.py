@@ -51,7 +51,13 @@ def envelope_from_runs(runs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     for q, ts in runs.items():
         if ts is None:
             continue
-        cols = [c for c in ts.columns if c.startswith(("phase_mass__", "phase_volume__", "scalar__"))]
+        ts = ts.copy()
+        if "porosity" in ts.columns and "scalar__porosity" not in ts.columns:
+            ts["scalar__porosity"] = ts["porosity"]
+        cols = [c for c in ts.columns if c.startswith(("phase_mass__", "phase_volume__", "scalar__")) and pd.api.types.is_numeric_dtype(pd.to_numeric(ts[c], errors="coerce"))]
+        for c in cols:
+            ts[c] = pd.to_numeric(ts[c], errors="coerce")
+        cols = [c for c in cols if ts[c].notna().any()]
         m = ts.melt(id_vars=["age_days"], value_vars=cols, var_name="variable", value_name="value")
         m["quantile"] = q
         frames.append(m)

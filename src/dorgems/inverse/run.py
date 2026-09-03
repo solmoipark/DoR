@@ -156,7 +156,8 @@ def infer_from_observations(
         for o in direct:
             j = int(np.argmin(np.abs(ages_out - o["age_d"])))
             validation.append({"age_d": o["age_d"], "dor_measured": o["value"], "posterior_q50_at_nearest_age": summ["alpha"]["q50"][j], "nearest_age": float(ages_out[j])})
-    header = {"mix_uid": mix_uid, "scm": scm_m.model_dump(), "mix": mix_m.model_dump(), "slot": slot, "materials_config": mat_path, "observations": obs_h, "prior": prior, "alpha_grid": alphas.tolist(), "use_mock": use_mock, "direct_dor_validation": validation, "warnings": warnings, "provenance": {"dorgems": __version__, **bundle.provenance, "seed": seed}}
+    inv_cfg_status = defaults.get("inverse", {})
+    header = {"status": inv_cfg_status.get("status", "validated"), "status_by_slot": (inv_cfg_status.get("status_by_slot") or {}).get(slot), "status_note": inv_cfg_status.get("status_note"), "mix_uid": mix_uid, "scm": scm_m.model_dump(), "mix": mix_m.model_dump(), "slot": slot, "materials_config": mat_path, "observations": obs_h, "prior": prior, "alpha_grid": alphas.tolist(), "use_mock": use_mock, "direct_dor_validation": validation, "warnings": warnings, "provenance": {"dorgems": __version__, **bundle.provenance, "seed": seed}}
     files = write_inference(summ, out, inference_id=iid, header=header)
     files.update(fmap.save(out / "forward_map"))
     # exports

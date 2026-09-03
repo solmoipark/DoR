@@ -1,0 +1,397 @@
+{
+  "dorgems": "0.1.0",
+  "prediction": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\prediction.json",
+  "prediction_provenance": {
+    "dorgems": "0.1.0",
+    "bundle_bayes": "sha256:c0b913ecde2fcf754945b5c2a4b93a72b35facbf853cfc432199bbff0fdcb706",
+    "bundle_gbm": "sha256:6ed7c926796974504abcce38a19a8aada0f2739b42c435a328aa2a0d9bb748c1",
+    "training_db_sha256": "de071b0ce3b3c605a34e4f3c9954877baa0a8baf1f6fb03e5653058d93261b93",
+    "seed": 0,
+    "input_hash": "17522544e685ad05"
+  },
+  "slot": "metakaolin",
+  "materials_config": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\materials.dorgems_c9828bc8202c.yaml",
+  "materials_sha256": "ac373f829c3d625754f6c03b6e09f32d336be909311fa6389dba469e1afc1c56",
+  "reaction_models": {
+    "q05": {
+      "path": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\reaction_models\\reaction_parameters.dorgems_17522544e685ad05_q05.yaml",
+      "sha256": "19ad20e179b0e540454b87041024eebb0751731e6515d778a4d4e3cca21036c5"
+    },
+    "q50": {
+      "path": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\reaction_models\\reaction_parameters.dorgems_17522544e685ad05_q50.yaml",
+      "sha256": "a7509437657165d4d144415fabe748408bca9280280cac023edf0763116460d3"
+    },
+    "q95": {
+      "path": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\reaction_models\\reaction_parameters.dorgems_17522544e685ad05_q95.yaml",
+      "sha256": "969698c0b855089be5c3408f65930b50167d05e00fbea1f5b935e312ee2cb9bb"
+    }
+  },
+  "forward_query": {
+    "name": "dorgems_A_17522544e685ad05",
+    "task": "forward_time_series",
+    "recipe": {
+      "binders": {
+        "OPC": 70.0,
+        "metakaolin": 30.0
+      },
+      "w_b": 0.5
+    },
+    "age_grid": {
+      "values": [
+        1.0,
+        3.0,
+        7.0,
+        28.0,
+        90.0,
+        180.0,
+        365.0
+      ]
+    },
+    "temperature_celsius": 20.0,
+    "outputs": {
+      "phase_masses": "all",
+      "phase_volumes": "all",
+      "phase_volumes_reconstructed": "all",
+      "aqueous_species": "all",
+      "scalars": "all"
+    },
+    "plots": [],
+    "response_summary": {
+      "enabled": true,
+      "phases": [],
+      "scalars": [
+        "pH",
+        "porosity"
+      ],
+      "narrative_enabled": false,
+      "narrative_language": "ko"
+    }
+  },
+  "runs": {
+    "q05": {
+      "ok": true,
+      "run_dir": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\runs\\q05",
+      "materials_injection": "native",
+      "self_check": {
+        "alpha_ok": true,
+        "materials_ok": true,
+        "details": [
+          {
+            "age_days": 1.0,
+            "alpha_expected": 0.05439728204529978,
+            "alpha_in_kernel": 0.05439728204529978,
+            "ok": true
+          },
+          {
+            "age_days": 3.0,
+            "alpha_expected": 0.08354451593318193,
+            "alpha_in_kernel": 0.08354451593318193,
+            "ok": true
+          },
+          {
+            "age_days": 7.0,
+            "alpha_expected": 0.10903976405146962,
+            "alpha_in_kernel": 0.10903976405146962,
+            "ok": true
+          },
+          {
+            "age_days": 28.0,
+            "alpha_expected": 0.14509555151258602,
+            "alpha_in_kernel": 0.14509555151258602,
+            "ok": true
+          },
+          {
+            "age_days": 90.0,
+            "alpha_expected": 0.16113854797242816,
+            "alpha_in_kernel": 0.16113854797242816,
+            "ok": true
+          },
+          {
+            "age_days": 180.0,
+            "alpha_expected": 0.16499952023814288,
+            "alpha_in_kernel": 0.16499952023814288,
+            "ok": true
+          },
+          {
+            "age_days": 365.0,
+            "alpha_expected": 0.16657243560836948,
+            "alpha_in_kernel": 0.16657243560836948,
+            "ok": true
+          },
+          {
+            "materials_check": {
+              "age_days": 1.0,
+              "max_abs_diff_pct": 0.0004429186046976952,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 3.0,
+              "max_abs_diff_pct": 0.00044291860486822543,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 7.0,
+              "max_abs_diff_pct": 0.00044291860494638513,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 28.0,
+              "max_abs_diff_pct": 0.00044291860494638513,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 90.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 180.0,
+              "max_abs_diff_pct": 0.00044291860494638513,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 365.0,
+              "max_abs_diff_pct": 0.00044291860486822543,
+              "ok": true
+            }
+          }
+        ]
+      }
+    },
+    "q50": {
+      "ok": true,
+      "run_dir": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\runs\\q50",
+      "materials_injection": "native",
+      "self_check": {
+        "alpha_ok": true,
+        "materials_ok": true,
+        "details": [
+          {
+            "age_days": 1.0,
+            "alpha_expected": 0.13486213996514795,
+            "alpha_in_kernel": 0.13486213996514795,
+            "ok": true
+          },
+          {
+            "age_days": 3.0,
+            "alpha_expected": 0.21073398679711886,
+            "alpha_in_kernel": 0.21073398679711886,
+            "ok": true
+          },
+          {
+            "age_days": 7.0,
+            "alpha_expected": 0.28033327249291556,
+            "alpha_in_kernel": 0.28033327249291556,
+            "ok": true
+          },
+          {
+            "age_days": 28.0,
+            "alpha_expected": 0.3872974670628816,
+            "alpha_in_kernel": 0.3872974670628816,
+            "ok": true
+          },
+          {
+            "age_days": 90.0,
+            "alpha_expected": 0.44161714890308257,
+            "alpha_in_kernel": 0.44161714890308257,
+            "ok": true
+          },
+          {
+            "age_days": 180.0,
+            "alpha_expected": 0.4564226491271136,
+            "alpha_in_kernel": 0.4564226491271136,
+            "ok": true
+          },
+          {
+            "age_days": 365.0,
+            "alpha_expected": 0.46303431137922757,
+            "alpha_in_kernel": 0.46303431137922757,
+            "ok": true
+          },
+          {
+            "materials_check": {
+              "age_days": 1.0,
+              "max_abs_diff_pct": 0.00044291860484690915,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 3.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 7.0,
+              "max_abs_diff_pct": 0.00044291860494638513,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 28.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 90.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 180.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 365.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          }
+        ]
+      }
+    },
+    "q95": {
+      "ok": true,
+      "run_dir": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\A\\runs\\q95",
+      "materials_injection": "native",
+      "self_check": {
+        "alpha_ok": true,
+        "materials_ok": true,
+        "details": [
+          {
+            "age_days": 1.0,
+            "alpha_expected": 0.20370487658936742,
+            "alpha_in_kernel": 0.20370487658936742,
+            "ok": true
+          },
+          {
+            "age_days": 3.0,
+            "alpha_expected": 0.32340792080060204,
+            "alpha_in_kernel": 0.32340792080060204,
+            "ok": true
+          },
+          {
+            "age_days": 7.0,
+            "alpha_expected": 0.4381326543789893,
+            "alpha_in_kernel": 0.4381326543789893,
+            "ok": true
+          },
+          {
+            "age_days": 28.0,
+            "alpha_expected": 0.6290156276745653,
+            "alpha_in_kernel": 0.6290156276745653,
+            "ok": true
+          },
+          {
+            "age_days": 90.0,
+            "alpha_expected": 0.7393108598835006,
+            "alpha_in_kernel": 0.7393108598835006,
+            "ok": true
+          },
+          {
+            "age_days": 180.0,
+            "alpha_expected": 0.77338010767784,
+            "alpha_in_kernel": 0.77338010767784,
+            "ok": true
+          },
+          {
+            "age_days": 365.0,
+            "alpha_expected": 0.7901331908034755,
+            "alpha_in_kernel": 0.7901331908034755,
+            "ok": true
+          },
+          {
+            "materials_check": {
+              "age_days": 1.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 3.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 7.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 28.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 90.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 180.0,
+              "max_abs_diff_pct": 0.00044291860492506885,
+              "ok": true
+            }
+          },
+          {
+            "materials_check": {
+              "age_days": 365.0,
+              "max_abs_diff_pct": 0.0004429186049321743,
+              "ok": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "use_mock": false,
+  "max_xgems_calls": 50,
+  "kernel_versions": {
+    "inverse_gems": {
+      "path": "C:\\Users\\User\\DoR MCP\\InverseGems",
+      "git": "f8ce7bea849f"
+    },
+    "gemspilot": {
+      "path": "C:\\Users\\User\\DoR MCP\\GemsPilot",
+      "git": "57cac51e488c"
+    }
+  },
+  "warnings": [
+    "calcined_clay mapped to metakaolin slot; MK content unknown",
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "q05: Forward-query plots disabled by --no-plots.",
+    "q50: Forward-query plots disabled by --no-plots.",
+    "q95: Forward-query plots disabled by --no-plots."
+  ]
+}

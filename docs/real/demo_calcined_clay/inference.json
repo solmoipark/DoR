@@ -1,0 +1,400 @@
+{
+  "schema": "dorgems-inference/1.0",
+  "id": "374294e5b525",
+  "dorgems": "0.1.0",
+  "mix_uid": null,
+  "scm": {
+    "name": "CC-Gwangju-2026",
+    "role": "calcined_clay",
+    "oxides": {
+      "SiO2": 52.0,
+      "Al2O3": 38.0,
+      "Fe2O3": 4.5,
+      "CaO": 0.8,
+      "MgO": 0.6,
+      "K2O": 1.5,
+      "Na2O": 0.2,
+      "SO3": 0.1,
+      "TiO2": 1.6
+    },
+    "blaine_m2_kg": 900.0,
+    "d50_um": 6.0,
+    "bet_m2_g": null,
+    "amorphous_pct": 55.0,
+    "density_kg_m3": null
+  },
+  "mix": {
+    "scm_pct": 30.0,
+    "w_b": 0.5,
+    "curing_temp_C": 20.0,
+    "opc_oxides": {
+      "CaO": 63.3,
+      "SiO2": 20.2,
+      "Al2O3": 5.0,
+      "Fe2O3": 3.0,
+      "MgO": 1.8,
+      "SO3": 3.0,
+      "Na2O": 0.2,
+      "K2O": 0.8
+    },
+    "other_components": {}
+  },
+  "slot": "metakaolin",
+  "materials_config": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\materials.dorgems_c9828bc8202c.yaml",
+  "observations": [
+    {
+      "obs_uid": "user_0",
+      "age_d": 7.0,
+      "quantity": "bound_water",
+      "phase_name": null,
+      "value": 13.0,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA 105-1000C",
+      "raw_value": 13.0,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_1",
+      "age_d": 28.0,
+      "quantity": "bound_water",
+      "phase_name": null,
+      "value": 16.5,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA 105-1000C",
+      "raw_value": 16.5,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_2",
+      "age_d": 90.0,
+      "quantity": "bound_water",
+      "phase_name": null,
+      "value": 18.0,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA 105-1000C",
+      "raw_value": 18.0,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_3",
+      "age_d": 7.0,
+      "quantity": "CH_TGA",
+      "phase_name": null,
+      "value": 9.5,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA",
+      "raw_value": 9.5,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_4",
+      "age_d": 28.0,
+      "quantity": "CH_TGA",
+      "phase_name": null,
+      "value": 6.0,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA",
+      "raw_value": 6.0,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_5",
+      "age_d": 90.0,
+      "quantity": "CH_TGA",
+      "phase_name": null,
+      "value": 4.5,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": "TGA",
+      "raw_value": 4.5,
+      "unit": "g/100 g binder"
+    },
+    {
+      "obs_uid": "user_6",
+      "age_d": 28.0,
+      "quantity": "chem_shrink",
+      "phase_name": null,
+      "value": 0.058,
+      "grade": "A",
+      "assumptions": [],
+      "uncertainty": null,
+      "method": null,
+      "raw_value": 0.058,
+      "unit": "mL/g binder"
+    }
+  ],
+  "prior": "model",
+  "alpha_grid": [
+    0.0,
+    0.1,
+    0.141,
+    0.166,
+    0.191,
+    0.2,
+    0.216,
+    0.241,
+    0.266,
+    0.291,
+    0.3,
+    0.316,
+    0.341,
+    0.366,
+    0.391,
+    0.4,
+    0.416,
+    0.441,
+    0.466,
+    0.491,
+    0.5,
+    0.516,
+    0.541,
+    0.566,
+    0.591,
+    0.6,
+    0.616,
+    0.641,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "use_mock": false,
+  "direct_dor_validation": null,
+  "warnings": [
+    "calcined_clay mapped to metakaolin slot; MK content unknown",
+    "oxides not representable in InverseGems dropped: ['TiO2']",
+    "prior:role_pooled_as_other:calcined_clay",
+    "alpha=0.000: ['self-check failed: input_materials_used.json does not carry the override oxides']",
+    "monotonicity:bound_water_g:[{'age_d': 7.0, 'issue': 'bound water decreases with alpha'}]",
+    "likelihood policy: weights={'bound_water': 1.0, 'chem_shrink': 1.0, 'QXRD_phase': 1.0, 'CH_TGA': 0.25, 'CH_XRD': 0.25}, systematic_scales={'bound_water': 0.6, 'chem_shrink': 1.0, 'CH_TGA': 1.0, 'CH_XRD': 1.0}, systematic_offsets={'CH_TGA': -3.0, 'CH_XRD': -3.0, 'bound_water': 0.0, 'chem_shrink': 0.0}"
+  ],
+  "provenance": {
+    "dorgems": "0.1.0",
+    "bundle_bayes": "sha256:c0b913ecde2fcf754945b5c2a4b93a72b35facbf853cfc432199bbff0fdcb706",
+    "bundle_gbm": "sha256:6ed7c926796974504abcce38a19a8aada0f2739b42c435a328aa2a0d9bb748c1",
+    "training_db_sha256": "de071b0ce3b3c605a34e4f3c9954877baa0a8baf1f6fb03e5653058d93261b93",
+    "seed": 0
+  },
+  "a_max": {
+    "q05": 0.251517412498842,
+    "q50": 0.5028995392966474,
+    "q95": 0.7282633011769911
+  },
+  "tau_d": {
+    "q05": 6.255647014366984,
+    "q50": 8.235005742859935,
+    "q95": 11.004473309320636
+  },
+  "alpha": {
+    "ages_d": [
+      1.0,
+      3.0,
+      7.0,
+      28.0,
+      90.0,
+      180.0,
+      365.0
+    ],
+    "q05": [
+      0.07328137609312933,
+      0.1130745097821967,
+      0.1498393846697158,
+      0.21054986904574904,
+      0.2415577370244941,
+      0.24882246462930463,
+      0.2510499604881358
+    ],
+    "q50": [
+      0.14755233324455067,
+      0.22744536471970048,
+      0.3029036823355105,
+      0.4242753597982265,
+      0.4858512243561589,
+      0.4984804377865476,
+      0.5022546287862976
+    ],
+    "q95": [
+      0.21380620504834283,
+      0.32898711905020583,
+      0.43653126634548484,
+      0.6092949457703454,
+      0.6994932537197756,
+      0.7211206946275013,
+      0.7272009322729222
+    ],
+    "mean": [
+      0.14626552595407094,
+      0.22516449677631115,
+      0.2991663172541208,
+      0.418150259724143,
+      0.4790086313596962,
+      0.4930206288219883,
+      0.4973101443941494
+    ]
+  },
+  "prior_alpha": {
+    "q05": [
+      0.04948695081429138,
+      0.07580409694538011,
+      0.10079884145890514,
+      0.14098322272177313,
+      0.16144263421879473,
+      0.16487050077587784,
+      0.16574152420583255
+    ],
+    "q50": [
+      0.1350125072142737,
+      0.20837526073807483,
+      0.27673344681204204,
+      0.3887809695678044,
+      0.4447521153419987,
+      0.4567757897422451,
+      0.46092613402399485
+    ],
+    "q95": [
+      0.231781728462732,
+      0.3565564099204481,
+      0.47195926548523665,
+      0.6604057312030065,
+      0.757732938986421,
+      0.7825620202692858,
+      0.7888548775365569
+    ]
+  },
+  "prior_a_max": {
+    "q05": 0.16585615636129503,
+    "q50": 0.4616275735960207,
+    "q95": 0.7898598532609465
+  },
+  "prior_tau_d": {
+    "q05": 6.267320204603419,
+    "q50": 8.24385719675864,
+    "q95": 10.996573655830217
+  },
+  "ppc": [
+    {
+      "label": "user_0",
+      "quantity": "bound_water",
+      "age_d": 7.0,
+      "obs": 13.0,
+      "pred_q05": 8.686684414015268,
+      "pred_q50": 10.601527635392287,
+      "pred_q95": 11.598679659916597,
+      "residual_q50": -2.398472364607713,
+      "z": -0.7150862999223342,
+      "loglik_contribution_mean": -2.489474626741781,
+      "sigma_obs": 1.5,
+      "sigma_model": 3.0
+    },
+    {
+      "label": "user_1",
+      "quantity": "bound_water",
+      "age_d": 28.0,
+      "obs": 16.5,
+      "pred_q05": 13.948882148699964,
+      "pred_q50": 15.654648683556998,
+      "pred_q95": 18.04506249954298,
+      "residual_q50": -0.8453513164430024,
+      "z": -0.25203506779139856,
+      "loglik_contribution_mean": -2.2137478457637503,
+      "sigma_obs": 1.5,
+      "sigma_model": 3.0
+    },
+    {
+      "label": "user_2",
+      "quantity": "bound_water",
+      "age_d": 90.0,
+      "obs": 18.0,
+      "pred_q05": 15.642925391914499,
+      "pred_q50": 17.504849916826515,
+      "pred_q95": 20.090573328676527,
+      "residual_q50": -0.49515008317348475,
+      "z": -0.14762523267207822,
+      "loglik_contribution_mean": -2.2157726827336623,
+      "sigma_obs": 1.5,
+      "sigma_model": 3.0
+    },
+    {
+      "label": "user_3",
+      "quantity": "CH_TGA",
+      "age_d": 7.0,
+      "obs": 9.5,
+      "pred_q05": 0.0,
+      "pred_q50": 0.0,
+      "pred_q95": 0.0,
+      "residual_q50": -9.5,
+      "z": -1.8198699419201876,
+      "loglik_contribution_mean": -1.0553837628270342,
+      "sigma_obs": 1.5,
+      "sigma_model": 5.0
+    },
+    {
+      "label": "user_4",
+      "quantity": "CH_TGA",
+      "age_d": 28.0,
+      "obs": 6.0,
+      "pred_q05": 0.0,
+      "pred_q50": 0.0,
+      "pred_q95": 2.3634351290002176,
+      "residual_q50": -6.0,
+      "z": -1.1493915422653815,
+      "loglik_contribution_mean": -0.798330414681355,
+      "sigma_obs": 1.5,
+      "sigma_model": 5.0
+    },
+    {
+      "label": "user_5",
+      "quantity": "CH_TGA",
+      "age_d": 90.0,
+      "obs": 4.5,
+      "pred_q05": 0.0,
+      "pred_q50": 0.0,
+      "pred_q95": 2.504991087710366,
+      "residual_q50": -4.5,
+      "z": -0.8620436566990363,
+      "loglik_contribution_mean": -0.7302366444134968,
+      "sigma_obs": 1.5,
+      "sigma_model": 5.0
+    },
+    {
+      "label": "user_6",
+      "quantity": "chem_shrink",
+      "age_d": 28.0,
+      "obs": 0.058,
+      "pred_q05": 0.05267132183894339,
+      "pred_q50": 0.06303658329224919,
+      "pred_q95": 0.07028470718124771,
+      "residual_q50": 0.005036583292249187,
+      "z": 0.4504857046323549,
+      "loglik_contribution_mean": 3.368803166156617,
+      "sigma_obs": 0.005,
+      "sigma_model": 0.01
+    }
+  ],
+  "ess": 1679.86847008393,
+  "posterior_method": "importance",
+  "prior_vs_posterior_kl": 0.10942628337383523,
+  "n_observations_used": 7,
+  "files": {
+    "inference": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\inference.json",
+    "ppc": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\ppc.csv",
+    "forward_map": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\forward_map\\forward_map.npz",
+    "forward_map_report": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\forward_map\\forward_map_report.md",
+    "reaction_model_q05": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\reaction_models\\reaction_parameters.dorgems_inferred_374294e5b525_q05.yaml",
+    "reaction_model_q50": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\reaction_models\\reaction_parameters.dorgems_inferred_374294e5b525_q50.yaml",
+    "reaction_model_q95": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\reaction_models\\reaction_parameters.dorgems_inferred_374294e5b525_q95.yaml",
+    "inferred_dor_csv": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\inferred_dor.csv",
+    "manifest": "C:\\Users\\User\\AppData\\Local\\Temp\\demo_cc\\C\\manifest.json"
+  }
+}

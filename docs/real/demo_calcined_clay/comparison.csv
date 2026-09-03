@@ -1,0 +1,8 @@
+obs_uid,paper_doi,mix_uid,quantity,phase_name,age_d,method,grade,assumptions,source_locator,fig_only,extraction_confidence,obs,model,scale_s,offset_b,r,sigma_obs,sigma_model,z,usable
+user_0,user,CC-Gwangju-2026,bound_water,,7.0,TGA 105-1000C,A,,,,,13.0,17.01381488350585,0.6,0.0,-2.7917110698964898,1.5,3.0,-0.8323274301102956,True
+user_1,user,CC-Gwangju-2026,bound_water,,28.0,TGA 105-1000C,A,,,,,16.5,25.800708508288785,0.6,0.0,-1.0195748950267287,1.5,3.0,-0.30397850312426367,True
+user_2,user,CC-Gwangju-2026,bound_water,,90.0,TGA 105-1000C,A,,,,,18.0,28.826832688542602,0.6,0.0,-0.7039003868744409,1.5,3.0,-0.2098625485919534,True
+user_3,user,CC-Gwangju-2026,CH_TGA,,7.0,TGA,A,,,,,9.5,0.0,1.0,-3.0,-9.5,1.5,5.0,-1.8198699419201876,True
+user_4,user,CC-Gwangju-2026,CH_TGA,,28.0,TGA,A,,,,,6.0,0.0,1.0,-3.0,-6.0,1.5,5.0,-1.1493915422653815,True
+user_5,user,CC-Gwangju-2026,CH_TGA,,90.0,TGA,A,,,,,4.5,0.0,1.0,-3.0,-4.5,1.5,5.0,-0.8620436566990363,True
+user_6,user,CC-Gwangju-2026,chem_shrink,,28.0,,A,,,,,0.058,0.06195688768759482,1.0,0.0,0.003956887687594814,0.005,0.01,0.3539147939517582,True
