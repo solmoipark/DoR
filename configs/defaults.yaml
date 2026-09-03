@@ -29,7 +29,7 @@ sigma_obs_default:
 sigma_model_initial:     # replaced by the M2 OPC reference check (G2-4); CH widened for the kernel's systematic bias
   CH_TGA: 5.0
   CH_XRD: 5.0
-  bound_water: 3.0
+  bound_water: 3.0      # after the 0.60 scale: OPC reference residual MAD 3.2 g → σ ≈ 3 (G2-4)
   chem_shrink: 0.01
   QXRD_phase: 3.0
 compare:
@@ -42,8 +42,13 @@ compare:
 # Likelihood policy for scenario C (2026-09-03 revision after G3-3):
 #   weight   multiplies each observation's log-likelihood contribution
 #   offset   b_q added to the model value (model − literature systematic bias; CH ≈ +3 g → −3)
+#   scale    multiplies the model value before the offset: model_eff = scale·F + offset.
+#            bound_water 0.60 = TGA non-evaporable water / thermodynamic bound water, measured on
+#            the merged kernel: OPC-only 28 d reference 17.0/28.4 (10 papers, G2-4) and the slag twin
+#            0.59 (G2-5) agree; chem_shrink left at 1 (4 obs / 2 papers only).
 likelihood:
   quantity_weights: {bound_water: 1.0, chem_shrink: 1.0, QXRD_phase: 1.0, CH_TGA: 0.25, CH_XRD: 0.25}
+  systematic_scales: {bound_water: 0.60, chem_shrink: 1.0, CH_TGA: 1.0, CH_XRD: 1.0}
   systematic_offsets: {CH_TGA: -3.0, CH_XRD: -3.0, bound_water: 0.0, chem_shrink: 0.0}
 inverse:
   status: consistency_check   # G3-3 (2026-09-03): hidden-DoR MAE 22.7 %p, coverage 0 -> not a validated DoR estimator

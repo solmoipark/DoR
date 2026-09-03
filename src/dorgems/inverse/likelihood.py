@@ -35,12 +35,13 @@ class ObsPoint:
 class Likelihood:
     fmap: ForwardMap
     points: list[ObsPoint]
-    offsets: dict[str, float] = field(default_factory=dict)  # b_q
+    offsets: dict[str, float] = field(default_factory=dict)  # b_q (additive)
     beta: float = 0.5
+    scales: dict[str, float] = field(default_factory=dict)  # s_q (multiplicative): mu = s_q·F + b_q
 
     def mu(self, a_max: np.ndarray, tau: np.ndarray, p: ObsPoint) -> np.ndarray:
         a = np.clip(a_max * (1.0 - np.exp(-((p.age_d / tau) ** self.beta))), 0.0, 1.0)
-        return self.fmap.value(p.quantity, p.age_index, a) + float(self.offsets.get(p.quantity, 0.0))
+        return float(self.scales.get(p.quantity, 1.0)) * self.fmap.value(p.quantity, p.age_index, a) + float(self.offsets.get(p.quantity, 0.0))
 
     def loglik(self, a_max: np.ndarray, tau: np.ndarray, *, per_point: bool = False) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
         a_max = np.asarray(a_max, float)

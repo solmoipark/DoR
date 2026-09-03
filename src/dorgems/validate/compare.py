@@ -20,7 +20,7 @@ from scipy.stats import binomtest
 from ..predict import load_defaults
 
 OBS_TO_MODEL = {"CH_TGA": "CH_g", "CH_XRD": "CH_g", "bound_water": "bound_water_g", "chem_shrink": "chem_shrink_ml_g"}
-COMPARISON_COLUMNS = ["obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence", "obs", "model", "offset_b", "r", "sigma_obs", "sigma_model", "z", "usable"]
+COMPARISON_COLUMNS = ["obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence", "obs", "model", "scale_s", "offset_b", "r", "sigma_obs", "sigma_model", "z", "usable"]
 
 
 def sigma_tables() -> tuple[dict[str, float], dict[str, float]]:
@@ -28,27 +28,31 @@ def sigma_tables() -> tuple[dict[str, float], dict[str, float]]:
     return dict(d.get("sigma_obs_default", {})), dict(d.get("sigma_model_initial", {}))
 
 
-def compare_rows(pairs: list[dict[str, Any]], *, sigma_model: dict[str, float] | None = None, sigma_obs_default: dict[str, float] | None = None, offsets: dict[str, float] | None = None) -> pd.DataFrame:
+def compare_rows(pairs: list[dict[str, Any]], *, sigma_model: dict[str, float] | None = None, sigma_obs_default: dict[str, float] | None = None, offsets: dict[str, float] | None = None, scales: dict[str, float] | None = None) -> pd.DataFrame:
     """``pairs``: dicts with obs_uid, quantity, age_d, obs_value (harmonised), grade,
     assumptions, model_value, uncertainty (optional), paper_doi, mix_uid, phase_name."""
     so_def, sm_def = sigma_tables()
     so_def.update(sigma_obs_default or {})
     sm_def.update(sigma_model or {})
+    lik = load_defaults().get("likelihood", {})
     if offsets is None:  # kernel systematic biases (defaults.likelihood.systematic_offsets)
-        offsets = {k: float(v) for k, v in (load_defaults().get("likelihood", {}).get("systematic_offsets") or {}).items()}
+        offsets = {k: float(v) for k, v in (lik.get("systematic_offsets") or {}).items()}
+    if scales is None:  # multiplicative corrections (e.g. TGA/thermodynamic bound water 0.60)
+        scales = {k: float(v) for k, v in (lik.get("systematic_scales") or {}).items()}
     rows = []
     for p in pairs:
         q = p["quantity"]
         obs, mod = p.get("obs_value"), p.get("model_value")
         b = float(offsets.get(q, 0.0))
+        sc = float(scales.get(q, 1.0))
         so = float(p["uncertainty"]) if p.get("uncertainty") not in (None, 0) else float(so_def.get(q, np.nan))
         sm = float(sm_def.get(q, np.nan))
         r = z = None
         if obs is not None and mod is not None and np.isfinite(obs) and np.isfinite(mod):
-            r = float(mod + b - obs)
+            r = float(sc * mod + b - obs)
             denom = np.sqrt(so**2 + sm**2)
             z = float(r / denom) if np.isfinite(denom) and denom > 0 else None
-        rows.append({**{k: p.get(k) for k in ("obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence")}, "obs": obs, "model": mod, "offset_b": b, "r": r, "sigma_obs": so, "sigma_model": sm, "z": z, "usable": p.get("grade") in ("A", "B") and r is not None})
+        rows.append({**{k: p.get(k) for k in ("obs_uid", "paper_doi", "mix_uid", "quantity", "phase_name", "age_d", "method", "grade", "assumptions", "source_locator", "fig_only", "extraction_confidence")}, "obs": obs, "model": mod, "scale_s": sc, "offset_b": b, "r": r, "sigma_obs": so, "sigma_model": sm, "z": z, "usable": p.get("grade") in ("A", "B") and r is not None})
     return pd.DataFrame(rows, columns=COMPARISON_COLUMNS)
 
 
