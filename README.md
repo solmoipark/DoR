@@ -26,9 +26,10 @@ pip install -e ../GemsPilot --no-deps  # agent layer (optional)
 pip install -e .[pilot,test]
 ```
 
-Environment: `DORGEMS_DB` (literature DB), `DORGEMS_STAGING_DB`, `DORGEMS_BUNDLE`,
-`DORGEMS_MODELING_DIR`, `INVERSE_GEMS_ROOT`, `DORGEMS_REAL_XGEMS=1` (real-xGEMS tests).
-Without `DORGEMS_DB` the DB is discovered under `../DoR of SCMs in blended cements/modeling/`.
+The literature DB ships with the repository (`data/scm_dor_enriched.db`, 24 MB, read-only use;
+see `data/README.md`). Environment: `DORGEMS_DB` (override the DB path), `DORGEMS_STAGING_DB`,
+`DORGEMS_BUNDLE`, `DORGEMS_MODELING_DIR`, `INVERSE_GEMS_ROOT`, `DORGEMS_DAT_LST`,
+`DORGEMS_REAL_XGEMS=1` (real-xGEMS tests).
 
 ## CLI
 

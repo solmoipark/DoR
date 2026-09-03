@@ -55,10 +55,19 @@ def modeling_dir(required: bool = True) -> Path | None:
     return None
 
 
+def data_dir() -> Path:
+    return repo_root() / "data"
+
+
 def literature_db_path(required: bool = True) -> Path | None:
+    """DORGEMS_DB > <repo>/data/scm_dor_enriched.db (shipped with the repository) >
+    the literature project's modeling/ directory."""
     env = os.environ.get("DORGEMS_DB")
     if env:
         return Path(env)
+    shipped = data_dir() / LITERATURE_DB_NAME
+    if shipped.is_file():
+        return shipped
     md = modeling_dir(required=False)
     if md is not None and (md / LITERATURE_DB_NAME).is_file():
         return md / LITERATURE_DB_NAME
