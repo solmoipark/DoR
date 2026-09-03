@@ -47,7 +47,9 @@ def infer(
     b_bw_points: int = 5,
 ) -> dict[str, Any]:
     rng = np.random.default_rng(rng_seed)
-    offsets_grid = [0.0]
+    # bound-water offset: either marginalised over a small grid (b_bw_prior) or the fixed
+    # systematic offset already set on the likelihood (defaults.likelihood.systematic_offsets)
+    offsets_grid = [float(lik.offsets.get("bound_water", 0.0))]
     if b_bw_prior is not None and any(p.quantity == "bound_water" for p in lik.points):
         m, s = b_bw_prior
         offsets_grid = list(np.linspace(m - 2 * s, m + 2 * s, int(b_bw_points))) if s > 0 else [m]

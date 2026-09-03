@@ -75,14 +75,22 @@ def test_phase_aliases():
 
 def test_verdict_rules():
     rng = np.random.default_rng(0)
-    pairs = [{"obs_uid": f"o{i}", "paper_doi": f"p{i % 7}", "mix_uid": f"m{i}", "quantity": "CH_TGA", "age_d": 28, "grade": "A", "obs_value": 10.0, "model_value": 10.0 + rng.normal(0, 1.0)} for i in range(20)]
+    # bound_water is a primary quantity with no systematic offset
+    pairs = [{"obs_uid": f"o{i}", "paper_doi": f"p{i % 7}", "mix_uid": f"m{i}", "quantity": "bound_water", "age_d": 28, "grade": "A", "obs_value": 10.0, "model_value": 10.0 + rng.normal(0, 1.0)} for i in range(20)]
     df = compare_rows(pairs)
     agg = aggregate(df)
-    assert agg["verdict"]["CH_TGA"] == "consistent" and agg["overall"] == "consistent"
+    assert agg["verdict"]["bound_water"] == "consistent" and agg["overall"] == "consistent" and agg["overall_basis"] == "primary"
     pairs2 = [dict(p, model_value=p["obs_value"] + 12.0) for p in pairs]
     agg2 = aggregate(compare_rows(pairs2))
-    assert agg2["verdict"]["CH_TGA"] == "tension"
+    assert agg2["verdict"]["bound_water"] == "tension"
     pairs3 = [dict(p, grade="D") for p in pairs]
     agg3 = aggregate(compare_rows(pairs3))
-    assert agg3["verdict"]["CH_TGA"] == "insufficient_data" and agg3["n_usable"] == 0
-    assert aggregate(compare_rows(pairs[:3]))["verdict"]["CH_TGA"] == "insufficient_data"
+    assert agg3["verdict"]["bound_water"] == "insufficient_data" and agg3["n_usable"] == 0
+    assert aggregate(compare_rows(pairs[:3]))["verdict"]["bound_water"] == "insufficient_data"
+    # CH is secondary: its verdict is reported but does not decide the overall when a primary exists
+    ch = [dict(p, quantity="CH_TGA", model_value=p["obs_value"] + 15.0) for p in pairs]
+    agg4 = aggregate(compare_rows(pairs + ch))
+    assert agg4["verdict"]["CH_TGA"] == "tension" and agg4["overall"] == "consistent" and agg4["secondary_verdicts"] == {"CH_TGA": "tension"}
+    # the kernel offset (−3 g) is applied to CH model values by default
+    ch_only = compare_rows([dict(ch[0])])
+    assert abs(ch_only.iloc[0]["offset_b"] + 3.0) < 1e-9 and abs(ch_only.iloc[0]["r"] - 12.0) < 1e-9

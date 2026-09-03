@@ -2,12 +2,12 @@
 
 Basis: 100 g anhydrous binder. Real xGEMS phase masses are kg → ×1000 = g/100 g binder; the mock runner reports grams. `observables.mass_factor()` detects the unit from `scalar__system_mass` (> 10 ⇒ grams) and must be re-checked on the first real run (P-IG-4).
 Implemented in `dorgems.gems.observables`, aliases in `configs/phase_aliases.yaml`
-(**provisional** — `confirmed: false` until a real `xgems_phase_amounts_raw.csv` is read, G2-1),
+(confirmed on a real TINN_v4 run, G2-1, 2026-09-02),
 units in `configs/unit_basis.yaml` (`dorgems.db.units`).
 
 | DB quantity | model side | grade | notes |
 |---|---|---|---|
-| CH_TGA, CH_XRD | `phase_mass__Portlandite` × 1000 | A | TGA CH may be biased low without carbonation correction (method_detail) |
+| CH_TGA, CH_XRD | `phase_mass__Portlandite` × 1000 | A (secondary) | kernel overestimates CH systematically (≈ +3 g at 28 d, docs/kernel_ch_investigation.md) → offset −3 g and weight 0.25 in the likelihood; TGA CH may be biased low without carbonation correction |
 | bound_water | `W_in − W_aq`; `W_aq` from `aq_gen` species moles captured in-process (`dorgems_capture.json`), else aqueous phase mass (approx.) | B | TGA bound water (105 °C) loses gel/interlayer water → systematic offset `b_BW(t)`; estimated from the OPC-only reference set (G2-4, pending) |
 | QXRD_phase (crystalline) | Σ `phase_mass__<raw>` of the alias group × 1000; unreacted clinker from `unreacted_masses.json` × Bogue × (1 − α) | C | `wt% (as reported)` basis unknown → ratios and trends only |
 | QXRD amorphous | — | X | contains unreacted glassy SCM + C-S-H + undetected phases |

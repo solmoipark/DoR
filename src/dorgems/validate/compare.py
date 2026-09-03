@@ -34,7 +34,8 @@ def compare_rows(pairs: list[dict[str, Any]], *, sigma_model: dict[str, float] |
     so_def, sm_def = sigma_tables()
     so_def.update(sigma_obs_default or {})
     sm_def.update(sigma_model or {})
-    offsets = offsets or {}
+    if offsets is None:  # kernel systematic biases (defaults.likelihood.systematic_offsets)
+        offsets = {k: float(v) for k, v in (load_defaults().get("likelihood", {}).get("systematic_offsets") or {}).items()}
     rows = []
     for p in pairs:
         q = p["quantity"]
@@ -55,6 +56,8 @@ def aggregate(df: pd.DataFrame, *, min_n: int | None = None, frac_thr: float | N
     d = load_defaults().get("compare", {})
     min_n = int(min_n if min_n is not None else d.get("min_n", 5))
     frac_thr = float(frac_thr if frac_thr is not None else d.get("consistent_frac_z_lt2", 0.7))
+    primary = set(d.get("primary_quantities") or ["bound_water", "chem_shrink", "QXRD_phase"])
+    secondary = set(d.get("secondary_quantities") or ["CH_TGA", "CH_XRD"])
     out: dict[str, Any] = {"by_quantity": {}, "verdict": {}}
     if df.empty:
         return {**out, "overall": "insufficient_data", "n_usable": 0}
@@ -76,10 +79,16 @@ def aggregate(df: pd.DataFrame, *, min_n: int | None = None, frac_thr: float | N
         else:
             verdict = "insufficient_data"
         entry["verdict"] = verdict
+        entry["role"] = "primary" if q in primary else ("secondary" if q in secondary else "other")
         out["by_quantity"][q] = entry
         out["verdict"][q] = verdict
-    vs = list(out["verdict"].values())
+    # the overall verdict is decided by the primary quantities (bound water, chemical
+    # shrinkage, QXRD ratios); CH is reported but secondary (kernel bias, G2-3)
+    vs_primary = [v for q, v in out["verdict"].items() if q in primary]
+    vs = vs_primary if vs_primary else list(out["verdict"].values())
     out["overall"] = "tension" if "tension" in vs else ("consistent" if "consistent" in vs else "insufficient_data")
+    out["overall_basis"] = "primary" if vs_primary else "all"
+    out["secondary_verdicts"] = {q: v for q, v in out["verdict"].items() if q in secondary}
     out["n_usable"] = int(df["usable"].sum())
     return out
 

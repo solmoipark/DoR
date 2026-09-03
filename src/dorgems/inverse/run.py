@@ -47,6 +47,7 @@ def infer_from_observations(
     lit_db: str | Path | None = None,
     prior: str = "model",
     alpha_grid_n: int = 21,
+    refine: bool = True,
     use_mock: bool = True,
     dat_lst: str | Path | None = None,
     max_xgems_calls: int | None = None,
@@ -120,7 +121,7 @@ def infer_from_observations(
     a28 = draws.alpha[:, 0] / 100.0
     lo, hi = float(np.quantile(a28, 0.05)), float(np.quantile(a28, 0.95))
     grid_cfg = defaults.get("alpha_grid", {})
-    alphas = default_alpha_grid(int(alpha_grid_n or grid_cfg.get("n_points", 21)), refine_interval=(lo, hi) if prior == "model" else None, refine_step=float(grid_cfg.get("refine_step", 0.025)))
+    alphas = default_alpha_grid(int(alpha_grid_n or grid_cfg.get("n_points", 21)), refine_interval=(lo, hi) if (prior == "model" and refine) else None, refine_step=float(grid_cfg.get("refine_step", 0.025)))
     # --- forward map ---
     fmap = build_forward_map(fq_base, slot=slot, ages=ages, alphas=alphas, out=out / "forward_map", ig_db=ig_db, materials_config=mat_path, use_mock=use_mock, dat_lst=dat_lst, max_xgems_calls=max_xgems_calls, quantities=tuple(q for q in quantities if q != "CH_XRD") + ("CH_XRD",))
     warnings += [str(w) for w in fmap.meta.get("warnings", [])]
@@ -131,11 +132,16 @@ def infer_from_observations(
     # --- likelihood & posterior ---
     so = dict(defaults.get("sigma_obs_default", {}))
     sm = dict(defaults.get("sigma_model_initial", {}))
-    pts, skipped = build_points(obs_h, ages, sigma_obs_default=so, sigma_model=sm)
+    lik_cfg = defaults.get("likelihood", {})
+    q_weights = {k: float(v) for k, v in (lik_cfg.get("quantity_weights") or {}).items()}
+    q_offsets = {k: float(v) for k, v in (lik_cfg.get("systematic_offsets") or {}).items()}
+    pts, skipped = build_points(obs_h, ages, sigma_obs_default=so, sigma_model=sm, weights=q_weights)
     warnings += skipped
     if not pts:
         raise ValueError("no usable (grade A/B) observations for the likelihood")
-    lik = Likelihood(fmap, pts, beta=bundle.bayes.beta_shape)
+    if q_weights or q_offsets:
+        warnings.append(f"likelihood policy: weights={q_weights}, systematic_offsets={q_offsets}")
+    lik = Likelihood(fmap, pts, offsets=dict(q_offsets), beta=bundle.bayes.beta_shape)
     inv_cfg = defaults.get("inverse", {})
     post = infer(lik, prior_a_max=prior_a, prior_tau=prior_t, prior=prior, ess_min=float(inv_cfg.get("ess_min", 50)), sir_rounds=int(inv_cfg.get("sir_rounds", 1)), grid_n=int(inv_cfg.get("flat_prior_grid", 40)), rng_seed=seed, b_bw_prior=b_bw_prior, b_bw_points=int(inv_cfg.get("b_bw_marginal_points", 5)))
     ages_out = np.asarray(defaults.get("ages_d_default", [1, 3, 7, 28, 90, 180, 365]), float)

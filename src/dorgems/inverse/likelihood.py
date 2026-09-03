@@ -60,12 +60,17 @@ class Likelihood:
         return np.stack([self.mu(a_max, tau, p) for p in self.points])
 
 
-def build_points(observations: list[dict[str, Any]], ages: list[float], *, sigma_obs_default: dict[str, float], sigma_model: dict[str, float], use_direct_dor: bool = False) -> tuple[list[ObsPoint], list[str]]:
-    """``observations``: harmonised dicts with age_d, quantity, value, grade, uncertainty, obs_uid."""
+def build_points(observations: list[dict[str, Any]], ages: list[float], *, sigma_obs_default: dict[str, float], sigma_model: dict[str, float], use_direct_dor: bool = False, weights: dict[str, float] | None = None) -> tuple[list[ObsPoint], list[str]]:
+    """``observations``: harmonised dicts with age_d, quantity, value, grade, uncertainty, obs_uid.
+    ``weights`` (per quantity) scale each observation's log-likelihood contribution; 0 excludes."""
     pts: list[ObsPoint] = []
     skipped: list[str] = []
+    weights = dict(weights or {})
     for o in observations:
         q = o["quantity"]
+        if q in weights and float(weights[q]) <= 0.0:
+            skipped.append(f"{o.get('obs_uid', q)}: quantity {q} has weight 0")
+            continue
         if q in ("DoR_SCM", "DoR_clinker") and not use_direct_dor:
             skipped.append(f"{o.get('obs_uid', q)}: direct DoR kept for validation only")
             continue
@@ -81,5 +86,5 @@ def build_points(observations: list[dict[str, Any]], ages: list[float], *, sigma
             skipped.append(f"{o.get('obs_uid', q)}: age {o['age_d']} not in the forward map")
             continue
         so = float(o["uncertainty"]) if o.get("uncertainty") else float(sigma_obs_default.get(q, 1.5))
-        pts.append(ObsPoint(i, float(o["age_d"]), q, float(o["value"]), so, float(sigma_model.get(q, 2.5)), str(o.get("grade")), label=str(o.get("obs_uid", f"{q}@{o['age_d']}"))))
+        pts.append(ObsPoint(i, float(o["age_d"]), q, float(o["value"]), so, float(sigma_model.get(q, 2.5)), str(o.get("grade")), label=str(o.get("obs_uid", f"{q}@{o['age_d']}")), weight=float(weights.get(q, 1.0))))
     return pts, skipped

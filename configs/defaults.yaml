@@ -26,15 +26,25 @@ sigma_obs_default:
   bound_water: 1.5
   chem_shrink: 0.005     # mL/g binder
   QXRD_phase: 2.0
-sigma_model_initial:     # replaced by the M2 OPC reference check (G2-4)
-  CH_TGA: 2.5
-  CH_XRD: 2.5
+sigma_model_initial:     # replaced by the M2 OPC reference check (G2-4); CH widened for the kernel's systematic bias
+  CH_TGA: 5.0
+  CH_XRD: 5.0
   bound_water: 3.0
   chem_shrink: 0.01
   QXRD_phase: 3.0
 compare:
   consistent_frac_z_lt2: 0.7
   min_n: 5
+  # Primary quantities decide the overall verdict; CH is secondary because the kernel
+  # overestimates portlandite systematically (docs/kernel_ch_investigation.md, G2-3).
+  primary_quantities: [bound_water, chem_shrink, QXRD_phase]
+  secondary_quantities: [CH_TGA, CH_XRD]
+# Likelihood policy for scenario C (2026-09-03 revision after G3-3):
+#   weight   multiplies each observation's log-likelihood contribution
+#   offset   b_q added to the model value (model − literature systematic bias; CH ≈ +3 g → −3)
+likelihood:
+  quantity_weights: {bound_water: 1.0, chem_shrink: 1.0, QXRD_phase: 1.0, CH_TGA: 0.25, CH_XRD: 0.25}
+  systematic_offsets: {CH_TGA: -3.0, CH_XRD: -3.0, bound_water: 0.0, chem_shrink: 0.0}
 inverse:
   status: consistency_check   # G3-3 (2026-09-03): hidden-DoR MAE 22.7 %p, coverage 0 -> not a validated DoR estimator
   status_note: "Scenario C is a consistency / uncertainty-reduction check, not a validated DoR estimator (docs/gates.md G3-3). Prefer bound water and chemical shrinkage over portlandite in the likelihood."
