@@ -46,9 +46,10 @@ def dor_compare_to_literature(out: str, db: str, *, run_dir: str | None = None, 
     return _log_session(session, tool_result("dor_compare_to_literature", ok=bool(res.get("ok")), summary={k: v for k, v in res.items() if k not in ("files", "warnings")}, artifacts=res.get("files") or {}, warnings=res.get("warnings") or [], error=res.get("error")))
 
 
-def dor_opc_reference_check(out: str, db: str, *, age_days: float = 28, w_b_range: Any = (0.4, 0.5), use_mock: bool = True, dat_lst: str | None = None, max_xgems_calls: int | None = None, lit_db: str | None = None, max_mixes: int | None = None) -> dict[str, Any]:
+def dor_opc_reference_check(out: str, db: str, *, age_days: float = 28, w_b_range: Any = (0.4, 0.5), use_mock: bool = True, dat_lst: str | None = None, max_xgems_calls: int | None = None, lit_db: str | None = None, max_mixes: int | None = None, quantity: str = "CH_TGA") -> dict[str, Any]:
     """Kernel baseline check on OPC-only literature pastes (spec §8.6): portlandite
-    residuals at 28 d for grade-A CH_TGA observations. Independent of the DoR model.
+    residuals at 28 d for grade-A observations of ``quantity`` (CH_TGA default; bound_water or
+    chem_shrink estimate the systematic offset b_q and σ_model, spec §8.6/G2-4). Independent of the DoR model.
     Gate G2-3: |median r| ≤ 4 g/100 g over ≥ 30 papers. In mock mode the numbers are
     not physical — the tool only proves the pipeline runs.
     """
@@ -61,7 +62,7 @@ def dor_opc_reference_check(out: str, db: str, *, age_days: float = 28, w_b_rang
             raise FileNotFoundError("literature DB not found (set DORGEMS_DB)")
         wb = tuple(float(x) for x in _payload_or_list(w_b_range))
         with LiteratureDB(dbp) as db_:
-            res = opc_reference_check(db_, out=Path(out), ig_db=db, age_days=age_days, w_b_range=wb, use_mock=use_mock, dat_lst=dat_lst, max_xgems_calls=max_xgems_calls, max_mixes=max_mixes)
+            res = opc_reference_check(db_, out=Path(out), ig_db=db, age_days=age_days, w_b_range=wb, use_mock=use_mock, dat_lst=dat_lst, max_xgems_calls=max_xgems_calls, max_mixes=max_mixes, quantity=quantity)
     except Exception as exc:  # noqa: BLE001
         _audit("dor_opc_reference_check", {"out": out}, False)
         return tool_result("dor_opc_reference_check", ok=False, error=f"{type(exc).__name__}: {exc}")

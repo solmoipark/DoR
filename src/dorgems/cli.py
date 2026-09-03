@@ -100,7 +100,7 @@ def cmd_compare(a: argparse.Namespace) -> int:
 def cmd_opc_check(a: argparse.Namespace) -> int:
     from .pilot.tools_b_c import dor_opc_reference_check
 
-    r = dor_opc_reference_check(a.out, a.db, age_days=a.age_days, w_b_range=[a.w_b_min, a.w_b_max], use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db, max_mixes=a.max_mixes)
+    r = dor_opc_reference_check(a.out, a.db, age_days=a.age_days, w_b_range=[a.w_b_min, a.w_b_max], use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db, max_mixes=a.max_mixes, quantity=a.quantity)
     _print(r)
     return 0 if r["ok"] else 1
 
@@ -238,6 +238,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--w-b-min", type=float, default=0.4)
     p.add_argument("--w-b-max", type=float, default=0.5)
     p.add_argument("--max-mixes", type=int, default=None)
+    p.add_argument("--quantity", default="CH_TGA", choices=["CH_TGA", "CH_XRD", "bound_water", "chem_shrink"])
     p.add_argument("--real", action="store_true")
     p.add_argument("--dat-lst", default=None)
     p.add_argument("--max-xgems-calls", type=int, default=None)

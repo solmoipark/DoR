@@ -251,9 +251,12 @@ def opc_reference_candidates(db: LiteratureDB, *, age_days: float = 28, w_b_rang
     return pd.DataFrame(keep)
 
 
-def opc_reference_check(db: LiteratureDB, *, out: Path, ig_db: str | Path, age_days: float = 28, w_b_range: tuple[float, float] = (0.4, 0.5), use_mock: bool = True, dat_lst: str | Path | None = None, max_xgems_calls: int | None = None, max_mixes: int | None = None, grades: tuple[str, ...] = ("A",)) -> dict[str, Any]:
+def opc_reference_check(db: LiteratureDB, *, out: Path, ig_db: str | Path, age_days: float = 28, w_b_range: tuple[float, float] = (0.4, 0.5), use_mock: bool = True, dat_lst: str | Path | None = None, max_xgems_calls: int | None = None, max_mixes: int | None = None, grades: tuple[str, ...] = ("A",), quantity: str = "CH_TGA") -> dict[str, Any]:
     out.mkdir(parents=True, exist_ok=True)
-    cands = opc_reference_candidates(db, age_days=age_days, w_b_range=w_b_range)
+    if quantity not in OBS_TO_MODEL:
+        raise ValueError(f"quantity must be one of {sorted(OBS_TO_MODEL)}")
+    model_col = OBS_TO_MODEL[quantity]
+    cands = opc_reference_candidates(db, age_days=age_days, w_b_range=w_b_range, quantity=quantity)
     cands = cands[cands["grade"].isin(grades)] if not cands.empty else cands
     n_all = int(len(cands))
     if max_mixes:
@@ -273,17 +276,19 @@ def opc_reference_check(db: LiteratureDB, *, out: Path, ig_db: str | Path, age_d
             warnings.append(f"{r['mix_uid']}: run failed {res.error}")
             continue
         model = observables_from_run(res.forward_dir)
-        mv = model.iloc[0]["CH_g"] if not model.empty else None
-        pairs.append({"obs_uid": r["obs_uid"], "paper_doi": r["paper_doi"], "mix_uid": r["mix_uid"], "quantity": "CH_TGA", "age_d": float(r["age_d"]), "method": r.get("method"), "grade": r["grade"], "assumptions": r["assumptions"], "obs_value": r["obs_harmonised"], "model_value": None if mv is None or pd.isna(mv) else float(mv), "uncertainty": r.get("uncertainty"), "source_locator": r.get("source_locator"), "fig_only": r.get("fig_only"), "extraction_confidence": r.get("extraction_confidence")})
+        mv = model.iloc[0][model_col] if not model.empty else None
+        pairs.append({"obs_uid": r["obs_uid"], "paper_doi": r["paper_doi"], "mix_uid": r["mix_uid"], "quantity": quantity, "age_d": float(r["age_d"]), "method": r.get("method"), "grade": r["grade"], "assumptions": r["assumptions"], "obs_value": r["obs_harmonised"], "model_value": None if mv is None or pd.isna(mv) else float(mv), "uncertainty": r.get("uncertainty"), "source_locator": r.get("source_locator"), "fig_only": r.get("fig_only"), "extraction_confidence": r.get("extraction_confidence")})
     df = compare_rows(pairs)
     agg = aggregate(df)
-    ch = agg["by_quantity"].get("CH_TGA", {})
-    gate = {"n_papers": ch.get("n_papers", 0), "median_r": ch.get("median_r"), "pass": (ch.get("n_papers", 0) >= 30 and ch.get("median_r") is not None and abs(ch["median_r"]) <= 4.0)}
+    ch = agg["by_quantity"].get(quantity, {})
+    gate = {"quantity": quantity, "n_papers": ch.get("n_papers", 0), "median_r": ch.get("median_r"), "pass": (ch.get("n_papers", 0) >= 30 and ch.get("median_r") is not None and abs(ch["median_r"]) <= 4.0)}
     if use_mock:
         gate["note"] = "mock runner: numbers are not physical; pipeline check only"
-    sigma_model_est = {"CH_TGA": float(df.loc[df["usable"], "r"].std()) if df["usable"].sum() >= 3 else None}
-    files = write_comparison(df, agg, out, header={"mode": "opc_reference", "target": f"OPC-only, {age_days} d, w/b {w_b_range}", "use_mock": use_mock, "n_candidates": n_all, "gate_G2_3": gate, "sigma_model_estimate": sigma_model_est})
-    return {"ok": True, "n_candidates": n_all, "n_run": len(pairs), "aggregate": agg, "gate_G2_3": gate, "sigma_model_estimate": sigma_model_est, "files": files, "warnings": warnings}
+    u = df[df["usable"]] if not df.empty else df
+    sigma_model_est = {quantity: float(u["r"].std()) if len(u) >= 3 else None}
+    offset_est = {quantity: {"median_r": float(u["r"].median()), "mad": float((u["r"] - u["r"].median()).abs().median()), "n": int(len(u)), "n_papers": int(u["paper_doi"].nunique())} if len(u) >= 3 else None}
+    files = write_comparison(df, agg, out, header={"mode": "opc_reference", "target": f"OPC-only, {quantity}, {age_days} d, w/b {w_b_range}", "use_mock": use_mock, "n_candidates": n_all, "gate_G2_3": gate, "sigma_model_estimate": sigma_model_est, "systematic_offset_estimate": offset_est})
+    return {"ok": True, "quantity": quantity, "n_candidates": n_all, "n_run": len(pairs), "aggregate": agg, "gate_G2_3": gate, "sigma_model_estimate": sigma_model_est, "systematic_offset_estimate": offset_est, "files": files, "warnings": warnings}
 
 
 __all__ = ["db_mix_to_recipe", "twin_compare_mix", "opc_reference_check", "opc_reference_candidates", "blended_only", "resolve_scm"]
