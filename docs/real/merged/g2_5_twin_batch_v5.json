@@ -1,0 +1,898 @@
+{
+  "n_candidates": 74,
+  "n_ok": 63,
+  "verdict_distribution": {
+    "insufficient_data": 50,
+    "nan": 11,
+    "tension": 9,
+    "consistent": 4
+  },
+  "use_mock": false,
+  "results": [
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.19_FA25.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.19_FA45.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.24_FA25.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.24_FA45.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.3_FA25.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.3_FA55.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.5_FA25.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(00)00213-1::wb0.5_FA55.0",
+      "paper_doi": "10.1016/S0008-8846(00)00213-1",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::10% MK",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::10% SF",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::20% FA",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::20% MK",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::5% MK",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/S0008-8846(01)00581-6::5% SF",
+      "paper_doi": "10.1016/S0008-8846(01)00581-6",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.cemconcomp.2020.103596::CFN0.5",
+      "paper_doi": "10.1016/j.cemconcomp.2020.103596",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::FA_0",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_10D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_10FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_5D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaCl_5FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_1D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_1FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_3D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_3FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_5D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::NaOH_5FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_10FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5D",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2016.11.016::Na_2_SO_4_5FB",
+      "paper_doi": "10.1016/j.cemconres.2016.11.016",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 4
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2019.05.017::B10_0",
+      "paper_doi": "10.1016/j.cemconres.2019.05.017",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "tension",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 11
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2019.05.017::B30_1",
+      "paper_doi": "10.1016/j.cemconres.2019.05.017",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "tension",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 11
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2019.05.017::B30_3",
+      "paper_doi": "10.1016/j.cemconres.2019.05.017",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "tension",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 11
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2019.05.017::B50_5",
+      "paper_doi": "10.1016/j.cemconres.2019.05.017",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "tension",
+        "bound_water": "insufficient_data"
+      },
+      "n_obs": 11
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106477::mix3",
+      "paper_doi": "10.1016/j.cemconres.2021.106477",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 5
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106477::mix7",
+      "paper_doi": "10.1016/j.cemconres.2021.106477",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 5
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-20C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-40C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w04-5C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-20C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-40C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w05-5C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-20C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-40C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2021.106647::T-w06-5C",
+      "paper_doi": "10.1016/j.cemconres.2021.106647",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "tension",
+      "by_quantity": {
+        "CH_TGA": "tension"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2024.107664::LC3_50",
+      "paper_doi": "10.1016/j.cemconres.2024.107664",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 5
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2024.107664::LC3_70",
+      "paper_doi": "10.1016/j.cemconres.2024.107664",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 12
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2024.107664::PC2_60",
+      "paper_doi": "10.1016/j.cemconres.2024.107664",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 8
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2024.107664::PC2_77",
+      "paper_doi": "10.1016/j.cemconres.2024.107664",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 12
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_PLAIN",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC1_SEEDED",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC2_PLAIN",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC2_SEEDED",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC3_PLAIN",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC3_SEEDED",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_PLAIN",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.cemconres.2025.108036::CC4_SEEDED",
+      "paper_doi": "10.1016/j.cemconres.2025.108036",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "CH_XRD": "insufficient_data"
+      },
+      "n_obs": 6
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2012.04.041::60_CEM_L_40_CEM_I",
+      "paper_doi": "10.1016/j.conbuildmat.2012.04.041",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 5
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2014.04.024::A1",
+      "paper_doi": "10.1016/j.conbuildmat.2014.04.024",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2014.04.024::B1",
+      "paper_doi": "10.1016/j.conbuildmat.2014.04.024",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 3
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2018.11.287::A4",
+      "paper_doi": "10.1016/j.conbuildmat.2018.11.287",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 2
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2018.11.287::B",
+      "paper_doi": "10.1016/j.conbuildmat.2018.11.287",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 2
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2018.11.287::L2",
+      "paper_doi": "10.1016/j.conbuildmat.2018.11.287",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 2
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2018.11.287::LA3",
+      "paper_doi": "10.1016/j.conbuildmat.2018.11.287",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "insufficient_data",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data"
+      },
+      "n_obs": 2
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A1",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A2",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A3",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A4",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A5",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2019.117726::A6",
+      "paper_doi": "10.1016/j.conbuildmat.2019.117726",
+      "ok": false,
+      "error": "w_b or curing_temp_C missing",
+      "dor_source": null,
+      "verdict": null,
+      "by_quantity": {},
+      "n_obs": null
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS05",
+      "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "consistent",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "consistent"
+      },
+      "n_obs": 8
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS10",
+      "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "consistent",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "consistent"
+      },
+      "n_obs": 8
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS15",
+      "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "consistent",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "consistent"
+      },
+      "n_obs": 8
+    },
+    {
+      "mix_uid": "10.1016/j.conbuildmat.2020.119454::CLS20",
+      "paper_doi": "10.1016/j.conbuildmat.2020.119454",
+      "ok": true,
+      "error": null,
+      "dor_source": "pin",
+      "verdict": "consistent",
+      "by_quantity": {
+        "CH_TGA": "insufficient_data",
+        "bound_water": "consistent"
+      },
+      "n_obs": 8
+    }
+  ]
+}

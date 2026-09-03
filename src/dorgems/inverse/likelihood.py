@@ -41,7 +41,8 @@ class Likelihood:
 
     def mu(self, a_max: np.ndarray, tau: np.ndarray, p: ObsPoint) -> np.ndarray:
         a = np.clip(a_max * (1.0 - np.exp(-((p.age_d / tau) ** self.beta))), 0.0, 1.0)
-        return float(self.scales.get(p.quantity, 1.0)) * self.fmap.value(p.quantity, p.age_index, a) + float(self.offsets.get(p.quantity, 0.0))
+        m = float(self.scales.get(p.quantity, 1.0)) * self.fmap.value(p.quantity, p.age_index, a) + float(self.offsets.get(p.quantity, 0.0))
+        return np.maximum(m, 0.0)  # masses cannot go negative when an offset is applied
 
     def loglik(self, a_max: np.ndarray, tau: np.ndarray, *, per_point: bool = False) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
         a_max = np.asarray(a_max, float)
