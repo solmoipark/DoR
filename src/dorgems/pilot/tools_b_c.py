@@ -94,21 +94,25 @@ def dor_infer_from_observations(mix: Any, observations: Any, out: str, db: str, 
     return _log_session(session, tool_result("dor_infer_from_observations", ok=True, summary={"inference_id": res["inference_id"], "slot": res["slot"], "status": inv.get("status", "validated"), **res["summary"], "validation": res.get("validation")}, artifacts=res["files"], warnings=status_warn + res["warnings"]))
 
 
-def dor_stage_inferred(inference: Any, staging_db: str | None = None, *, use_mock: bool = True, note: str | None = None) -> dict[str, Any]:
+def dor_stage_inferred(inference: Any, staging_db: str | None = None, *, dry_run: bool = True, note: str | None = None, use_mock: bool | None = None) -> dict[str, Any]:
     """Write an inference into the staging DB table ``inferred_dor`` with reviewed=0.
 
-    use_mock=True (default) is a dry-run that only returns the rows that would be
-    written; use_mock=False writes (host approval). The literature DB is never written.
+    dry_run=True (default) only returns the rows that would be written; dry_run=False
+    writes and is gated by the host's ``write`` policy (GemsPilot P-GP-3: allowed only
+    under allow_real). ``use_mock`` is accepted as a legacy alias of ``dry_run``.
+    The literature DB is never written.
     """
+    if use_mock is not None:
+        dry_run = bool(use_mock)
     from ..inverse.staging import stage_inference
 
     try:
         inf = _payload_or_list(inference)
         if isinstance(inf, str):
             inf = json.loads(Path(inf).read_text(encoding="utf-8"))
-        res = stage_inference(inf, path=staging_db, dry_run=use_mock, note=note)
+        res = stage_inference(inf, path=staging_db, dry_run=dry_run, note=note)
     except Exception as exc:  # noqa: BLE001
-        _audit("dor_stage_inferred", {"dry_run": use_mock}, False)
+        _audit("dor_stage_inferred", {"dry_run": dry_run}, False)
         return tool_result("dor_stage_inferred", ok=False, error=f"{type(exc).__name__}: {exc}")
-    _audit("dor_stage_inferred", {"dry_run": use_mock}, True)
-    return tool_result("dor_stage_inferred", ok=True, summary=res, warnings=["dry-run: nothing written (use_mock=True)"] if use_mock else [])
+    _audit("dor_stage_inferred", {"dry_run": dry_run}, True)
+    return tool_result("dor_stage_inferred", ok=True, summary=res, warnings=["dry-run: nothing written (dry_run=True)"] if dry_run else [])

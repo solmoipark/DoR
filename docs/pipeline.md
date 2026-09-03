@@ -48,7 +48,7 @@
 2. 그 표 위에서 곡선 파라미터 `(a_max, τ)`의 우도를 계산(xGEMS 추가 호출 없음).
 3. 시나리오 A의 사후표본을 사전분포로 중요도 재가중(ESS 낮으면 SIR → 격자).
 4. 산출: 사후 곡선 분위, 관측별 사후예측 잔차, 정보이득(KL), InverseGems용 YAML, `inferred_dor.csv`.
-5. **`dor_stage_inferred`**: 결과는 문헌 DB가 아닌 staging DB에 `reviewed=0`으로만 기록(기본 dry-run). `dorgems review`로 승인/거절.
+5. **`dor_stage_inferred`**: 결과는 문헌 DB가 아닌 staging DB에 `reviewed=0`으로만 기록(기본 `dry_run=True`; 실제 기록은 GemsPilot `write` 정책으로 승인 필요). `dorgems review`로 승인/거절.
 
 ## 가드레일
 

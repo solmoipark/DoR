@@ -107,9 +107,9 @@ def dor_infer_from_observations(mix: str, observations: str, out: str, db: str, 
 
 
 @app.tool()
-def dor_stage_inferred(inference: str, staging_db: str | None = None, use_mock: bool = True, note: str | None = None) -> dict[str, Any]:
-    """Stage an inference into dorgems_staging.sqlite (reviewed=0). use_mock=True = dry-run preview only."""
-    return T.TOOLS_BY_NAME["dor_stage_inferred"].func(inference, staging_db, use_mock=use_mock, note=note)
+def dor_stage_inferred(inference: str, staging_db: str | None = None, dry_run: bool = True, note: str | None = None) -> dict[str, Any]:
+    """Stage an inference into dorgems_staging.sqlite (reviewed=0). dry_run=True = preview only; dry_run=False writes (needs approval)."""
+    return T.TOOLS_BY_NAME["dor_stage_inferred"].func(inference, staging_db, dry_run=dry_run, note=note)
 
 
 def main() -> None:

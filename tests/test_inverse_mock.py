@@ -124,7 +124,7 @@ def test_infer_tool_end_to_end_mock(tmp_path, bundles_dir):
     payload = json.loads(Path(inf_path).read_text(encoding="utf-8"))
     assert payload["schema"] == "dorgems-inference/1.0"
     assert Path(r["artifacts"]["inferred_dor_csv"]).read_text().startswith("scm,age_d,dor")
-    st = dor_stage_inferred(inf_path, str(tmp_path / "staging.sqlite"), use_mock=True)
+    st = dor_stage_inferred(inf_path, str(tmp_path / "staging.sqlite"), dry_run=True)
     assert st["ok"] and st["summary"]["dry_run"]
-    st2 = dor_stage_inferred(inf_path, str(tmp_path / "staging.sqlite"), use_mock=False)
+    st2 = dor_stage_inferred(inf_path, str(tmp_path / "staging.sqlite"), dry_run=False)
     assert st2["ok"] and not st2["summary"]["dry_run"]

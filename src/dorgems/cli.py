@@ -116,7 +116,7 @@ def cmd_infer(a: argparse.Namespace) -> int:
 def cmd_stage(a: argparse.Namespace) -> int:
     from .pilot.tools_b_c import dor_stage_inferred
 
-    r = dor_stage_inferred(a.inference, a.staging_db, use_mock=not a.write, note=a.note)
+    r = dor_stage_inferred(a.inference, a.staging_db, dry_run=not a.write, note=a.note)
     _print(r)
     return 0 if r["ok"] else 1
 

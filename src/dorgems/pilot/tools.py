@@ -4,7 +4,8 @@ Every tool returns the ``inverse-gems-tool/1.0`` ToolResult dict. Query
 arguments accept dicts, YAML/JSON strings or file paths. Path keywords are
 ``out``, ``db``, ``session`` so the GemsPilot runner's workspace remapping
 applies unchanged. Policies: ``read`` = pure computation; ``mock_ok`` = mock by
-default, ``use_mock=False`` only under the host's ``allow_real``. ``real_gated``
+default, ``use_mock=False`` only under the host's ``allow_real``; ``write`` (GemsPilot
+P-GP-3) = dry-run by default, ``dry_run=False`` only under ``allow_real``. ``real_gated``
 is never used (it means "always refuse" in GemsPilot's ``_policy_check``).
 
 Docstrings are read by the LLM: they say when to use a tool and when not to.
@@ -327,7 +328,7 @@ TOOLSET: list[ToolSpec] = [
     ToolSpec("dor_compare_to_literature", _lazy("dor_compare_to_literature"), "mock_ok"),
     ToolSpec("dor_opc_reference_check", _lazy("dor_opc_reference_check"), "mock_ok"),
     ToolSpec("dor_infer_from_observations", _lazy("dor_infer_from_observations"), "mock_ok"),
-    ToolSpec("dor_stage_inferred", _lazy("dor_stage_inferred"), "mock_ok"),
+    ToolSpec("dor_stage_inferred", _lazy("dor_stage_inferred"), "write"),  # P-GP-3: gated on dry_run
 ]
 
 TOOLS_BY_NAME: dict[str, ToolSpec] = {t.name: t for t in TOOLSET}

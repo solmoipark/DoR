@@ -22,7 +22,7 @@ def _policy_check():
 def test_toolset_policies():
     names = {t.name: t.policy for t in T.TOOLSET}
     assert names["dor_predict"] == "read" and names["dor_model_card"] == "read"
-    assert names["dor_run_envelope"] == "mock_ok" and names["dor_stage_inferred"] == "mock_ok"
+    assert names["dor_run_envelope"] == "mock_ok" and names["dor_stage_inferred"] == "write"
     assert "real_gated" not in names.values(), "real_gated means 'always refuse' in GemsPilot"
     assert all(t.func.__doc__ for t in T.TOOLSET), "docstrings are read by the LLM"
 
@@ -38,6 +38,11 @@ def test_policy_check_semantics():
     assert pc(spec, args, allow_real=False) is not None
     # read tools never gated
     assert pc(T.TOOLS_BY_NAME["dor_predict"], {"use_mock": False}, allow_real=False) is None
+    # write policy (P-GP-3): dry_run=False needs allow_real
+    st = T.TOOLS_BY_NAME["dor_stage_inferred"]
+    assert pc(st, {"dry_run": True}, allow_real=False) is None
+    assert pc(st, {"dry_run": False}, allow_real=False) is not None
+    assert pc(st, {"dry_run": False}, allow_real=True) is None
 
 
 def test_budget_refusal_without_cap(tmp_path):
