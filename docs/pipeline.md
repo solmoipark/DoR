@@ -68,3 +68,4 @@
 | 설정(단위표·상 별칭·슬롯·기본값) | `configs/*.yaml` |
 | 게이트 기록 / 모델 카드 / 커널 조사 | `docs/gates.md`, `docs/model_card.md`, `docs/kernel_ch_investigation.md` |
 | 시뮬레이션 LLM 에피소드 | `scripts/run_llm_episode.py --simulate good|injected|lazy` |
+| 새 재료 입력 템플릿 | `templates/new_material_template.yaml`, 예시 `templates/example_ggbs_pohang.yaml`; `dorgems validate <파일>` 후 `envelope/compare/infer --input <파일>` |

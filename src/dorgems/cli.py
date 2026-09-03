@@ -24,6 +24,24 @@ def _print(obj: Any) -> None:
     print(json.dumps(obj, indent=2, ensure_ascii=False, default=str))
 
 
+def _from_input(a: argparse.Namespace) -> dict[str, Any] | None:
+    """--input <template.yaml> fills scm / mix / ages / observations when given."""
+    if not getattr(a, "input", None):
+        return None
+    from .pilot.input_file import load_input_file
+
+    parts = load_input_file(a.input)
+    return {"scm": parts["scm"].model_dump(), "mix": parts["mix"].model_dump(), "ages": parts["ages_d"], "observations": [o.model_dump() for o in parts["observations"]]}
+
+
+def cmd_validate(a: argparse.Namespace) -> int:
+    from .pilot.input_file import validate_report
+
+    r = validate_report(a.input)
+    _print(r)
+    return 0 if r["ok"] else 1
+
+
 def cmd_predict(a: argparse.Namespace) -> int:
     from .pilot.tools import dor_predict
 
@@ -63,7 +81,9 @@ def cmd_run_forward(a: argparse.Namespace) -> int:
 def cmd_envelope(a: argparse.Namespace) -> int:
     from .pilot.tools import dor_run_envelope
 
-    r = dor_run_envelope(_load(a.scm), _load(a.mix), _load(a.ages), a.out, a.db, use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, ensemble=a.ensemble, seed=a.seed, lit_db=a.lit_db)
+    inp = _from_input(a)
+    scm, mix, ages = (inp["scm"], inp["mix"], inp["ages"]) if inp else (_load(a.scm), _load(a.mix), _load(a.ages))
+    r = dor_run_envelope(scm, mix, ages, a.out, a.db, use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, ensemble=a.ensemble, seed=a.seed, lit_db=a.lit_db)
     _print(r)
     return 0 if r["ok"] else 1
 
@@ -92,6 +112,13 @@ def cmd_db_lookup(a: argparse.Namespace) -> int:
 def cmd_compare(a: argparse.Namespace) -> int:
     from .pilot.tools_b_c import dor_compare_to_literature
 
+    inp = _from_input(a)
+    if inp:
+        from .validate.user_twin import user_compare
+
+        r = user_compare(inp["scm"], inp["mix"], inp["observations"], out=a.out, ig_db=a.db, use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db)
+        _print(r)
+        return 0 if r.get("ok") else 1
     r = dor_compare_to_literature(a.out, a.db, run_dir=a.run_dir, mix_uid=a.mix_uid, scm=_load(a.scm), mix=_load(a.mix), mode=a.mode, quantities=_load(a.quantities), use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db)
     _print(r)
     return 0 if r["ok"] else 1
@@ -108,7 +135,9 @@ def cmd_opc_check(a: argparse.Namespace) -> int:
 def cmd_infer(a: argparse.Namespace) -> int:
     from .pilot.tools_b_c import dor_infer_from_observations
 
-    r = dor_infer_from_observations(_load(a.mix), _load(a.observations), a.out, a.db, scm=_load(a.scm), mix_uid=a.mix_uid, prior=a.prior, alpha_grid=a.alpha_grid, use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db)
+    inp = _from_input(a)
+    mix, observations, scm = (inp["mix"], inp["observations"], inp["scm"]) if inp else (_load(a.mix), _load(a.observations), _load(a.scm))
+    r = dor_infer_from_observations(mix, observations, a.out, a.db, scm=scm, mix_uid=a.mix_uid, prior=a.prior, alpha_grid=a.alpha_grid, use_mock=not a.real, dat_lst=a.dat_lst, max_xgems_calls=a.max_xgems_calls, lit_db=a.lit_db)
     _print(r)
     return 0 if r["ok"] else 1
 
@@ -136,6 +165,10 @@ def cmd_review(a: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="dorgems", description="SCM degree-of-reaction agent kernel")
     sub = ap.add_subparsers(dest="cmd", required=True)
+
+    p = sub.add_parser("validate", help="check a new-material input file (templates/new_material_template.yaml): schema + observation unit grades")
+    p.add_argument("input")
+    p.set_defaults(func=cmd_validate)
 
     p = sub.add_parser("predict", help="scenario A step 1: prediction.json")
     p.add_argument("--scm", required=True, help="YAML/JSON text or file (SCMSpec)")
@@ -186,8 +219,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_run_forward)
 
     p = sub.add_parser("envelope", help="scenario A end-to-end")
-    p.add_argument("--scm", required=True)
-    p.add_argument("--mix", required=True)
+    p.add_argument("--input", default=None, help="new-material input file (replaces --scm/--mix/--ages)")
+    p.add_argument("--scm", default=None)
+    p.add_argument("--mix", default=None)
     p.add_argument("--ages", default=None)
     p.add_argument("--out", required=True)
     p.add_argument("--db", required=True)
@@ -216,7 +250,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--lit-db", default=None)
     p.set_defaults(func=cmd_db_lookup)
 
-    p = sub.add_parser("compare", help="scenario B: forward run vs literature observations")
+    p = sub.add_parser("compare", help="scenario B: forward run vs literature observations (or --input: your own material + observations)")
+    p.add_argument("--input", default=None, help="new-material input file with observations")
     p.add_argument("--out", required=True)
     p.add_argument("--db", required=True)
     p.add_argument("--run-dir", default=None)
@@ -246,8 +281,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_opc_check)
 
     p = sub.add_parser("infer", help="scenario C: observations -> DoR posterior")
-    p.add_argument("--mix", required=True)
-    p.add_argument("--observations", required=True)
+    p.add_argument("--input", default=None, help="new-material input file (replaces --scm/--mix/--observations)")
+    p.add_argument("--mix", default=None)
+    p.add_argument("--observations", default=None)
     p.add_argument("--out", required=True)
     p.add_argument("--db", required=True)
     p.add_argument("--scm", default=None)

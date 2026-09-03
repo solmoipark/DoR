@@ -115,9 +115,13 @@ def run_forward_capturing(
     import uuid
 
     run_tag = hashlib.sha256(f"{out.resolve()}|{reaction_model_config}|{materials_config}".encode("utf-8")).hexdigest()[:10] + "_" + uuid.uuid4().hex[:6]
+    import inspect
+
+    native_ok = "materials_config" in inspect.signature(run_forward_cached).parameters  # P-IG-1 merged
+    extra_kw = {"materials_config": str(materials_config)} if (materials_config and native_ok) else {}
     try:
-        with materials_config_override(materials_config) as how:
-            injection = how
+        with materials_config_override(None if native_ok else materials_config) as how:
+            injection = "native" if (materials_config and native_ok) else how
             for i, age in enumerate(ages, 1):
                 _LAST_CAPTURES.clear()
                 res = run_forward_cached(
@@ -135,6 +139,7 @@ def run_forward_capturing(
                     recipe_metadata={"dorgems_capture": True, "template_name": forward_query.get("name", "dorgems")},
                     reaction_model_id=reaction_model_id,
                     reaction_model_config=str(reaction_model_config) if reaction_model_config else None,
+                    **extra_kw,
                 )
                 chem_dir = Path(res["chemistry_dir"])
                 cap = _LAST_CAPTURES[-1] if _LAST_CAPTURES else None

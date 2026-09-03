@@ -1,0 +1,25 @@
+# Filled example of new_material_template.yaml (values are illustrative, not measurements).
+scm:
+  name: GGBS-Pohang-2026
+  role: slag
+  oxides: {SiO2: 34.0, CaO: 42.5, Al2O3: 13.5, Fe2O3: 0.5, MgO: 6.5, SO3: 2.0, Na2O: 0.3, K2O: 0.4, TiO2: 0.7}
+  blaine_m2_kg: 450
+  d50_um: 11.0
+  amorphous_pct: 97.0
+mix:
+  scm_pct: 40
+  w_b: 0.45
+  curing_temp_C: 20
+  opc_oxides: {CaO: 63.3, SiO2: 20.2, Al2O3: 5.0, Fe2O3: 3.0, MgO: 1.8, SO3: 3.0, Na2O: 0.2, K2O: 0.8}
+  other_components: {}
+ages_d: [1, 3, 7, 28, 90, 180, 365]
+observations:
+  - {age_d: 7,  quantity: bound_water, value: 12.5, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 28, quantity: bound_water, value: 16.8, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 90, quantity: bound_water, value: 18.9, unit: "g/100 g binder", method: "TGA 105-1000C"}
+  - {age_d: 28, quantity: CH_TGA,      value: 8.1,  unit: "g/100 g binder", method: "TGA"}
+  - {age_d: 28, quantity: chem_shrink, value: 0.052, unit: "mL/g binder"}
+  - {age_d: 28, quantity: CH_TGA,      value: 6.0,  unit: "wt%"}            # basis missing -> grade D (reference only)
+  - {age_d: 28, quantity: DoR_SCM,     value: 38.0, unit: "%", method: "selective dissolution"}  # validation only
+notes: "illustrative example"
+source: "templates/example_ggbs_pohang.yaml"

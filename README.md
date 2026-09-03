@@ -47,6 +47,20 @@ dorgems model-card
 
 Real xGEMS runs need `--real --dat-lst <Test-dat.lst> --max-xgems-calls N` (N ≤ 200).
 
+## New-material input file
+
+Fill `templates/new_material_template.yaml` (see `templates/example_ggbs_pohang.yaml`) and run
+
+```bash
+dorgems validate templates/example_ggbs_pohang.yaml      # schema + observation unit grades, no computation
+dorgems envelope --input my_scm.yaml --out out/A --db out/igdb
+dorgems compare  --input my_scm.yaml --out out/B --db out/igdb   # your observations vs the model
+dorgems infer    --input my_scm.yaml --out out/C --db out/igdb   # DoR from indirect observations
+```
+
+Observation units must state the basis (`g/100 g binder`, `mL/g binder`, …); `%`/`wt%` alone is
+kept for reference only (grade D).
+
 ## Agent hosts
 
 * `dorgems-mcp` — stand-alone MCP server with the 13 `dor_*` tools.
